@@ -12,18 +12,9 @@ public class Start extends Field{
     @Override
 
     public void landOndField(Player player1) {
-
-        if(player1.isInJail()) {
-            player1.myWallet.setSquareMoney(-1);
-            player1.myWallet.UpdateMoney();
-            player1.setInJail(false);
-        }
-
         player1.myWallet.setSquareMoney(money);
         player1.myWallet.UpdateMoney();
     }
-
-
 
 }
 

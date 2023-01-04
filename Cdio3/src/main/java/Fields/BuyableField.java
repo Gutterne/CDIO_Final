@@ -23,11 +23,6 @@ public class BuyableField extends Field {
     // if player can afford the house scenario.
     public void landOndField(Player player1) {
 
-        if(player1.isInJail()) {
-            player1.myWallet.setSquareMoney(-1);
-            player1.myWallet.UpdateMoney();
-            player1.setInJail(false);
-        }
 
         if (owned == false) {
             if (player1.myWallet.getMoney() > cost) {

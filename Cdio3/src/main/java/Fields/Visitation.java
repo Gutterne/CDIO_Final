@@ -10,11 +10,7 @@ public class Visitation extends UnbuyableField {
     @Override
     public void landOndField(Player player1) {
 
-        if(player1.isInJail()) {
-            player1.myWallet.setSquareMoney(-1);
-            player1.myWallet.UpdateMoney();
-            player1.setInJail(false);
-        }
+
 
     }
 
