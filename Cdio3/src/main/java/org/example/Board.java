@@ -21,12 +21,12 @@ public class Board {
   fieldlist[11]= new BuyableField("Frederiksberg allé","Grøn",12,2800);
   fieldlist[12]= new Brewery("Tuborg Squash","Rød",13,3000);
   fieldlist[13]= new BuyableField("Bülowsvej","Grøn",14,2800);
-   fieldlist[14]= new BuyableField("Gammel kongevej","Grøn",15,3200);
+  fieldlist[14]= new BuyableField("Gammel kongevej","Grøn",15,3200);
   fieldlist[15]= new Chance("Chance",16);
-  fieldlist[16]= new BuyableField("Legetøjsbutikken","Grøn",17,3);
-  fieldlist[17]= new BuyableField("Dyrehandlen","Gul",18,3);
-  fieldlist[18]= new Prison("Fængsel",19);
-  fieldlist[19]= new BuyableField("Bowlinghallen","Grøn",20,4);
+  fieldlist[16]= new BuyableField("Bernstorffsvej","Grå",17,3600);
+  fieldlist[17]= new Chance("Chance",18);
+  fieldlist[18]= new BuyableField("Hellerupvej","Grå",19,3600);
+  fieldlist[19]= new BuyableField("Strandvejen","Grøn",20,4000);
   fieldlist[20]= new BuyableField("Zoologisk Have","Grøn",21,4);
   fieldlist[21]= new Chance("Chance",22);
   fieldlist[22]= new BuyableField("Lalandia","Blå",23,4);
