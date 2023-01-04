@@ -5,11 +5,13 @@ import gui_main.GUI;
 
 public class Player {
     public Wallet myWallet;
-    private int money2;
+    private int money2,positition;
     private boolean[] ownerlist;
     private int[] ints;
     private boolean isInJail;
-    public Player(int money) {
+    String name;
+    public Player(String name, int money) {
+        this.name=name;
         money2=money;
         myWallet = new Wallet(money2);
         ints = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24};
@@ -24,13 +26,10 @@ public class Player {
         boolean m =ownerlist[bool];
         return m;
     }
-   //set ownerlist, det her er hvad der udgør int[] ints array listen, og påsætter elementen til at være true, så man ved
-   //hvad der påsat til listen
     public void setOwnerlist(int bool) {
-   ownerlist[bool]= true;
+        ownerlist[bool]= true;
     }
 
-    //det samme som ovenstående, bare for jail.
     public boolean isInJail() {
         return isInJail;
     }
@@ -38,7 +37,18 @@ public class Player {
     public void setInJail(boolean inJail) {
         isInJail = inJail;
     }
-}
 
+    public String getName() {
+        return name;
+    }
+
+    public int getPositition() {
+        return positition;
+    }
+
+    public void setPositition(int positition) {
+        this.positition = positition;
+    }
+}
 
 
