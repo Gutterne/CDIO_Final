@@ -27,10 +27,11 @@ public class Board {
   fieldlist[17]= new Chance("Chance",18);
   fieldlist[18]= new BuyableField("Hellerupvej","Grå",19,3600);
   fieldlist[19]= new BuyableField("Strandvejen","Grøn",20,4000);
-  fieldlist[20]= new BuyableField("Zoologisk Have","Grøn",21,4);
+  fieldlist[20]= new Parking("Parkering","Intet",21,0);
   fieldlist[21]= new Chance("Chance",22);
-  fieldlist[22]= new BuyableField("Lalandia","Blå",23,4);
-  fieldlist[23]= new BuyableField("Strandpromenaden","Blå",24,4);
+  fieldlist[22]= new BuyableField("Trianglen","Rød",23,4400);
+  fieldlist[23]= new Chance("Prøv Lykken",24);
+
 
 }
 /*
