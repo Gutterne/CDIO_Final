@@ -8,31 +8,14 @@ public class Visitation extends UnbuyableField {
         super(fieldName, BoardNumber);
     }
     @Override
-    public void landOndField(Player player1,Player player2) {
+    public void landOndField(Player player1) {
 
-         if(player1.isInJail()) {
+        if(player1.isInJail()) {
             player1.myWallet.setSquareMoney(-1);
             player1.myWallet.UpdateMoney();
             player1.setInJail(false);
         }
 
     }
-    public void landOndField(Player player1,Player player2,Player player3) {
 
-         if(player1.isInJail()) {
-            player1.myWallet.setSquareMoney(-1);
-            player1.myWallet.UpdateMoney();
-            player1.setInJail(false);
-        }
-
-    }
-    public void landOndField(Player player1,Player player2,Player player3, Player player4) {
-
-         if(player1.isInJail()) {
-            player1.myWallet.setSquareMoney(-1);
-            player1.myWallet.UpdateMoney();
-            player1.setInJail(false);
-        }
-
-    }
 }
