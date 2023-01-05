@@ -18,12 +18,18 @@ public class SettingsController {
     }
 
     public   void provideSettings(){
-        if (x == 2) {
-            cash = 20;
+       /*Player start amount
+        If-else statement constructed like this, incase we choose to change the criteria of start money to be dependant
+        on the amount of players. */
+
+                //monopoly CDIO_Final startamount is set to 30k
+        if (x == 6) {
+            cash = 30000;
         } else if (x == 3) {
-            cash = 18;
-        } else
-            cash = 16;
+            cash = 30000;
+        } else {
+            cash = 30000;
+        }
 
         GUI_Car car1 = new GUI_Car(Color.RED, Color.RED, GUI_Car.Type.CAR, GUI_Car.Pattern.HORIZONTAL_DUAL_COLOR);
         GUI_Player play1 = new GUI_Player("Player1", cash, car1);
