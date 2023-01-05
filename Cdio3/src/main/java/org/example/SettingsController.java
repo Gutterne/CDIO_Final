@@ -7,7 +7,7 @@ import gui_main.GUI;
 import java.awt.*;
 
 public class SettingsController {
-    private  Player player1,player2,player3,player4;
+    private  Player player1,player2,player3,player4,player5,player6;
     private  int cash;
     private GUI gui;
     private  GUI_Player[] playArray;
@@ -17,7 +17,7 @@ public class SettingsController {
         this.x = x;
     }
 
-    public   void provideSettings(){
+    public void provideSettings(){
        /*Player start amount
         If-else statement constructed like this, incase we choose to change the criteria of start money to be dependant
         on the amount of players. */
@@ -48,14 +48,21 @@ public class SettingsController {
         GUI_Car car4 = new GUI_Car(Color.GREEN, Color.BLACK, GUI_Car.Type.RACECAR, GUI_Car.Pattern.HORIZONTAL_DUAL_COLOR);
         GUI_Player play4 = new GUI_Player("Player4", cash, car4);
 
+        GUI_Car car5 = new GUI_Car(Color.MAGENTA,Color.BLACK,GUI_Car.Type.RACECAR,GUI_Car.Pattern.HORIZONTAL_DUAL_COLOR);
+        GUI_Player play5 = new GUI_Player("Player5", cash, car5);
+
+        GUI_Car car6 = new GUI_Car(Color.BLACK,Color.WHITE,GUI_Car.Type.RACECAR,GUI_Car.Pattern.HORIZONTAL_LINE);
+        GUI_Player play6 = new GUI_Player("Player6", cash, car6);
 
         player1 = new Player("Player1", cash);
         player2 = new Player("Player2", cash);
         player3 = new Player("Player3", cash);
         player4 = new Player("Player4", cash);
+        player5 = new Player("Player5", cash);
+        player6 = new Player("Player6", cash);
 
-        playerArray = new Player[]{player1, player2, player3, player4};
-        playArray = new GUI_Player[]{play1, play2, play3, play4};
+        playerArray = new Player[]{player1, player2, player3, player4,player5,player6};
+        playArray = new GUI_Player[]{play1, play2, play3, play4,play5,play6};
         if (x == 2) {
             playerArray = new Player[]{player1, player2};
             playArray = new GUI_Player[]{play1, play2};
@@ -66,10 +73,16 @@ public class SettingsController {
             playerArray = new Player[]{player1, player2, player3};
             playArray = new GUI_Player[]{play1, play2, play3};
             setPlayerArray(playerArray);
-            setPlayArray( playArray );
+            setPlayArray(playArray);
+        }else if (x==4) {
+            playerArray = new Player[]{player1, player2, player3,player4};
+            playArray = new GUI_Player[]{play1, play2, play3,play4};
+        }else if (x==5) {
+            playerArray = new Player[]{player1, player2, player3,player4,player5};
+            playArray = new GUI_Player[]{play1, play2, play3,play4,play5};
         } else {
             setPlayerArray(playerArray);
-            setPlayArray( playArray );
+            setPlayArray(playArray );
         }
     }
 
