@@ -26,7 +26,7 @@ import java.awt.Color;
          board[i++] = new GUI_Street("Rødovre", "Pris:  1200kr", "", "Startleje:  50", new Color(135, 206, 235), Color.BLACK);
          board[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
          board[i++] = new GUI_Street("Hvidovre", "Pris:  1200kr", "Startleje: 50 ", "50", new Color(135, 206, 235), Color.BLACK);
-         board[i++] = new GUI_Tax( "Skattevæsnet", "Betal 4000k", "eller 10%", new Color(255,255,255), Color.BLACK);
+         board[i++] = new GUI_Tax( "Skattevæsnet", "Betal 4000kr", "eller 10%", new Color(255,255,255), Color.BLACK);
          board[i++] = new GUI_Shipping("default","Helsingørbåden","Pris 4000kr", "Lineart pr båd" , "500", new Color(105, 156, 250), Color.BLACK);
          board[i++] = new GUI_Street("Roskildevej", "Pris 2000kr", "Startleje : 100", "100", new Color(255, 127, 0), Color.BLACK);
          board[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
@@ -61,7 +61,7 @@ import java.awt.Color;
          board[i++] = new GUI_Street("Nygade", "Pris: 6400kr", "", "600", new Color(255, 233, 0), Color.BLACK);
          board[i++] = new GUI_Shipping("default","Helsingørbåden","Pris 4000kr", "Lineart pr båd" , "500", new Color(105, 156, 250), Color.BLACK);
          board[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
-         board[i++] = new GUI_Tax( "Statskassen", "Betal 2000", "Pris 2000kr", new Color(255,255,255), Color.BLACK);
+         board[i++] = new GUI_Tax( "Statskassen", "Betal 2000kr", "Pris 2000kr", new Color(255,255,255), Color.BLACK);
          board[i++] = new GUI_Street("Frederiksberg", "Pris:  7000kr", "", "700", new Color(156, 81, 182), Color.BLACK);
          board[i++] = new GUI_Street("Rådhuspladsen", "Pris: 8000kr", "Dommedaghuset", "1000", new Color(156, 81, 182), Color.BLACK);
 
