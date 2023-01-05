@@ -23,12 +23,14 @@ public class SettingsController {
         on the amount of players. */
 
                 //monopoly CDIO_Final startamount is set to 30k
-        if (x == 6) {
+        if (x == 6||x==5) {
             cash = 30000;
-        } else if (x == 3) {
+        } else if (x == 4||x==3) {
+            cash = 30000;
+        } else if (x==2||x==1){
             cash = 30000;
         } else {
-            cash = 30000;
+            cash=30000;
         }
 
         GUI_Car car1 = new GUI_Car(Color.RED, Color.RED, GUI_Car.Type.CAR, GUI_Car.Pattern.HORIZONTAL_DUAL_COLOR);
