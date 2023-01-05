@@ -11,9 +11,9 @@ public class Start extends Field{
     }
     @Override
 
-    public void landOndField(Player player1) {
-        player1.myWallet.setSquareMoney(money);
-        player1.myWallet.UpdateMoney();
+    public void landOndField(Player player10) {
+        player10.myWallet.setSquareMoney(money);
+        player10.myWallet.UpdateMoney();
     }
 
 }

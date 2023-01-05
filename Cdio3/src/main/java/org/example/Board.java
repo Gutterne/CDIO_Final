@@ -6,7 +6,7 @@ import Fields.*;
 public class Board {
   Field[] fieldlist;
  public Board(){
-   fieldlist = new Field[24];
+  fieldlist = new Field[24];
   fieldlist[0]= new Start("Start",1,2);
   fieldlist[1]= new BuyableField("Gatekjønnet","Brun",2,1);
   fieldlist[2]= new BuyableField("Pizzahuset","Brun",3,1);

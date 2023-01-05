@@ -5,61 +5,76 @@ import org.example.Player;
 
 public class BuyableField extends Field {
     private  int cost;
+    Player owner;
+    private String color, valg;
+    private int House,hotel;
 
-    Player player;
-    private String color;
 
 
     public BuyableField(String fieldName,String color, int BoardNumber,int cost){
         super(fieldName,BoardNumber);
         this.cost=cost;
         this.color=color;
-
     }
 
 
 
-    @Override
+
     // if player can afford the house scenario.
-    public void landOndField(Player player1) {
-
-
+    public void landOndField(Player player10,Boolean choice) {
+// Her checker vi om det er første gang der nogen der lander på feltet.
+// Normale scenario, da folk sikker kommer til at købe alle skøder de kan.
         if (owned == false) {
-            if (player1.myWallet.getMoney() > cost) {
-                player1.myWallet.setSquareMoney(-cost);
-                player1.myWallet.UpdateMoney();
-                player1.setOwnerlist(getBoardNumber());
+            System.out.println("Vil du købe skøden for "+cost+"?");
+  // hvis ja, bliver man ejeren, så længe man har råd til det.
+ if (choice){
+            if (player10.myWallet.getMoney() > cost) {
+                player10.myWallet.setSquareMoney(-cost);
+                player10.myWallet.UpdateMoney();
+                player10.setOwnerlist(getBoardNumber());
                 owned = true;
-
+                owner = player10;
+                System.out.println("Du ejer nu skøden.");
             }
-            // if player is broke scenario. He will lose the rest of his money hahah.
             else {
-                if (!player1.getOwnerlist(getBoardNumber())) {
-                    player1.myWallet.setSquareMoney(-cost);
-                    player1.myWallet.UpdateMoney();
-                }
+                //
+                System.out.println("Du har ikke råd til at købe feltet, spare som penge sammen");
             }
+            }
+       else {
+     System.out.println("Du har valgt nej, så din tur er forbi.");
+ }
+
         } else {
-
-            if (!player1.getOwnerlist(getBoardNumber())) {
+// hvis man lander på en andens felt.
+            if (!player10.getOwnerlist(getBoardNumber())) {
                 // scenario where player can afford the rent.
-                if (player1.myWallet.getMoney() > cost) {
-                    player1.myWallet.setSquareMoney(-cost);
-                    player1.myWallet.UpdateMoney();
+                // den normale scenario, som sker mere ofte.
+                if (player10.myWallet.getMoney() > cost) {
+                    player10.myWallet.setSquareMoney(-cost);
+                    player10.myWallet.UpdateMoney();
+                    owner.myWallet.setSquareMoney(cost);
+                    owner.myWallet.UpdateMoney();
 
-                    // Moiz
 
                 } else {
                     // sceario where player cannot afford to pay rent.
-                    player1.myWallet.setSquareMoney(-cost);
-                    player1.myWallet.UpdateMoney();
+                    // den her gør at spilleren ikke for penge som ikke er i kredsløb.
+                    player10.myWallet.setSquareMoney(-cost);
+                    player10.myWallet.UpdateMoney();
+                    owner.myWallet.setSquareMoney(player10.myWallet.getMoney());
+                    owner.myWallet.UpdateMoney();
 
 
+                }
+            }
+                else{
+                    System.out.println("Du ejer feltet, så du skal ikke betale leje");
                 }
             }
         }
     }
 
-}
+
 
 
