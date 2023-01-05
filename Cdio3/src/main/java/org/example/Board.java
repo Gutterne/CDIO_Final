@@ -8,7 +8,7 @@ import gui_fields.FieldMouseListener;
 public class Board {
   Field[] fieldlist;
  public Board(){
-   fieldlist = new Field[40];
+   fieldlist = new Field[41];
   fieldlist[0]= new Start("Start",1,4000);
   fieldlist[1]= new BuyableField("Rødovre","Lyseblå",2,1200);
   fieldlist[2]= new Chance("Prøv Lykken",3);
