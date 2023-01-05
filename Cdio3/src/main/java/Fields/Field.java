@@ -1,6 +1,7 @@
 package Fields;
 import org.example.*;
 public class  Field {
+    protected static Field[] fields;
     private int cashOut;
     private String fieldName;
     protected final  int BoardNumber;

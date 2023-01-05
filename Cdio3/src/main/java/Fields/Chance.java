@@ -1,10 +1,12 @@
 package Fields;
 
+import gui_fields.GUI_Ownable;
 import org.example.Die;
 import org.example.Player;
 import org.example.Wallet;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Chance extends UnbuyableField {
     private Die die8;
@@ -68,15 +70,16 @@ public class Chance extends UnbuyableField {
 
     }
 
+
     @Override
     public void landOndField(Player player1) {
 
-        if (player1.isInJail()) {
-            player1.myWallet.setSquareMoney(-1);
-            player1.myWallet.UpdateMoney();
-            player1.setInJail(false);
-        }
-
-
+    /*    Field f = Field.fields[player1.getPositition()];
+        String t = String.valueOf(f);
+        System.out.println(t + " " + "field_Type");
+        else if(Objects.equals(t, "ChanceField")){
+            pullChanceCard();
+            updatePositition();
+*/
     }
 }

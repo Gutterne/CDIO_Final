@@ -4,6 +4,9 @@ import Fields.Field;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
+
+import java.util.Objects;
+
 public class HelperController {
     private boolean playing = true;
     private int p1;
@@ -41,6 +44,7 @@ public class HelperController {
 
                 Field playerField1 = board3.fieldlist[m];
                 playerField1.landOndField(playerArray[i]);
+                /*gui.displayChanceCard(Objects.equals());*/
 
                 for(int f = 0;f<playerArray.length;f++) {
                     playArray[f].setBalance(playerArray[f].myWallet.getMoney());

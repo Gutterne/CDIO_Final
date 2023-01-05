@@ -22,6 +22,8 @@ public class GameController {
         }
         gameBoard = new GameBoard(board4);
         gui = new GUI(board2);
+
+
     }
 
     public void play() {
