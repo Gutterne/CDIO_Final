@@ -8,7 +8,9 @@ public class Player {
     private int money2,positition;
     private boolean[] ownerlist;
     private int[] ints;
-    private boolean isInJail;
+    public boolean isInJail;
+    private boolean inPrison;
+
     String name;
     public Player(String name, int money) {
         this.name=name;
@@ -49,6 +51,10 @@ public class Player {
     public void setPositition(int positition) {
         this.positition = positition;
     }
+    public boolean isInPrison() {
+        return this.inPrison;
+    }
+
 }
 
 
