@@ -81,5 +81,8 @@ public class Chance extends UnbuyableField {
             pullChanceCard();
             updatePositition();
 */
+        Field f = chanceFields.fields[player1.getPositition()];
+        String t = String.valueOf(f);
+        System.out.println(t + " " + "field_Type");
     }
 }
