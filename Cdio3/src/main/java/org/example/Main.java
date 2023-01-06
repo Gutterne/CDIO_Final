@@ -11,3 +11,4 @@ public class Main {
     }
 }
 
+// note; istedet for at spiller inds

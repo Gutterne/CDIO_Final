@@ -2,7 +2,7 @@ package Fields;
 
 import org.example.Player;
 
-public class PassiveHouse extends Prison {
+/*public class PassiveHouse extends Prison {
     public PassiveHouse(String fieldName, int BoardNumber) {
         super(fieldName, BoardNumber);
     }
@@ -31,3 +31,5 @@ public class PassiveHouse extends Prison {
 
 
 }
+
+ */
