@@ -18,6 +18,7 @@ public class Ferry extends Field {
 
 
 
+//Contains ownership properties.
 
     // if player can afford the house scenario.
     public void landOndField(Player player10,Boolean choice) {
