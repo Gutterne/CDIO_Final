@@ -16,12 +16,12 @@ public class PassiveHouse extends Prison {
             player1.setInJail(true);
             if (player1.isInJail==true){return;
                 // player is in jail, so other players do not have to pay rent for this player's properties
-                    for (Property property : Player.getProperties()) {
-                        property.setRentFree(true);
+                    for (BuyableField buyableField : player1.getOwnerlist()) {
+                        buyableField.setRentFree(true);
                     }
                 } else {
                     // player is not in jail, so other players have to pay rent for this player's properties
-                    for (Property property : Player.getProperties()) {
+                    for (BuyableField property : player1.getOwnerlist()) {
                         property.setRentFree(false);
                     }
                 }
