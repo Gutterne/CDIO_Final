@@ -15,7 +15,7 @@ public class GameController {
     private GameBoard gameBoard;
 
     public GameController(){
-        board1 = new GUI_Field[24]; board2 = new GUI_Field[24];
+        board1 = new GUI_Field[40]; board2 = new GUI_Field[40];
         board1 = GameBoard.makeFields();
         for(int i = 0; i < board2.length; ++i) {
             board2[i] = board1[i];
