@@ -2,7 +2,7 @@ package Fields;
 
 import org.example.Player;
 
-/*public class PassiveHouse extends Prison {
+public class PassiveHouse extends Prison {
     public PassiveHouse(String fieldName, int BoardNumber) {
         super(fieldName, BoardNumber);
     }
@@ -16,13 +16,13 @@ import org.example.Player;
             player1.setInJail(true);
             if (player1.isInJail==true){return;
                 // player is in jail, so other players do not have to pay rent for this player's properties
-                    for (Property property : Player.getProperties()) {
-                        property.setRentFree(true);
-                    }
-                } else {
+                    //for (BuyableField buyableField : player1.getOwnerlist()) {
+                        //player1.setRentFree(true);
+                 //   }
+            //    } else {
                     // player is not in jail, so other players have to pay rent for this player's properties
-                    for (Property property : Player.getProperties()) {
-                        property.setRentFree(false);
+                    //for (Property property : Player.getProperties()) {
+                      //  property.setRentFree(false);
                     }
                 }
 
@@ -30,6 +30,3 @@ import org.example.Player;
 
 
 
-}
-
- */
