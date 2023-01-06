@@ -2,6 +2,7 @@ package Fields;
 
 import org.example.Player;
 
+//Brewery.java, accounts for fields, such as coca-cola & tuborg squash)
 public class Brewery extends Field {
     private  int cost;
 
@@ -9,7 +10,7 @@ public class Brewery extends Field {
     private String color;
 
 
-    public Brewery(String fieldName,String color, int BoardNumber,int cost){
+    public Brewery(String fieldName,String color, int BoardNumber,int cost, int rent0,int rent1){
         super(fieldName,BoardNumber);
         this.cost=cost;
         this.color=color;
@@ -17,7 +18,7 @@ public class Brewery extends Field {
     }
 
 
-
+//Contains ownership properties.
     @Override
     // if player can afford the Brewery scenario.
     public void landOndField(Player player1) {
