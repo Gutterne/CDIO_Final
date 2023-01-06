@@ -27,7 +27,7 @@ public class BuyableField extends Field {
 // Here we check if its the first time somebody is landing on the following field.
 // It's a normal scenario, since everybody wants to buy the field if they can.
         if (owned == false) {
-            System.out.println("Vil du købe skøden for "+cost+"?");
+            System.out.println("Vil du købe skødet for "+cost+"?");
             // If yes, you become the owner, as long as you can afford it.
             if (choice){
                 if (player10.myWallet.getMoney() > cost) {
@@ -36,7 +36,7 @@ public class BuyableField extends Field {
                     player10.setOwnerlist(getBoardNumber());
                     owned = true;
                     owner = player10;
-                    System.out.println("Du ejer nu skøden.");
+                    System.out.println("Du ejer nu skødet.");
                 }
                 else {
                     //
