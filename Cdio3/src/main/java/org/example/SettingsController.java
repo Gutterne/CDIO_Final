@@ -48,11 +48,12 @@ public class SettingsController {
         GUI_Car car4 = new GUI_Car(Color.GREEN, Color.BLACK, GUI_Car.Type.RACECAR, GUI_Car.Pattern.HORIZONTAL_DUAL_COLOR);
         GUI_Player play4 = new GUI_Player("Player4", cash, car4);
 
-        GUI_Car car5 = new GUI_Car(Color.MAGENTA,Color.BLACK,GUI_Car.Type.RACECAR,GUI_Car.Pattern.HORIZONTAL_DUAL_COLOR);
+        GUI_Car car5 = new GUI_Car(Color.MAGENTA,Color.BLACK,GUI_Car.Type.CAR,GUI_Car.Pattern.HORIZONTAL_DUAL_COLOR);
         GUI_Player play5 = new GUI_Player("Player5", cash, car5);
 
-        GUI_Car car6 = new GUI_Car(Color.BLACK,Color.WHITE,GUI_Car.Type.RACECAR,GUI_Car.Pattern.HORIZONTAL_LINE);
+        GUI_Car car6 = new GUI_Car(Color.WHITE,Color.BLACK,GUI_Car.Type.CAR,GUI_Car.Pattern.HORIZONTAL_LINE);
         GUI_Player play6 = new GUI_Player("Player6", cash, car6);
+
 
         player1 = new Player("Player1", cash);
         player2 = new Player("Player2", cash);

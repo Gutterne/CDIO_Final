@@ -12,11 +12,21 @@ import gui_fields.GUI_Tax;
 import java.awt.Color;
 
  public class  GameBoard {
-
+     SettingsController CarInfo;
+     boolean owned =  false;
+     int [] ColorOutline = {0,0,0};
 
      public GameBoard(GameBoard[] board2) {
          //Add new pictures if time here.
      }
+
+     public void visualOwnerShip(GUI_Field makeFields){
+         if(owned == false) {
+
+
+             }
+         }
+
 
 //This is the Frontend GUI. Here we display pictures & Make the colors of each field. This is most used for visuals, than the actual backend. Backend, is Board. This use GUI as userinterface.
      public static GUI_Field[] makeFields() {

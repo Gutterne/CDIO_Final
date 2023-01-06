@@ -48,8 +48,8 @@ public class HelperController {
     }
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
         player711.setPositition(player711.getPositition() + DiceSum);
-        int m = player711.getPositition() % 24;
-        board2[(player711.getPositition() - holder.getSum()) % 24].removeAllCars();
+        int m = player711.getPositition() % 40;
+        board2[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
         board2[m].setCar(Play12, true);
         return m;
     }
