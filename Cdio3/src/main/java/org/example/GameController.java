@@ -25,6 +25,7 @@ public class GameController {
     }
 
     public void play() {
+
         Textdata = "" + gui.getUserString(inputText);
         int x = Integer.parseInt(Textdata);
         set = new SettingsController(x);

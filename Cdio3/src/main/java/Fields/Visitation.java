@@ -8,7 +8,7 @@ public class Visitation extends UnbuyableField {
         super(fieldName, BoardNumber);
     }
     @Override
-    public void landOndField(Player player1) {
+    public void landOndField(Player player10) {
 
 
 

@@ -1,21 +1,22 @@
 package Fields;
 import org.example.*;
-public class  Field {
+public abstract class  Field {
     private int cashOut;
     private String fieldName;
-    protected final  int BoardNumber;
-    Player player1,player2,player3,player4;
-    protected boolean owned=false;
+    protected final int BoardNumber;
+    Player player1, player2, player3, player4;
+    protected boolean owned = false;
 
-    public  Field (String fieldName, int BoardNumber){
-        this.fieldName=fieldName;
-        this.BoardNumber=BoardNumber;
+    public Field(String fieldName, int BoardNumber) {
+        this.fieldName = fieldName;
+        this.BoardNumber = BoardNumber;
     }
 
     public int getBoardNumber() {
         return BoardNumber;
     }
-    public void landOndField(Player player1) {
+
+    public void landOndField(Player player10) {
 
     }
 
@@ -27,7 +28,7 @@ public class  Field {
         return cashOut;
     }
 
-    public void setCashOut(int cashOut) {
-        this.cashOut = cashOut;
+    public String getFieldName() {
+        return fieldName;
     }
 }

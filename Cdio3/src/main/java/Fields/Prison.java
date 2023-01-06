@@ -11,8 +11,8 @@ public class Prison extends UnbuyableField{
         //Boolean value redirected into true.
     }
     @Override
-    public void landOndField(Player player1) {
-        player1.setInJail(true);
+    public void landOndField(Player player10) {
+        player10.setInJail(true);
     }
 
 }
