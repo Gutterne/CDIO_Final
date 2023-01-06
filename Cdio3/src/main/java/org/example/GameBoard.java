@@ -74,7 +74,18 @@ import java.awt.Color;
 
          return board;
      }
+     private static void visualOwnerShip(BuyableField buyableField) {
+
+
+         if(buyableField.isOwned() == false) {
+             carColor = Color.black;
+         }else if(buyableField.isOwned()==true) {
+             carColor = Color.getColor(String.valueOf(Color.RED));
+         }
+
+     }
  }
+ 
 
 
 
