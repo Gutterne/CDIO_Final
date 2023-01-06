@@ -33,9 +33,9 @@ public class HelperController {
                 p1 = holder.sum();
                 playerArray[i].setPositition(playerArray[i].getPositition() + p1);
                 gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
-                int m = playerArray[i].getPositition() % 24;
+                int m = playerArray[i].getPositition() % 40;
 
-                board2[(playerArray[i].getPositition() - holder.getSum()) % 24].removeAllCars();
+                board2[(playerArray[i].getPositition() - holder.getSum()) % 40].removeAllCars();
 
                 board2[m].setCar(playArray[i], true);
 
