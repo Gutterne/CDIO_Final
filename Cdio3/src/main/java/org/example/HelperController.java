@@ -1,5 +1,6 @@
 package org.example;
 
+import Fields.BuyableField;
 import Fields.Field;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -15,7 +16,8 @@ public class HelperController {
     private GUI_Field []board2;
     private int[] buyableFields;
 
-    public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui,GUI_Field[] board2){
+    public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
+            ,GUI_Field[] board2) {
         this.gui = gui;
         this.playArray=playArray;
         this.playerArray=playerArray;
@@ -32,8 +34,8 @@ public class HelperController {
         while (playing) {
             for (int i = 0; i < playerArray.length; i++) {
                 gui.showMessage(playerArray[i].getName() + " tryk enter:");
-                int position= movePlayer(playerArray[i],playArray[i] ,RollTheDice());
-                LandPlayer(playerArray[i],position);
+                int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
+                LandPlayer(playerArray[i],posit);
                 updatePlayerMoney();
             }
         }
@@ -51,12 +53,34 @@ public class HelperController {
         board2[m].setCar(Play12, true);
         return m;
     }
-    public void LandPlayer(Player player721, int position23){
-        Field playerField1 = board3.fieldlist[position23];
-for(int p2:buyableFields){
 
-}
-        playerField1.landOndField(player721);
+    public void LandPlayer(Player player721,int am){
+        Field playerField1 = board3.fieldlist[am];
+        if(playerField1 instanceof BuyableField){
+            if(!playerField1.isOwned()) {
+                String chosenButton = gui.getUserButtonPressed(
+                        "Du har landet på " + playerField1.getFieldName() + "" +
+                                ". Vil du købe den?",
+                        "Ja", "Nej"
+                );
+                if(chosenButton.equals("Ja")){
+                    ((BuyableField) playerField1).landOndField(player721,true);
+                }
+                else{
+                    ((BuyableField) playerField1).landOndField(player721,false);
+                }
+            }
+            else {
+                gui.showMessage("Du har landet på et felt du ejer.");
+
+            }
+
+
+        }
+        else{
+            playerField1.landOndField(player721);
+        }
+
     }
 
     public void updatePlayerMoney(){

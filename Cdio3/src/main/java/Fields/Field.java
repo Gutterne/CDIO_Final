@@ -28,4 +28,7 @@ public abstract class  Field {
         return cashOut;
     }
 
+    public String getFieldName() {
+        return fieldName;
+    }
 }

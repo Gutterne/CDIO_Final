@@ -5,7 +5,7 @@ import org.example.Player;
 
 public class BuyableField extends Field {
     private  int cost;
-    Player owner;
+    private Player owner;
     private String color, valg;
     private int House,hotel;
 
