@@ -6,7 +6,8 @@ public class Ferry extends Field {
     private  int cost;
     private Player owner;
     private int rent = 500;
-    private int ferryamount = 0;
+    private int ferryamount;
+    public int max = 4;
     private String color, valg;
 
     public Ferry(String ferryName, String color, int BoardNumber, int cost, int rent0, int rent1, int rent2, int rent3){
@@ -34,6 +35,14 @@ public class Ferry extends Field {
                     owned = true;
                     owner = player10;
                     System.out.println("Du ejer nu skøden.");
+
+
+
+                        ferryamount+=1;
+                        int price = rent * Math.min(ferryamount, max);
+
+                        System.out.println(price);
+                        System.out.println(ferryamount);
 
                 }
                 else {
@@ -72,6 +81,12 @@ public class Ferry extends Field {
                 System.out.println("Du ejer feltet, så du skal ikke betale leje");
             }
         }
+    }
+    public void setFerryamount(int ferry){
+        rent *= ferry;
+
+        System.out.println(ferry);
+        System.out.println(rent);
     }
 }
 
