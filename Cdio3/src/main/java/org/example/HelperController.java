@@ -1,7 +1,9 @@
 package org.example;
 
 import Fields.BuyableField;
+import Fields.Chance;
 import Fields.Field;
+import Fields.UnbuyableField;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
@@ -15,6 +17,7 @@ public class HelperController {
     private GUI_Player[] playArray;
     private GUI_Field []board2;
     private int[] buyableFields;
+    private Chance chance;
 
     public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
             ,GUI_Field[] board2) {
@@ -80,7 +83,9 @@ public class HelperController {
         else{
             playerField1.landOndField(player721);
         }
+        if(playerField1 instanceof UnbuyableField) {
 
+        }
     }
 
     public void updatePlayerMoney(){

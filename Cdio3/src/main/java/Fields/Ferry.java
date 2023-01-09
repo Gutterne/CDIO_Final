@@ -6,9 +6,6 @@ public class Ferry extends Field {
     private  int cost;
     private Player owner;
     private String color, valg;
-    private int House,hotel;
-
-
 
     public Ferry(String ferryName,String color, int BoardNumber,int cost, int rent0, int rent1, int rent2, int rent3){
         super(ferryName,BoardNumber);
@@ -55,8 +52,7 @@ public class Ferry extends Field {
                     player10.myWallet.UpdateMoney();
                     owner.myWallet.setSquareMoney(cost);
                     owner.myWallet.UpdateMoney();
-
-
+                    
                 } else {
                     // sceario where player cannot afford to pay rent.
                     // player doesn't recieve money which is in circulation.
@@ -67,10 +63,11 @@ public class Ferry extends Field {
 
 
                 }
-            }
-            else{
+            } else {
                 System.out.println("Du ejer feltet, så du skal ikke betale leje");
             }
+
+
         }
     }
 }
