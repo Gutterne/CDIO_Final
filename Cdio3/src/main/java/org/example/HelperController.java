@@ -7,14 +7,12 @@ import gui_fields.GUI_Player;
 import gui_main.GUI;
 public class HelperController {
     private boolean playing = true;
-    private int p1;
     private Board board3;
     private Holder holder;
     private GUI gui;
     private Player[] playerArray;
     private GUI_Player[] playArray;
     private GUI_Field []board2;
-    private int[] buyableFields;
 
     public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
             ,GUI_Field[] board2) {
@@ -24,8 +22,6 @@ public class HelperController {
         holder=new Holder();
         board3= new Board();
         this.board2=board2;
-        buyableFields = new int[] {1,3,5,6,8,9,11,12,13,14,15,16,18,19,21,23,24,25,
-        26,27,28,29,31,32,34,35,37,39};
     }
 
     public void GameRunner(){
@@ -48,8 +44,10 @@ public class HelperController {
     }
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
         player711.setPositition(player711.getPositition() + DiceSum);
-        int m = player711.getPositition() % 24;
-        board2[(player711.getPositition() - holder.getSum()) % 24].removeAllCars();
+
+        int m = player711.getPositition() % 40;
+        board2[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
+        gui.setDice(holder.die1.getFacevalue(),holder.die2.getFacevalue());
         board2[m].setCar(Play12, true);
         return m;
     }
@@ -71,7 +69,13 @@ public class HelperController {
                 }
             }
             else {
+                if(!player721.getOwnerlist(am+1)){
+                    gui.showMessage("Ew! Du ejer ikke feltet.Betal for leje.");
+                    ((BuyableField) playerField1).landOndField(player721,false);}
+
+                else{
                 gui.showMessage("Du har landet på et felt du ejer.");
+                    ((BuyableField) playerField1).landOndField(player721,false);}
 
             }
 
