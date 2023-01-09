@@ -5,9 +5,11 @@ import org.example.Player;
 public class Ferry extends Field {
     private  int cost;
     private Player owner;
+    private int rent = 500;
+    private int ferryamount = 0;
     private String color, valg;
 
-    public Ferry(String ferryName,String color, int BoardNumber,int cost, int rent0, int rent1, int rent2, int rent3){
+    public Ferry(String ferryName, String color, int BoardNumber, int cost, int rent0, int rent1, int rent2, int rent3){
         super(ferryName,BoardNumber);
         this.cost=cost;
         this.color=color;
@@ -22,7 +24,7 @@ public class Ferry extends Field {
 // Here we check if its the first time somebody is landing on the following field.
 // It's a normal scenario, since everybody wants to buy the field if they can.
         if (owned == false) {
-            System.out.println("Vil du købe skøden for "+cost+"?");
+            System.out.println("Vil du købe skøden for "+ cost+"?");
             // If yes, you become the owner, as long as you can afford it.
             if (choice){
                 if (player10.myWallet.getMoney() > cost) {
@@ -32,6 +34,7 @@ public class Ferry extends Field {
                     owned = true;
                     owner = player10;
                     System.out.println("Du ejer nu skøden.");
+
                 }
                 else {
                     //
@@ -46,16 +49,17 @@ public class Ferry extends Field {
 // If you land on a different field.
             if (!player10.getOwnerlist(getBoardNumber())) {
                 // scenario where player can afford the rent.
-                // the normal scenario that happens more often.
+                // den normale scenario, som sker mere ofte.
                 if (player10.myWallet.getMoney() > cost) {
                     player10.myWallet.setSquareMoney(-cost);
                     player10.myWallet.UpdateMoney();
                     owner.myWallet.setSquareMoney(cost);
                     owner.myWallet.UpdateMoney();
-                    
+
+
                 } else {
                     // sceario where player cannot afford to pay rent.
-                    // player doesn't recieve money which is in circulation.
+                    // den her gør at spilleren ikke for penge som ikke er i kredsløb.
                     player10.myWallet.setSquareMoney(-cost);
                     player10.myWallet.UpdateMoney();
                     owner.myWallet.setSquareMoney(player10.myWallet.getMoney());
@@ -63,14 +67,14 @@ public class Ferry extends Field {
 
 
                 }
-            } else {
+            }
+            else{
                 System.out.println("Du ejer feltet, så du skal ikke betale leje");
             }
-
-
         }
     }
 }
+
 
 
 
