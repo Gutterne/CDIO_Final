@@ -1,12 +1,13 @@
 package org.example;
 
-import Fields.BuyableField;
-import Fields.Chance;
-import Fields.Field;
-import Fields.UnbuyableField;
+import Fields.*;
 import gui_fields.GUI_Field;
+import gui_fields.GUI_Ownable;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
+
+import java.awt.*;
+
 public class HelperController {
     private boolean playing = true;
     private int p1;
@@ -57,34 +58,59 @@ public class HelperController {
         return m;
     }
 
-    public void LandPlayer(Player player721,int am){
+    public void LandPlayer(Player player721,int am) {
         Field playerField1 = board3.fieldlist[am];
-        if(playerField1 instanceof BuyableField){
-            if(!playerField1.isOwned()) {
+        if (playerField1 instanceof BuyableField) {
+            if (!playerField1.isOwned()) {
                 String chosenButton = gui.getUserButtonPressed(
                         "Du har landet på " + playerField1.getFieldName() + "" +
                                 ". Vil du købe den?",
                         "Ja", "Nej"
                 );
-                if(chosenButton.equals("Ja")){
-                    ((BuyableField) playerField1).landOndField(player721,true);
+                if (chosenButton.equals("Ja")) {
+                    ((BuyableField) playerField1).landOndField(player721, true);
+                    int i;
+
+                    GUI_Ownable OwnedField;
+                    for (i = 1; i <= 40; ++i) {
+                        board2[am] = this.gui.getFields()[am];
+                        if (board2[am] instanceof GUI_Ownable) {
+                            OwnedField = (GUI_Ownable) board2[am];
+                            //OwnedField.setBorder(this.playerArray[am].getPrimaryColor(), this.getSecondaryColor());
+                        }
+                    }
+                } else {
+                    ((BuyableField) playerField1).landOndField(player721, false);
                 }
-                else{
-                    ((BuyableField) playerField1).landOndField(player721,false);
-                }
-            }
-            else {
+            } else {
                 gui.showMessage("Du har landet på et felt du ejer.");
-
             }
-
-
-        }
-        else{
+        } else {
             playerField1.landOndField(player721);
         }
-        if(playerField1 instanceof UnbuyableField) {
+        if (playerField1 instanceof UnbuyableField) {
 
+        }
+        if (playerField1 instanceof Ferry) {
+            if (!playerField1.isOwned()) {
+                String chosenButton = gui.getUserButtonPressed(
+                        "Du har landet på " + playerField1.getFieldName() + "" +
+                                ". Vil du købe denne mægtige færge?",
+                        "Ja", "Nej"
+                );
+                if (chosenButton.equals("Ja")) {
+                    ((Ferry) playerField1).landOndField(player721, true);
+                    int i;
+
+                    GUI_Ownable OwnedField;
+                    for (i = 1; i <= 40; ++i) {
+                        board2[am] = this.gui.getFields()[am];
+                        if (board2[am] instanceof GUI_Ownable) {
+                            OwnedField = (GUI_Ownable) board2[am];
+                        }
+                    }
+                }
+            }
         }
     }
 

@@ -1,8 +1,9 @@
 package Fields;
 
+import gui_fields.GUI_Ownable;
 import org.example.Player;
 
-
+import java.awt.*;
 
 
 public class BuyableField extends Field {
@@ -37,6 +38,7 @@ public class BuyableField extends Field {
                     owned = true;
                     owner = player10;
                     System.out.println("Du ejer nu skøden.");
+
                 }
                 else {
                     //
