@@ -45,6 +45,7 @@ public class HelperController {
         return p1;
     }
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
+        player711.setPositition(player711.getPositition()+DiceSum);
         int m = player711.getPositition() % 40;
         board2[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
         gui.setDice(holder.die1.getFacevalue(),holder.die2.getFacevalue());
