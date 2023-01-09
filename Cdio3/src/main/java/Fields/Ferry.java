@@ -4,6 +4,7 @@ import org.example.Player;
 
 public class Ferry extends Field {
     private  int cost;
+    private int rent0=500;
     private Player owner;
     private String color, valg;
 
@@ -43,7 +44,7 @@ public class Ferry extends Field {
             }
 
         } else {
-// If you land on a different field.
+                // If you land on a different field.
             if (!player10.getOwnerlist(getBoardNumber())) {
                 // scenario where player can afford the rent.
                 // the normal scenario that happens more often.
