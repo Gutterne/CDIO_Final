@@ -1,7 +1,10 @@
 package org.example;
 
 import Fields.BuyableField;
+import Fields.Chance;
 import Fields.Field;
+import gui_codebehind.GUI_Center;
+import gui_fields.GUI_Board;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
@@ -23,11 +26,12 @@ public class HelperController {
     private GUI_Player[] playArray;
     private GUI_Field []board2;
 
+
     boolean extraturn=false;
 
     private int[] chancecards = new int[0];
 
-    private Chance chance ;
+    public Chance chance;
 
     private JPanel centerPanel = new JPanel();
 
@@ -43,8 +47,6 @@ public class HelperController {
         holder=new Holder();
         board3= new Board();
         this.board2=board2;
-        buyableFields = new int[] {1,3,5,6,8,9,11,12,13,14,15,16,18,19,21,23,24,25,
-        26,27,28,29,31,32,34,35,37,39};
     }
 
     public void GameRunner(){
