@@ -8,7 +8,7 @@ public abstract class UnbuyableField extends Field {
         super(fieldName,BoardNumber);
 
     }
-public void landOndField(){
+    public void landOndField(){
 
     }
 }

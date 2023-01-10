@@ -41,7 +41,7 @@ public class SettingsController {
         GUI_Player play2 = new GUI_Player("Player2", cash, car2);
 
 
-        GUI_Car car3 = new GUI_Car(Color.BLUE, Color.BLACK, GUI_Car.Type.TRACTOR, GUI_Car.Pattern.HORIZONTAL_DUAL_COLOR);
+        GUI_Car car3 = new GUI_Car(Color.BLUE, Color.BLUE, GUI_Car.Type.TRACTOR, GUI_Car.Pattern.HORIZONTAL_DUAL_COLOR);
         GUI_Player play3 = new GUI_Player("Player3", cash, car3);
 
 
@@ -103,3 +103,6 @@ public class SettingsController {
         this.playerArray = playerArray;
     }
 }
+
+
+

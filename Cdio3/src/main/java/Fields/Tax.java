@@ -9,7 +9,7 @@ public class Tax extends UnbuyableField{
         super(fieldName,BoardNumber);
         this.money=money;
     }
-    @Override
+
     public void landOndField(Player player1){};
 
 }

@@ -11,9 +11,14 @@ public class Hardprison extends UnbuyableField{
         //Boolean value redirected into true.
 
     }
-    @Override
+
     public void landOndField(Player player1) {
         player1.setInJail(true);
     }
 
+    //Hard Prison has three requirements
+    // 1. 1000kr degradation of player wallet
+    // 2. "Løsladelseskort" from "prøv lykken" can be used.
+    // 3. Ved at kaste 2 af samme slags. Man flytter så straks det antal felter frem,
+    // som øjnene viser, og har alligevel ekstrakast.
 }

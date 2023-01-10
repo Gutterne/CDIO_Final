@@ -20,9 +20,13 @@ public class Die {
     public int  roll(){
         facevalue=(int)(Math.random()*MaxSides+1);
         return facevalue;
+
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Die{" +
+                "facevalue=" + facevalue +
+                '}';
+    }
 }
