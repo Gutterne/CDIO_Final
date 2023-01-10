@@ -9,7 +9,7 @@ import gui_fields.FieldMouseListener;
 public class Board {
   Field[] fieldlist;
  public Board(){
-   fieldlist = new Field[41];
+   fieldlist = new Field[40];
   fieldlist[0]= new Start("Start",1,4000);
   fieldlist[1]= new BuyableField("Rødovrevej","Lyseblå",2,
           1200,50,250,750,2250,4000,6000);
@@ -58,22 +58,21 @@ public class Board {
   fieldlist[28]= new Brewery("Coca Cola","Rød",29,3000,100,200);
   fieldlist[29]= new BuyableField("Østergade","Hvid",30,5600,
           500,2400,7200,17000,20500,24000);
-  fieldlist[30]= new Chance("Prøv Lykken",31);
+  fieldlist[30]= new Hardprison("FÆNGSEL!",33);
   fieldlist[31]= new BuyableField("Amagertorv","Gul",32,6000,
           550,2600,7800,18000,22000,25000);
-  fieldlist[32]= new Hardprison("FÆNGSEL!",33);
-  fieldlist[33]= new BuyableField("Vimmelskaftet","Gul",34,6000,
+  fieldlist[32]= new BuyableField("Vimmelskaftet","Gul",34,6000,
           550,2600,7800,18000,22000,25000);
-  fieldlist[34]= new Chance("Prøv Lykken",35);
-  fieldlist[35]= new BuyableField("Nygade","Gul",36,6400,
+  fieldlist[33]= new Chance("Prøv Lykken",35);
+  fieldlist[34]= new BuyableField("Nygade","Gul",36,6400,
           600,3000,9000,20000,24000,28000);
-  fieldlist[36]= new Ferry("Rødby-Puttgarden","Mørkeblå",37,
+  fieldlist[35]= new Ferry("Rødby-Puttgarden","Mørkeblå",37,
           4000,500,1000,2000,4000);
-  fieldlist[37]= new Chance("Prøv Lykken",38);
-  fieldlist[38]= new BuyableField("Frederiksberggade","Purple",39,7000,
+  fieldlist[36]= new Chance("Prøv Lykken",38);
+  fieldlist[37]= new BuyableField("Frederiksberggade","Purple",39,7000,
           700,3500,10000,22000,26000,30000);
-  fieldlist[39]= new Tax("Tax",40,2000);
-  fieldlist[40]= new BuyableField("Rådhuspladsen","Lilla",41,8000,
+  fieldlist[38]= new Tax("Tax",40,2000);
+  fieldlist[39]= new BuyableField("Rådhuspladsen","Lilla",41,8000,
           1000,4000,12000,28000,34000,40000);
  }
 }
