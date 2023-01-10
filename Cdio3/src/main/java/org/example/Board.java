@@ -9,7 +9,7 @@ import gui_fields.FieldMouseListener;
 public class Board {
   Field[] fieldlist;
  public Board(){
-   fieldlist = new Field[40];
+   fieldlist = new Field[41];
   fieldlist[0]= new Start("Start",1,4000);
   fieldlist[1]= new BuyableField("Rødovrevej","Lyseblå",2,
           1200,50,250,750,2250,4000,6000);
