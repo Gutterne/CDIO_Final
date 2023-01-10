@@ -2,9 +2,7 @@ package Fields;
 
 import org.example.Player;
 
-//Brewery v.0.1.2
-//Brewery.java, accounts for fields, such as coca-cola & tuborg squash)
-public class Brewery extends Field {
+public class Ferry extends Field {
     private  int cost;
     private Player owner;
     private String color, valg;
@@ -12,8 +10,8 @@ public class Brewery extends Field {
 
 
 
-    public Brewery(String breweryName,String color, int BoardNumber,int cost, int rent0, int rent1){
-        super(breweryName,BoardNumber);
+    public Ferry(String ferryName,String color, int BoardNumber,int cost, int rent0, int rent1, int rent2, int rent3){
+        super(ferryName,BoardNumber);
         this.cost=cost;
         this.color=color;
     }
@@ -76,4 +74,9 @@ public class Brewery extends Field {
         }
     }
 }
+
+
+
+
+
 

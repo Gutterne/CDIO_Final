@@ -1,8 +1,7 @@
 package org.example;
 
-import Fields.*;
-import gui_codebehind.GUI_Center;
-import gui_fields.GUI_Board;
+import Fields.BuyableField;
+import Fields.Field;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
@@ -23,7 +22,8 @@ public class HelperController {
     private Player[] playerArray;
     private GUI_Player[] playArray;
     private GUI_Field []board2;
-    private int[] buyableFields;
+
+    boolean extraturn=false;
 
     private int[] chancecards = new int[0];
 
@@ -56,6 +56,16 @@ public class HelperController {
                 int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
                 LandPlayer(playerArray[i],posit);
                 updatePlayerMoney();
+                if (extraturn==true){
+                    RollTheDice();
+                    movePlayer(playerArray[i],playArray[i],RollTheDice());
+                    // Der er en bug med display af cars.
+                }
+
+
+
+
+
             }
         }
     }
@@ -63,20 +73,22 @@ public class HelperController {
        holder.sum();
        int p1 = holder.getSum();
         gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
+        if(holder.die1.getFacevalue() == holder.die2.getFacevalue()){
+            extraturn=true;
+            gui.showMessage("Du slog to ens, du får derfor ekstra tur");
+        }
         return p1;
     }
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
         player711.setPositition(player711.getPositition() + DiceSum);
         int m = player711.getPositition() % 40;
         board2[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
+        gui.setDice(holder.die1.getFacevalue(),holder.die2.getFacevalue());
         board2[m].setCar(Play12, true);
         return m;
     }
 
-
-
-
-    public void LandPlayer(Player player721,int am) {
+    public void LandPlayer(Player player721,int am){
         Field playerField1 = board3.fieldlist[am];
         String chosenButton = null;
         //String cards = String.valueOf(chancecards[(int) (Math.random() * 44 + 1)]);
@@ -92,10 +104,12 @@ public class HelperController {
                 } else {
                     ((BuyableField) playerField1).landOndField(player721, false);
                 }
-            } else {
+            }
+            else {
                 gui.showMessage("Du har landet på et felt du ejer.");
 
             }
+
 
         }
              /* else if (playerField1 instanceof Chance){
@@ -135,12 +149,7 @@ public class HelperController {
         }*/
 
 
-        }
-
-
-
-
-
+    }
 
     public void updatePlayerMoney(){
         for(int f = 0;f<playerArray.length;f++) {
