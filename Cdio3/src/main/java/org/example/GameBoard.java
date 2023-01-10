@@ -59,18 +59,17 @@ import java.awt.Color;
          board[i++] = new GUI_Street("Kgs. Nytorv", "Pris : 5200kr", "", "450", new Color(255, 255, 255), Color.BLACK);
          board[i++] = new GUI_Brewery("default", "Pris : 3000kr", "Sodavandskæde, flere kan ejes", "Double pris hvis 2 ejet", "100kr", Color.RED, Color.ORANGE);
          board[i++] = new GUI_Street("Østergade", "Pris:  5600kr", "Bowlinghallen", "500", new Color(255, 255, 255), Color.BLACK);
-         board[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
-         board[i++] = new GUI_Street("Amagertorv", "Pris:  6000kr", "", "550", new Color(255, 233, 0), Color.BLACK);
          board[i++] = new GUI_Jail("default", "FÆNGSEL", "FÆNGSEL", "På Besøg I fængsel", new Color(125, 125, 125), Color.BLACK);
+         board[i++] = new GUI_Street("Amagertorv", "Pris:  6000kr", "", "550", new Color(255, 233, 0), Color.BLACK);
          board[i++] = new GUI_Street("Vimmelskaftet", "Pris: 6000kr", "", "550", new Color(255, 233, 0), Color.BLACK);
          board[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
          board[i++] = new GUI_Street("Nygade", "Pris: 6400kr", "", "600", new Color(255, 233, 0), Color.BLACK);
          board[i++] = new GUI_Shipping("default", "Helsingørbåden", "Pris 4000kr", "Lineart pr båd", "500", new Color(105, 156, 250), Color.BLACK);
          board[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
-         board[i++] = new GUI_Tax("Statskassen", "Betal 2000kr", "Pris 2000kr", new Color(255, 255, 255), Color.BLACK);
          board[i++] = new GUI_Street("Frederiksberg", "Pris:  7000kr", "", "700", new Color(156, 81, 182), Color.BLACK);
-         board[i++] = new GUI_Street("Rådhuspladsen", "Pris: 8000kr", "Dommedaghuset", "1000", new Color(156, 81, 182), Color.BLACK);
+         board[i++] = new GUI_Tax("Statskassen", "Betal 2000kr", "Pris 2000kr", new Color(255, 255, 255), Color.BLACK);
 
+         board[i++] = new GUI_Street("Rådhuspladsen", "Pris: 8000kr", "Dommedaghuset", "1000", new Color(156, 81, 182), Color.BLACK);
 
          return board;
      }
