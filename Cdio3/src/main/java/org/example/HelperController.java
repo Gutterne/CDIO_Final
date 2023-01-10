@@ -1,10 +1,19 @@
 package org.example;
 
-import Fields.BuyableField;
-import Fields.Field;
+import Fields.*;
+import gui_codebehind.GUI_Center;
+import gui_fields.GUI_Board;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
+import gui_resources.Attrs;
+import javax.swing.JPanel;
+
+
+import javax.swing.*;
+
+import static gui_tests.TestRunExampleGame.sleep;
+
 public class HelperController {
     private boolean playing = true;
     private int p1;
@@ -15,6 +24,16 @@ public class HelperController {
     private GUI_Player[] playArray;
     private GUI_Field []board2;
     private int[] buyableFields;
+
+    private int[] chancecards = new int[0];
+
+    private Chance chance ;
+
+    private JPanel centerPanel = new JPanel();
+
+
+
+
 
     public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
             ,GUI_Field[] board2) {
@@ -54,34 +73,74 @@ public class HelperController {
         return m;
     }
 
-    public void LandPlayer(Player player721,int am){
+
+
+
+    public void LandPlayer(Player player721,int am) {
         Field playerField1 = board3.fieldlist[am];
-        if(playerField1 instanceof BuyableField){
-            if(!playerField1.isOwned()) {
-                String chosenButton = gui.getUserButtonPressed(
+        String chosenButton = null;
+        //String cards = String.valueOf(chancecards[(int) (Math.random() * 44 + 1)]);
+        if (playerField1 instanceof BuyableField) {
+            if (!playerField1.isOwned()) {
+                chosenButton = gui.getUserButtonPressed(
                         "Du har landet på " + playerField1.getFieldName() + "" +
                                 ". Vil du købe den?",
                         "Ja", "Nej"
                 );
-                if(chosenButton.equals("Ja")){
-                    ((BuyableField) playerField1).landOndField(player721,true);
+                if (chosenButton.equals("Ja")) {
+                    ((BuyableField) playerField1).landOndField(player721, true);
+                } else {
+                    ((BuyableField) playerField1).landOndField(player721, false);
                 }
-                else{
-                    ((BuyableField) playerField1).landOndField(player721,false);
-                }
-            }
-            else {
+            } else {
                 gui.showMessage("Du har landet på et felt du ejer.");
 
             }
 
+        }
+             /* else if (playerField1 instanceof Chance){
+               gui.displayChanceCard("_My message_")
+               gui.showMessage("Du har landet på chance felt.");
+               gui.showMessage(((Chance) playerField1).getChancecards());
+        } */
+        else {
+            playerField1.landOndField(player721, true);
+        }
+        if (playerField1 instanceof Chance) {
+            gui.displayChanceCard(((Chance) playerField1).getChancecards());
+            chosenButton = gui.getUserButtonPressed(
+                    "",
+                    "Ok"
+            );
+            gui.displayChanceCard("");
+            String path = Attrs.getImagePath("GUI_Field.Image.Luck");
+
+            //GUI_Center.label[0].setText("");
+            GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
+            centerPanel.setBackground(GUI_Board.BASECOLOR);
 
         }
-        else{
-            playerField1.landOndField(player721);
+
+        /*if (chosenButton.equals("Ok")) {
+            ((Chance) playerField1).landOndField(player721, true);
+            }*/
+
+        /*if (playerField1 instanceof Chance) {
+            JOptionPane.showMessageDialog(null, "De har vundet vild med dans og skifter navn til Allan!");
+        }*/
+
+          /*public String getChancecards() {
+            String cards = chancecards[(int) (Math.random() * 44 + 1)];
+            return cards;
+        }*/
+
+
         }
 
-    }
+
+
+
+
 
     public void updatePlayerMoney(){
         for(int f = 0;f<playerArray.length;f++) {

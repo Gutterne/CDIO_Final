@@ -1,14 +1,20 @@
 package Fields;
-
 import org.example.Die;
 import org.example.Player;
-import org.example.Wallet;
-
-import java.util.ArrayList;
+import gui_main.GUI;
 
 public class Chance extends UnbuyableField {
     private Die die8;
+    GUI gui;
     private   int [] bunke1,bunke2,bunke3,bunke4,bunke5,bunke6;
+
+
+    public String getChancecards() {
+        String cards = chancecards[(int) (Math.random() * 44 + 1)];
+        return cards;
+        }
+
+
     public String[] chancecards = new String[] {"Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel\n",
             "Ejendomsskatten er steget. Ekstraudgifterne er: 800 kr pr hus, 2300 kr pr hotel.\n",
             "De har kørt frem for “fuldt stop”, Betal 1000 kroner i bøde\n",
@@ -68,8 +74,8 @@ public class Chance extends UnbuyableField {
 
     }
 
-    @Override
-    public void landOndField(Player player10) {
+
+    public void landOndField(Player player10, boolean b) {
 
 
 

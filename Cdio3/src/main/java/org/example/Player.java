@@ -10,6 +10,7 @@ public class Player {
     private int[] ints;
     public boolean isInJail;
     private boolean inPrison;
+    private int balance;
 
     String name;
     public Player(String name, int money) {
@@ -53,6 +54,13 @@ public class Player {
     }
     public boolean isInPrison() {
         return this.inPrison;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+    public int getBalance() {
+        return balance;
     }
 
 }
