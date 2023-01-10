@@ -1,15 +1,8 @@
 package org.example;
 
 import Fields.BuyableField;
-import gui_fields.GUI_Brewery;
-import gui_fields.GUI_Chance;
-import gui_fields.GUI_Field;
-import gui_fields.GUI_Jail;
-import gui_fields.GUI_Refuge;
-import gui_fields.GUI_Shipping;
-import gui_fields.GUI_Start;
-import gui_fields.GUI_Street;
-import gui_fields.GUI_Tax;
+import gui_fields.*;
+import gui_fields.GUI_Ownable;
 import java.awt.Color;
 
  public class  GameBoard {
@@ -68,22 +61,30 @@ import java.awt.Color;
          board[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
          board[i++] = new GUI_Street("Frederiksberg", "Pris:  7000kr", "", "700", new Color(156, 81, 182), Color.BLACK);
          board[i++] = new GUI_Tax("Statskassen", "Betal 2000kr", "Pris 2000kr", new Color(255, 255, 255), Color.BLACK);
-
          board[i++] = new GUI_Street("Rådhuspladsen", "Pris: 8000kr", "Dommedaghuset", "1000", new Color(156, 81, 182), Color.BLACK);
 
          return board;
      }
+
      private static void visualOwnerShip(BuyableField buyableField) {
 
+         GUI_Field test = null;
+         GUI_Ownable o = (GUI_Ownable) test;
 
-         if(buyableField.isOwned() == false) {
+
+         if (buyableField.isOwned() == false) {
              carColor = Color.black;
-         }else if(buyableField.isOwned()==true) {
+         } else if (buyableField.isOwned() == true) {
              carColor = Color.getColor(String.valueOf(Color.RED));
          }
 
+
+
+             //o.setBorder(player721.getPrimaryColor(), player721.getSecondaryColor());
+
+         }
      }
- }
+
  
 
 
