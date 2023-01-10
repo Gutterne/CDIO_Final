@@ -29,7 +29,7 @@ import java.awt.Color;
          int i = 0;
 
          board[i++] = new GUI_Start("Start", "Modtag: 4000", "Modtag 4000kr,-Når man har passeret start", Color.RED, Color.BLACK);
-         board[i++] = new GUI_Street("Rødovre", "Pris:  1200kr", "", "Startleje:  50", new Color(135, 206, 235), carColor);
+         board[i++] = new GUI_Street("Rødovrevej", "Pris:  1200kr", "", "Startleje:  50", new Color(135, 206, 235), carColor);
          board[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
          board[i++] = new GUI_Street("Hvidovre", "Pris:  1200kr", "Startleje: 50 ", "50", new Color(135, 206, 235), carColor);
          board[i++] = new GUI_Tax("Skattevæsnet", "Betal 4000kr", "eller 10%", new Color(255, 255, 255), Color.BLACK);
@@ -51,8 +51,8 @@ import java.awt.Color;
          board[i++] = new GUI_Refuge("default", "Parkering", "Tag en pause ", "intet sker", new Color(255, 255, 255), Color.BLACK);
 
          board[i++] = new GUI_Street("Trianglen", "Pris:  4400kr", "", "350", new Color(237, 28, 36), Color.BLACK);
-         board[i++] = new GUI_Street("Østerbrogade", "Pris:  4400kr", "", "350", new Color(237, 28, 36), Color.BLACK);
          board[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
+         board[i++] = new GUI_Street("Østerbrogade", "Pris:  4400kr", "", "350", new Color(237, 28, 36), Color.BLACK);
          board[i++] = new GUI_Street("Grønningen", "Pris : 4800kr", "", "400", new Color(237, 28, 36), Color.BLACK);
          board[i++] = new GUI_Shipping("default", "Gedser-båden", "Pris 4000kr", "Lineart pr båd", "500", new Color(105, 156, 250), Color.BLACK);
          board[i++] = new GUI_Street("Bredgade", "Pris : 5200kr", "", "450", new Color(255, 255, 255), Color.BLACK);
