@@ -8,9 +8,9 @@ public class PassiveHouse extends Prison {
     }
 
     public void landOn(Player player) {
-        if (player.isInPrison()) {
-            return;
-        }
+       // if (player.isInPrison()) {
+      //      return;
+     //   }
     }
         public void landOndField(Player player1) {
             player1.setInJail(true);

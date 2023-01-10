@@ -14,6 +14,7 @@ public class HelperController {
     private Player[] playerArray;
     private GUI_Player[] playArray;
     private GUI_Field []board2;
+    private int currentPlayerPosition;
 
     public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
             ,GUI_Field[] board2) {
@@ -31,9 +32,12 @@ public class HelperController {
             gui.addPlayer(playArray[dm]);
         while (playing) {
             for (int i = 0; i < playerArray.length; i++) {
+                currentPlayerPosition= playerArray[i].getPositition();
+
                 gui.showMessage(playerArray[i].getName() + " tryk enter:");
                 int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
                 LandPlayer(playerArray[i],posit);
+                passerStart(playerArray[i],posit);
                 updatePlayerMoney();
             }
         }
@@ -41,8 +45,8 @@ public class HelperController {
     public int RollTheDice(){
        holder.sum();
        int p1 = holder.getSum();
-        gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
-        return p1;
+       gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
+       return p1;
     }
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
         player711.setPositition(player711.getPositition()+DiceSum);
@@ -57,6 +61,7 @@ public class HelperController {
         Field playerField1 = board3.fieldlist[am];
         if(playerField1 instanceof BuyableField){
             if(!playerField1.isOwned()) {
+
                 String chosenButton = gui.getUserButtonPressed(
                         "Du har landet på " + playerField1.getFieldName() + "" +
                                 ". Vil du købe den?",
@@ -77,26 +82,28 @@ public class HelperController {
                 else{
                     gui.showMessage("Du har landet på et felt du ejer.");
                     ((BuyableField) playerField1).landOndField(player721,false);}
-
             }
 
         }
         else{
             playerField1.landOndField(player721);
         }
-    }
+}
 
+    public void passerStart(Player player72,int amn){
+        if(currentPlayerPosition % 40>player72.getPositition() % 40 ) {
+            if(!(board3.fieldlist[amn] instanceof Start))
+                gui.showMessage("Du har passeret start.");
+            board3.fieldlist[0].landOndField(player72);
+        }
 
-
-
-
-
+        }
 
     public void updatePlayerMoney(){
         for(int f = 0;f<playerArray.length;f++) {
             playArray[f].setBalance(playerArray[f].myWallet.getMoney());
-        }
-    }
+        }}
+
 
 
 }
