@@ -16,6 +16,8 @@ public class HelperController {
     private GUI_Field []board2;
     private int[] buyableFields;
 
+    boolean extraturn=false;
+
     public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
             ,GUI_Field[] board2) {
         this.gui = gui;
@@ -37,6 +39,16 @@ public class HelperController {
                 int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
                 LandPlayer(playerArray[i],posit);
                 updatePlayerMoney();
+                if (extraturn==true){
+                    RollTheDice();
+                    movePlayer(playerArray[i],playArray[i],RollTheDice());
+                    // Der er en bug med display af cars.
+                }
+
+
+
+
+
             }
         }
     }
@@ -44,6 +56,10 @@ public class HelperController {
        holder.sum();
        int p1 = holder.getSum();
         gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
+        if(holder.die1.getFacevalue() == holder.die2.getFacevalue()){
+            extraturn=true;
+            gui.showMessage("Du slog to ens, du får derfor ekstra tur");
+        }
         return p1;
     }
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
