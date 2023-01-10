@@ -7,6 +7,7 @@ import gui_codebehind.GUI_Center;
 import gui_fields.GUI_Board;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
+import gui_fields.GUI_Street;
 import gui_main.GUI;
 import gui_resources.Attrs;
 import javax.swing.JPanel;
@@ -56,7 +57,7 @@ public class HelperController {
             for (int i = 0; i < playerArray.length; i++) {
                 gui.showMessage(playerArray[i].getName() + " tryk enter:");
                 int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
-                LandPlayer(playerArray[i],posit);
+                LandPlayer(playerArray[i],posit,playArray[i]);
                 updatePlayerMoney();
                 if (extraturn==true){
                     RollTheDice();
@@ -90,7 +91,7 @@ public class HelperController {
         return m;
     }
 
-    public void LandPlayer(Player player721,int am){
+    public void LandPlayer(Player player721,int am, GUI_Player getCarColor) {
         Field playerField1 = board3.fieldlist[am];
         String chosenButton = null;
         //String cards = String.valueOf(chancecards[(int) (Math.random() * 44 + 1)]);
@@ -103,39 +104,41 @@ public class HelperController {
                 );
                 if (chosenButton.equals("Ja")) {
                     ((BuyableField) playerField1).landOndField(player721, true);
+
+                    if (board2[am] instanceof GUI_Street) {
+                        ((GUI_Street) board2[am]).setBorder(getCarColor.getPrimaryColor());
+                    } else {
+                        ((BuyableField) playerField1).landOndField(player721, false);
+                    }
                 } else {
-                    ((BuyableField) playerField1).landOndField(player721, false);
+                    gui.showMessage("Du har landet på et felt du ejer.");
+
                 }
-            }
-            else {
-                gui.showMessage("Du har landet på et felt du ejer.");
+
 
             }
-
-
-        }
              /* else if (playerField1 instanceof Chance){
                gui.displayChanceCard("_My message_")
                gui.showMessage("Du har landet på chance felt.");
                gui.showMessage(((Chance) playerField1).getChancecards());
         } */
-        else {
-            playerField1.landOndField(player721, true);
-        }
-        if (playerField1 instanceof Chance) {
-            gui.displayChanceCard(((Chance) playerField1).getChancecards());
-            chosenButton = gui.getUserButtonPressed(
-                    "",
-                    "Ok"
-            );
-            gui.displayChanceCard("");
-            String path = Attrs.getImagePath("GUI_Field.Image.Luck");
+            else {
+                playerField1.landOndField(player721, true);
+            }
+            if (playerField1 instanceof Chance) {
+                gui.displayChanceCard(((Chance) playerField1).getChancecards());
+                chosenButton = gui.getUserButtonPressed(
+                        "",
+                        "Ok"
+                );
+                gui.displayChanceCard("");
+                String path = Attrs.getImagePath("GUI_Field.Image.Luck");
 
-            //GUI_Center.label[0].setText("");
-            GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
-            centerPanel.setBackground(GUI_Board.BASECOLOR);
+                //GUI_Center.label[0].setText("");
+                GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
+                centerPanel.setBackground(GUI_Board.BASECOLOR);
 
-        }
+            }
 
         /*if (chosenButton.equals("Ok")) {
             ((Chance) playerField1).landOndField(player721, true);
@@ -151,6 +154,7 @@ public class HelperController {
         }*/
 
 
+        }
     }
 
     public void updatePlayerMoney(){
