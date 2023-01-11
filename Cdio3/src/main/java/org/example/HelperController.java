@@ -28,6 +28,7 @@ public class HelperController {
     private int[] chancecards = new int[0];
 
     private Chance chance ;
+    private int currentPlayerPosition;
 
     private JPanel centerPanel = new JPanel();
 
@@ -52,9 +53,11 @@ public class HelperController {
             gui.addPlayer(playArray[dm]);
         while (playing) {
             for (int i = 0; i < playerArray.length; i++) {
+                currentPlayerPosition=playerArray[i].getPositition();
                 gui.showMessage(playerArray[i].getName() + " tryk enter:");
                 int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
                 LandPlayer(playerArray[i],posit);
+                passerStart(playerArray[i],posit);
                 updatePlayerMoney();
             }
         }
@@ -78,11 +81,9 @@ public class HelperController {
 
     public void LandPlayer(Player player721,int am) {
         Field playerField1 = board3.fieldlist[am];
-        String chosenButton = null;
-        //String cards = String.valueOf(chancecards[(int) (Math.random() * 44 + 1)]);
         if (playerField1 instanceof BuyableField) {
             if (!playerField1.isOwned()) {
-                chosenButton = gui.getUserButtonPressed(
+                String chosenButton = gui.getUserButtonPressed(
                         "Du har landet på " + playerField1.getFieldName() + "" +
                                 ". Vil du købe den?",
                         "Ja", "Nej"
@@ -103,12 +104,10 @@ public class HelperController {
                gui.showMessage("Du har landet på chance felt.");
                gui.showMessage(((Chance) playerField1).getChancecards());
         } */
-        else {
-            playerField1.landOndField(player721, true);
-        }
-        if (playerField1 instanceof Chance) {
+
+        else if (playerField1 instanceof Chance) {
             gui.displayChanceCard(((Chance) playerField1).getChancecards());
-            chosenButton = gui.getUserButtonPressed(
+           String chosen = gui.getUserButtonPressed(
                     "",
                     "Ok"
             );
@@ -120,25 +119,23 @@ public class HelperController {
             centerPanel.setBackground(GUI_Board.BASECOLOR);
 
         }
+        else {
+            playerField1.landOndField(player721);
+        }
 
-        /*if (chosenButton.equals("Ok")) {
-            ((Chance) playerField1).landOndField(player721, true);
-            }*/
-
-        /*if (playerField1 instanceof Chance) {
-            JOptionPane.showMessageDialog(null, "De har vundet vild med dans og skifter navn til Allan!");
-        }*/
-
-          /*public String getChancecards() {
-            String cards = chancecards[(int) (Math.random() * 44 + 1)];
-            return cards;
-        }*/
 
 
         }
 
 
+    public void passerStart(Player player72,int amn){
+        if(currentPlayerPosition % 40>player72.getPositition() % 40 ) {
+            if(!(board3.fieldlist[amn] instanceof Start))
+                gui.showMessage("Du har passeret start.");
+            board3.fieldlist[0].landOndField(player72);
+        }
 
+    }
 
 
 

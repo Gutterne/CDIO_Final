@@ -75,7 +75,7 @@ public class Chance extends UnbuyableField {
     }
 
 
-    public void landOndField(Player player10, boolean b) {
+    public void landOndField(Player player10) {
 
 
 

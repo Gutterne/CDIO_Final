@@ -16,7 +16,7 @@ public abstract class  Field {
         return BoardNumber;
     }
 
-    public void landOndField(Player player10, boolean b) {
+    public void landOndField(Player player10) {
 
     }
 
