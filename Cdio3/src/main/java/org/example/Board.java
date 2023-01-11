@@ -23,7 +23,7 @@ public class Board {
   fieldlist[8]= new Chance("Prøv Lykken",9);
   fieldlist[9]= new BuyableField("Valby Langgade","Orange",10,2000,
           100,600,1800,5400,8000,11000);
-  fieldlist[10]= new BuyableField("Allégade","Orange",11,2000,
+  fieldlist[10]= new BuyableField("Allégade","Orange",11,2400,
           150,800,2000,6000,9000,12000);
   fieldlist[11]= new Prison("I fængsel (På Besøg)",12);
   fieldlist[12]= new BuyableField("Frederiksberg allé","Grøn",13,2800,
