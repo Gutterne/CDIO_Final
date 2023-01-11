@@ -9,15 +9,11 @@ public class BuyableField extends Field {
     private String color, valg;
     private int House,hotel;
 
-
-
-    public BuyableField(String fieldName,String color, int BoardNumber,int cost){
+    public BuyableField(String fieldName,String color, int BoardNumber,int cost, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5){
         super(fieldName,BoardNumber);
         this.cost=cost;
         this.color=color;
     }
-
-
 
 
     // if player can afford the house scenario.
