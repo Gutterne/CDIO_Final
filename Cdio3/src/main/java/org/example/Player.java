@@ -60,12 +60,7 @@ public class Player {
         return this.inPrison;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-    public int getBalance() {
-        return balance;
-    }
+
 
 }
 

@@ -3,6 +3,7 @@ package org.example;
 import Fields.BuyableField;
 import Fields.Chance;
 import Fields.Field;
+import Fields.Start;
 import gui_codebehind.GUI_Center;
 import gui_fields.GUI_Board;
 import gui_fields.GUI_Field;
@@ -33,6 +34,7 @@ public class HelperController {
     private int[] chancecards = new int[0];
 
     public Chance chance;
+    private int currentPlayerPosition;
 
     private JPanel centerPanel = new JPanel();
 
@@ -48,16 +50,21 @@ public class HelperController {
         holder=new Holder();
         board3= new Board();
         this.board2=board2;
+
     }
 
     public void GameRunner(){
+
         for(int dm=0;dm<playerArray.length;dm++)
             gui.addPlayer(playArray[dm]);
         while (playing) {
+
             for (int i = 0; i < playerArray.length; i++) {
+                currentPlayerPosition= playerArray[i].getPositition();
                 gui.showMessage(playerArray[i].getName() + " tryk enter:");
                 int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
                 LandPlayer(playerArray[i],posit,playArray[i]);
+                passerStart(playerArray[i],posit);
                 updatePlayerMoney();
                 if (extraturn==true){
                     RollTheDice();
@@ -155,6 +162,15 @@ public class HelperController {
 
 
         }
+
+    }
+    public void passerStart(Player player72,int amn){
+        if(currentPlayerPosition % 40>player72.getPositition() % 40 ) {
+            if(!(board3.fieldlist[amn] instanceof Start))
+                gui.showMessage("Du har passeret start.");
+            board3.fieldlist[0].landOndField(player72,true);
+        }
+
     }
 
     public void updatePlayerMoney(){
