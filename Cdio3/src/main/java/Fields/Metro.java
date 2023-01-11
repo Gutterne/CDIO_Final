@@ -10,7 +10,6 @@ public class Metro extends Field {
 
     public Metro(String fieldName, String color, int BoardNumber) {
         super(fieldName, BoardNumber);
-        this.cost = cost;
         this.color = color;
 
         {
