@@ -5,6 +5,7 @@ import gui_codebehind.GUI_Center;
 import gui_fields.GUI_Board;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
+import gui_fields.GUI_Street;
 import gui_main.GUI;
 import gui_resources.Attrs;
 import javax.swing.JPanel;
@@ -56,7 +57,11 @@ public class HelperController {
                 currentPlayerPosition=playerArray[i].getPositition();
                 gui.showMessage(playerArray[i].getName() + " tryk enter:");
                 int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
+
                 LandPlayer(playerArray[i],playArray[i],posit);
+
+                
+
                 passerStart(playerArray[i],posit);
                 updatePlayerMoney();
             }
@@ -79,7 +84,10 @@ public class HelperController {
 
 
 
+
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
+
+
         Field playerField1 = board3.fieldlist[am];
         if (playerField1 instanceof BuyableField) {
             if (!playerField1.isOwned()) {
@@ -90,33 +98,35 @@ public class HelperController {
                 );
                 if (chosenButton.equals("Ja")) {
                     ((BuyableField) playerField1).landOndField(player721, true);
+                    if (board2[am] instanceof GUI_Street) {
+                        ((GUI_Street) board2[am]).setBorder(play20.getPrimaryColor());
+                    } else {
+                        ((BuyableField) playerField1).landOndField(player721, false);
+                    }
+
                 } else {
-                    ((BuyableField) playerField1).landOndField(player721, false);
+                    gui.showMessage("Du har landet på et felt du ejer.");
+
                 }
-            } else {
-                gui.showMessage("Du har landet på et felt du ejer.");
 
             }
-
-        }
              /* else if (playerField1 instanceof Chance){
                gui.displayChanceCard("_My message_")
                gui.showMessage("Du har landet på chance felt.");
                gui.showMessage(((Chance) playerField1).getChancecards());
         } */
 
-        else if (playerField1 instanceof Chance) {
-            gui.displayChanceCard(((Chance) playerField1).getChancecards());
-           String chosen = gui.getUserButtonPressed(
-                    "",
-                    "Ok"
-            );
-            gui.displayChanceCard("");
-            String path = Attrs.getImagePath("GUI_Field.Image.Luck");
+            else if (playerField1 instanceof Chance) {
+                gui.displayChanceCard(((Chance) playerField1).getChancecards());
+                String chosen = gui.getUserButtonPressed(
+                        "",
+                        "Ok"
+                );
+                gui.displayChanceCard("");
+                String path = Attrs.getImagePath("GUI_Field.Image.Luck");
+                GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
+                centerPanel.setBackground(GUI_Board.BASECOLOR);
 
-            //GUI_Center.label[0].setText("");
-            GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
-            centerPanel.setBackground(GUI_Board.BASECOLOR);
 
         }
         else if (playerField1 instanceof Hardprison){
@@ -133,8 +143,13 @@ public class HelperController {
         }
 
 
+            } else {
+                playerField1.landOndField(player721);
+            }
+
 
         }
+    }
 
 
     public void passerStart(Player player72,int amn){
