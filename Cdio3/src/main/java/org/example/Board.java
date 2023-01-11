@@ -13,7 +13,7 @@ public class Board {
   fieldlist[1]= new BuyableField("Rødovrevej","Lyseblå",2,
           1200,50,250,750,2250,4000,6000);
   fieldlist[2]= new Chance("Prøv Lykken",3);
-  fieldlist[3]= new BuyableField("Hvidovre","Lyseblå",4,1200,
+  fieldlist[3]= new BuyableField("Hvidovrevej","Lyseblå",4,1200,
           50,250,400,750,2250,6000);
   fieldlist[4]= new Tax("Tax",5,4000);
   fieldlist[5]= new Metro("DSB","Sort",6);
