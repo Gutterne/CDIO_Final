@@ -1,7 +1,5 @@
 package Fields;
 
-package Fields;
-
 import org.example.Player;
 
 public class Metro extends Field {

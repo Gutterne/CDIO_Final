@@ -45,7 +45,7 @@ public class HelperController {
         board3= new Board();
         this.board2=board2;
         buyableFields = new int[] {1,3,5,6,8,9,11,12,13,14,15,16,18,19,21,23,24,25,
-        26,27,28,29,31,32,34,35,37,39};
+        26,27,28,29,31,32,34,35,37,39,40,41,42,43,44};
     }
 
     public void GameRunner(){

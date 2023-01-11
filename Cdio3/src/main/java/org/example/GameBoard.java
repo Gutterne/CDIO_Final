@@ -30,7 +30,7 @@ import java.awt.Color;
 
 //This is the Frontend GUI. Here we display pictures & Make the colors of each field. This is most used for visuals, than the actual backend. Backend, is Board. This use GUI as userinterface.
      public static GUI_Field[] makeFields() {
-         GUI_Field[] board = new GUI_Field[41];
+         GUI_Field[] board = new GUI_Field[45];
          int i = 0;
          board[i++] = new GUI_Start("Start", "Modtag: 4000", "Modtag 4000kr,-Når man har passeret start", Color.RED, Color.BLACK);
          board[i++] = new GUI_Street("Rødovre", "Pris:  1200kr", "", "Startleje:  50", new Color(135, 206, 235), Color.BLACK);
