@@ -2,6 +2,8 @@ package Fields;
 import org.example.Die;
 import org.example.Player;
 import gui_main.GUI;
+import org.example.Wallet;
+import java.util.Random;
 
 public class Chance extends UnbuyableField {
     private Die die8;
@@ -78,7 +80,62 @@ public class Chance extends UnbuyableField {
     public void landOndField(Player player10, boolean b) {
 
 
+    }
+    /*public int pullChanceCards() {
+
+         /*   Random random = new Random();
+            return random.nextInt(40)+1;
+        // Generate a random index within the range of the chanceCards array
+        int randomIndex = (int) (Math.random() * chancecards.length);
+
+        // Retrieve the string at the randomly generated index
+        String card = chancecards[randomIndex];
+
+        // Use the string to determine the action to take
+        if (card.startsWith("Betal")) {
+            // Extract the amount to pay from the string
+            int amount = Integer.parseInt(card.split(" ")[1]);
+            // Deduct the amount from the player's balance
+            payMoney(amount);
+        } else if (card.startsWith("Modtag")) {
+            // Extract the amount to receive from the string
+            int amount = Integer.parseInt(card.split(" ")[1]);
+            // Add the amount to the player's balance
+            getMoney(amount);
+        } else if (card.startsWith("Ryk frem")) {
+            // Move the player forward
+            movePlayer();
+        } else if (card.startsWith("Ryk tilbage")) {
+            // Move the player backwards
+            movePlayerBackwards();
+        }
+        // Handle other possible actions in the same way
+    }*/
 
 
     }
-}
+   /* public void ActionOnChance(){
+
+        switch (chancecards){
+
+
+            case 1:
+                player1.myWallet.UpdateMoney();
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 5:
+
+                break;
+
+
+        }
+
+    }*/
