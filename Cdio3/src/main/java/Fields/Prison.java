@@ -1,6 +1,5 @@
 package Fields;
 
-
 import org.example.Player;
 
 //Hardprison.java is a part of the prison field which has rougher rules on the player.
@@ -21,3 +20,6 @@ public class Prison extends UnbuyableField {
 
 
 }
+
+
+
