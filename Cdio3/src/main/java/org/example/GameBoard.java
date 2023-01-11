@@ -35,7 +35,7 @@ import java.awt.Color;
          board[i++] = new GUI_Shipping("default","Helsingørbåden","Pris 4000kr", "Lineart pr båd" , "500", new Color(105, 156, 250), Color.BLACK);
          board[i++] = new GUI_Street("Roskildevej", "Pris 2000kr", "Startleje : 100", "100", new Color(255, 127, 0), Color.BLACK);
 
-         board[i++] = new GUI_Refuge("default", "Metro", "Du er stoppet ved en metrostation, du tar nu metroen til næste stop.", "", new Color(0, 0, 50), Color.BLACK);
+         board[i++] = new GUI_Tax("| Metro |", "", "Du blir rykket til næste metro stop", new Color(0,0,50), Color.WHITE);
 
          board[i++] = new GUI_Street("Valby Langgade", "Pris:  2000kr", "", "100", new Color(255, 127, 0), Color.BLACK);
          board[i++] = new GUI_Street(" Allégade", "Pris:  2400kr", "Startleje 100", "100", new Color(255, 127, 0), Color.BLACK);
@@ -47,7 +47,7 @@ import java.awt.Color;
          board[i++] = new GUI_Shipping("default","Molslinjen","Pris 4000kr", "Lineart pr båd" , "500", new Color(255, 50, 5), Color.BLACK);
          board[i++] = new GUI_Street("Bernstorffsvej", "Pris:  3600kr", "", "300", new Color(128, 128, 128), Color.BLACK);
 
-         board[i++] = new GUI_Refuge("default", "Metro", "Du er stoppet ved en metrostation, du tar nu metroen til næste stop.", "", new Color(0, 0, 50), Color.BLACK);
+         board[i++] = new GUI_Tax("| Metro |", "", "Du blir rykket til næste metro stop", new Color(0,0,50), Color.WHITE);
 
          board[i++] = new GUI_Street("Hellerupvej", "Pris:  3600kr", "", "300", new Color(128, 128, 128), Color.BLACK);
          board[i++] = new GUI_Street("Strandvejen", "Pris:  4000kr", "", "350", new Color(128, 128, 128), Color.BLACK);
@@ -68,7 +68,7 @@ import java.awt.Color;
          board[i++] = new GUI_Street("Nygade", "Pris: 6400kr", "", "600", new Color(255, 233, 0), Color.BLACK);
          board[i++] = new GUI_Shipping("default","Rødby-Båden","Pris 4000kr", "Lineart pr båd" , "500", new Color(105, 156, 250), Color.BLACK);
 
-         board[i++] = new GUI_Refuge("default", "Metro", "Du er stoppet ved en metrostation, du tar nu metroen til næste stop.", "", new Color(0, 0, 50), Color.BLACK);
+         board[i++] = new GUI_Tax("| Metro |", "", "Du blir rykket til næste metro stop", new Color(0,0,50), Color.WHITE);
 
          board[i++] = new GUI_Street("Frederiksberg", "Pris:  7000kr", "", "700", new Color(156, 81, 182), Color.BLACK);
          board[i++] = new GUI_Tax( "Statskassen", "Betal 2000kr", "Pris 2000kr", new Color(255,255,255), Color.BLACK);
