@@ -61,6 +61,7 @@ public class HelperController {
                 LandPlayer(playerArray[i],playerArray[i].getPositition()%40);
                 passerStart(playerArray[i],playerArray[i].getPositition()%40);
                 updatePlayerMoney();
+
             }
         }
     }
@@ -160,6 +161,7 @@ public class HelperController {
         for(int f = 0;f<playerArray.length;f++) {
             playArray[f].setBalance(playerArray[f].myWallet.getMoney());
         }
+
     }
 
 
