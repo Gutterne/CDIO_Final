@@ -45,7 +45,7 @@ public class HelperController {
         board3= new Board();
         this.board2=board2;
         buyableFields = new int[] {1,3,5,6,8,9,11,12,13,14,15,16,18,19,21,23,24,25,
-        26,27,28,29,31,32,34,35,37,39};
+        26,27,28,29,31,32,34,35,37,39,40};
     }
 
     public void GameRunner(){
@@ -59,7 +59,7 @@ public class HelperController {
 
                 LandPlayer(playerArray[i],playArray[i],posit);
 
-                
+
 
                 passerStart(playerArray[i],posit);
                 updatePlayerMoney();
@@ -163,7 +163,10 @@ public class HelperController {
                 GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
                 centerPanel.setBackground(GUI_Board.BASECOLOR);
 
-
+        }
+        if(playerField1 instanceof Metro){
+            gui.showMessage("Du har landt ved Metro-Stoppet, du tar nu metroen til næste stop!");
+            //board2[player721.getPositition() % 40].setCar();
         }
        if (playerField1 instanceof Hardprison){
 
@@ -180,8 +183,8 @@ public class HelperController {
             }
 
 
-        }
 
+        }
 
 
     public void passerStart(Player player72,int amn){
