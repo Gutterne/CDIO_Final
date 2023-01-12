@@ -49,15 +49,17 @@ public class HelperController {
     }
 
     public void GameRunner(){
-        for(int dm=0;dm<playerArray.length;dm++)
+        for(int dm=0;dm<playerArray.length;dm++) {
             gui.addPlayer(playArray[dm]);
+            board2[playerArray[dm].getPositition()].setCar(playArray[dm], true);
+        }
         while (playing) {
             for (int i = 0; i < playerArray.length; i++) {
                 currentPlayerPosition=playerArray[i].getPositition();
                 gui.showMessage(playerArray[i].getName() + " tryk enter:");
-                int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
-                LandPlayer(playerArray[i],posit);
-                passerStart(playerArray[i],posit);
+                movePlayer(playerArray[i],playArray[i],RollTheDice(),i);
+                LandPlayer(playerArray[i],playerArray[i].getPositition()%40);
+                passerStart(playerArray[i],playerArray[i].getPositition()%40);
                 updatePlayerMoney();
             }
         }
@@ -68,12 +70,27 @@ public class HelperController {
         gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
         return p1;
     }
-    public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
-        player711.setPositition(player711.getPositition() + DiceSum);
-        int m = player711.getPositition() % 40;
-        board2[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
-        board2[m].setCar(Play12, true);
-        return m;
+    public void movePlayer(Player player711,GUI_Player Play12, int DiceSum,int i){
+
+        player711.setPositition((player711.getPositition() + DiceSum) );
+        int[] carsOnfiled= new int[playerArray.length];
+
+
+
+        for (int numOfCars=0;numOfCars<playerArray.length;numOfCars++){
+
+            if(board2[(player711.getPositition() - holder.getSum()) % 40].hasCar(playArray[numOfCars]))
+                carsOnfiled[numOfCars]=1;
+        }
+        board2[((player711.getPositition() - holder.getSum()) + 40) % 40].removeAllCars();
+        board2[player711.getPositition()%40].setCar(Play12, true);
+
+        for (int numOfCars2=0;numOfCars2<playerArray.length;numOfCars2++){
+            if(carsOnfiled[numOfCars2]==1 && numOfCars2!=i){
+                board2[(player711.getPositition() - holder.getSum()) % 40].setCar(playArray[numOfCars2],true);
+            }
+
+        }
     }
 
 
