@@ -13,6 +13,7 @@ public class Hardprison extends Field{
 
     }
 
+    @Override
     public void landOndField(Player player1) {
 
             System.out.println(player1.getPositition()+"du skal gå til fænglse og modtage ikke 4000 og betale 1000");

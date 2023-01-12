@@ -61,7 +61,7 @@ import java.awt.Color;
          board[i++] = new GUI_Shipping("default","Gedser-båden","Pris 4000kr", "Lineart pr båd" , "500", new Color(105, 156, 250), Color.BLACK);
          board[i++] = new GUI_Street("Bredgade", "Pris : 5200kr", "", "450", new Color(255, 255, 255), Color.BLACK);
          board[i++] = new GUI_Street("Kgs. Nytorv", "Pris : 5200kr", "", "450", new Color(255, 255, 255), Color.BLACK);
-         board[i++] = new GUI_Brewery("default", "Pris : 3000kr","Sodavandskæde, flere kan ejes", "Double pris hvis 2 ejet", "100kr", Color.RED, Color.ORANGE);
+         board[i++] = new GUI_Brewery("default", "Pris : 3000kr","Sodavandskæde, flere kan ejes", "Double pris hvis 2 ejet", "100kr", Color.RED, Color.BLACK);
          board[i++] = new GUI_Street("Østergade", "Pris:  5600kr", "Bowlinghallen", "500", new Color(255, 255, 255), Color.BLACK);
          board[i++] = new GUI_Jail("default", "FÆNGSEL", "FÆNGSEL", "På Besøg I fængsel", new Color(125, 125, 125), Color.BLACK);
          board[i++] = new GUI_Street("Amagertorv", "Pris:  6000kr", "", "550", new Color(255, 233, 0), Color.BLACK);

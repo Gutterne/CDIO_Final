@@ -10,7 +10,7 @@ public class Ferry extends Field {
 
 
 
-    public Ferry(String ferryName,String color, int BoardNumber,int cost, int rent0, int rent1, int rent2, int rent3){
+    public Ferry(String ferryName,String color, int BoardNumber,int cost, int rent1, int rent2){
         super(ferryName,BoardNumber);
         this.cost=cost;
         this.color=color;

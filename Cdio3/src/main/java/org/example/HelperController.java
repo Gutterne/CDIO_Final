@@ -2,10 +2,7 @@ package org.example;
 
 import Fields.*;
 import gui_codebehind.GUI_Center;
-import gui_fields.GUI_Board;
-import gui_fields.GUI_Field;
-import gui_fields.GUI_Player;
-import gui_fields.GUI_Street;
+import gui_fields.*;
 import gui_main.GUI;
 import gui_resources.Attrs;
 import javax.swing.JPanel;
@@ -67,8 +64,10 @@ public class HelperController {
                 passerStart(playerArray[i],posit);
                 updatePlayerMoney();
                 if(extraturn==true){
-                    RollTheDice();
+                    RollTheDice();//Used to make a new roll, so not the same is displayed twice, resulting in infinite loop.
                     movePlayer(playerArray[i],playArray[i],RollTheDice());
+                    LandPlayer(playerArray[i],playArray[i],posit);
+
                 }
             }
         }
@@ -90,11 +89,6 @@ public class HelperController {
         board2[m].setCar(Play12, true);
         return m;
     }
-
-
-
-
-
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
 
 
@@ -118,15 +112,47 @@ public class HelperController {
                     gui.showMessage("Du har landet på et felt du ejer.");
 
                 }
+            }
+        }
+        if(playerField1 instanceof Brewery) {
+            if (!playerField1.isOwned()) {
+                String chosenButtonBrewery = gui.getUserButtonPressed(
+                        "Du har landet på " + playerField1.getFieldName() + "" +
+                                ". Vil du købe dette bryggeri?",
+                        "Ja", "Nej"
+                );
+                if (chosenButtonBrewery.equals("Ja")) {
+                    ((Brewery) playerField1).landOndField(player721, true);
+                    ((GUI_Brewery) board2[am]).setBorder(play20.getPrimaryColor());
+                } else {
+                    ((Brewery) playerField1).landOndField(player721, false);
+                }
+            } else {
+                gui.showMessage("Du ejer allerede bryggeriet");
 
             }
-             /* else if (playerField1 instanceof Chance){
-               gui.displayChanceCard("_My message_")
-               gui.showMessage("Du har landet på chance felt.");
-               gui.showMessage(((Chance) playerField1).getChancecards());
-        } */
+        }
+            if (playerField1 instanceof Ferry) {
+                if (!playerField1.isOwned()) {
+                    String chosenButtonFerry = gui.getUserButtonPressed(
+                            "Du har landet på " + playerField1.getFieldName() + "" +
+                                    ". Vil du købe denne superFærge",
+                            "Ja", "Nej"
+                    );
+                    if (chosenButtonFerry.equals("Ja")) {
+                        ((Ferry) playerField1).landOndField(player721, true);
+                        ((GUI_Shipping) board2[am]).setBorder(play20.getPrimaryColor());
+                    } else {
+                        ((Ferry) playerField1).landOndField(player721, false);
+                    }
+                } else {
+                    gui.showMessage("Du ejer allerede denne færge");
 
-            else if (playerField1 instanceof Chance) {
+                }
+            }
+              if (playerField1 instanceof Chance) {
+
+                System.out.println("Chance Land");
                 gui.displayChanceCard(((Chance) playerField1).getChancecards());
                 String chosen = gui.getUserButtonPressed(
                         "",
@@ -139,7 +165,7 @@ public class HelperController {
 
 
         }
-        else if (playerField1 instanceof Hardprison){
+       if (playerField1 instanceof Hardprison){
 
             gui.showMessage("Du skal gå til fængsel og modtage ikke 4000");
             gui.showMessage("Du har betalt 1000 kr. for at få love at kaster teninge næste gange ");
@@ -147,10 +173,6 @@ public class HelperController {
             ((Hardprison)playerField1).landOndField(player721);
             board2[player721.getPositition()%40].setCar(play20, true);
 
-            }
-        else {
-            playerField1.landOndField(player721);
-        }
 
 
             } else {

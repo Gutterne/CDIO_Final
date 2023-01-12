@@ -19,7 +19,7 @@ public class ReverseBoard {
         fieldListReverse[10] = new BuyableField("Amagertorv", "Gul", 32, 6000);
         fieldListReverse[11] = new Chance("Prøv Lykken", 31);
         fieldListReverse[12] = new BuyableField("Østergade", "Hvid", 30, 5600);
-        fieldListReverse[13] = new Brewery("Coca Cola", "Rød", 29, 3000);
+        fieldListReverse[13] = new Brewery("Coca Cola", "Rød", 29, 3000,100,200);
         fieldListReverse[14] = new BuyableField("Kongens Nytorv", "Hvid", 28, 5200);
         fieldListReverse[15] = new BuyableField("Bredgade", "Hvid", 27, 5200);
         fieldListReverse[16] = new BuyableField("Gedser - Rostock", "Mørkeblå", 26, 4000);
@@ -35,7 +35,7 @@ public class ReverseBoard {
         fieldListReverse[26] = new BuyableField("Mols-linjen", "Mørkeblå", 16, 4000);
         fieldListReverse[27] = new BuyableField("Gammel kongevej", "Grøn", 15, 3200);
         fieldListReverse[28] = new BuyableField("Bülowsvej", "Grøn", 14, 2800);
-        fieldListReverse[29] = new Brewery("Tuborg Squash", "Rød", 13, 3000);
+        fieldListReverse[29] = new Brewery("Tuborg Squash", "Rød", 13, 3000,100,200);
         fieldListReverse[30] = new BuyableField("Frederiksberg allé", "Grøn", 12, 2800);
         fieldListReverse[31] = new Prison("I fængsel (På Besøg)", 11);
         fieldListReverse[32] = new BuyableField("Allégade", "Orange", 10, 2000);
