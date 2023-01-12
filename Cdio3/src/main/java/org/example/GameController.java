@@ -25,9 +25,7 @@ public class GameController {
     }
 
     public void play() {
-
-        Textdata = "" + gui.getUserString(inputText);
-        int x = Integer.parseInt(Textdata);
+        int x = Integer.parseInt(gui.getUserSelection("Hvor mange spillere skal spille?",  "3","4","5","6"));
         set = new SettingsController(x);
         set.provideSettings();
         HelperController help = new HelperController(set.getPlayerArray(),set.getPlayArray(),gui,board2);
