@@ -4,6 +4,7 @@ import Fields.*;
 
 public class ReverseBoard {
     Field[] fieldListReverse;
+    /*
     public ReverseBoard() {
         fieldListReverse = new Field[41];
         fieldListReverse[0] = new Start("Start", 1, 4000);
@@ -48,4 +49,6 @@ public class ReverseBoard {
         fieldListReverse[39] = new Chance("Prøv Lykken", 3);
         fieldListReverse[40] = new BuyableField("Rødovre", "Lyseblå", 2, 1200);
     }
+
+     */
 }

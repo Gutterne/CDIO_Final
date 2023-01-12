@@ -16,7 +16,7 @@ public class Board {
   fieldlist[3]= new BuyableField("Hvidovrevej","Lyseblå",4,1200,
           50,250,400,750,2250,6000);
   fieldlist[4]= new Tax("Tax",5,4000);
-  fieldlist[5]= new Ferry("Helsingør - Helsingborg","Lyseblå",6,4000,500,1000,2000,4000);
+  fieldlist[5]= new Ferry("Helsingør - Helsingborg","Lyseblå",6,4000,500,1000);
   fieldlist[6]= new BuyableField("Roskildevej","Orange",7,2000,
           100,600,1800,5400,8000,11000);
   fieldlist[7]= new Metro("Metro","black",8);
@@ -64,8 +64,8 @@ public class Board {
   fieldlist[33]= new Chance("Prøv Lykken",34);
   fieldlist[34]= new BuyableField("Nygade","Gul",35,6400,
           600,3000,9000,20000,24000,28000);
-  fieldlist[35]= new Metro("Metro","Sort",36);
-  fieldlist[36]= new Chance("Prøv Lykken",37);
+  fieldlist[35]= new Ferry("Rødby - Puttgarden","Mørkeblå",36,4000,500,1000);
+  fieldlist[36]= new Metro("Metro","Sort",37);
   fieldlist[37]= new BuyableField("Frederiksberggade","Purple",38,7000,
           700,3500,10000,22000,26000,30000);
   fieldlist[38]= new LesserTax("Tax",39,2000);

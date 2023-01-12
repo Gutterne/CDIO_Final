@@ -19,6 +19,7 @@ public class Metro extends Field {
         //TravelPlayer.setPositition(TravelPlayer.getPositition() + 8);
 
         //first metro stop to second
+        /*
         if(player1.getPositition()==8){
             TravelPlayer.setPositition(16);
         } //second metro stop to third
@@ -31,7 +32,7 @@ public class Metro extends Field {
         else if(player1.getPositition()==37){
             TravelPlayer.setPositition(8);
         }
-
+        */
     }
 
 
