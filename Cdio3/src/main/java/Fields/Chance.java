@@ -3,7 +3,7 @@ import org.example.Die;
 import org.example.Player;
 import gui_main.GUI;
 
-public class Chance extends UnbuyableField {
+public class Chance extends Field {
     private Die die8;
     GUI gui;
     private   int [] bunke1,bunke2,bunke3,bunke4,bunke5,bunke6;

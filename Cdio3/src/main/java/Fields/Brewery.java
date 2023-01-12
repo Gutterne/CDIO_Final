@@ -2,8 +2,6 @@ package Fields;
 
 import org.example.Player;
 
-//Brewery v.0.1.2
-//Brewery.java, accounts for fields, such as coca-cola & tuborg squash)
 public class Brewery extends Field {
     private  int cost;
     private Player owner;
@@ -12,16 +10,12 @@ public class Brewery extends Field {
 
 
 
-    public Brewery(String breweryName,String color, int BoardNumber,int cost, int rent0, int rent1){
-        super(breweryName,BoardNumber);
+    public Brewery(String ferryName,String color, int BoardNumber,int cost,int rent1, int rent2){
+        super(ferryName,BoardNumber);
         this.cost=cost;
         this.color=color;
     }
-
-
-
 //Contains ownership properties.
-
     // if player can afford the house scenario.
     public void landOndField(Player player10,Boolean choice) {
 // Here we check if its the first time somebody is landing on the following field.
@@ -40,11 +34,11 @@ public class Brewery extends Field {
                 }
                 else {
                     //
-                    System.out.println("Du har ikke råd til at købe feltet, spare som penge sammen");
+                    System.out.println("Du har ikke råd til at købe et Bryggeri, få styr på din økonomi");
                 }
             }
             else {
-                System.out.println("Du har valgt nej, så din tur er forbi.");
+                System.out.println("Du har valgt nej, til at købe bryggeriet.");
             }
 
         } else {
@@ -71,8 +65,14 @@ public class Brewery extends Field {
                 }
             }
             else{
-                System.out.println("Du ejer feltet, så du skal ikke betale leje");
+                System.out.println("Du ejer feltet, så du skal ikke betale leje. Business is booming.");
             }
         }
     }
 }
+
+
+
+
+
+

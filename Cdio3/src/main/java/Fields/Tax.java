@@ -4,7 +4,7 @@ import org.example.Player;
 import org.example.Wallet;
 import org.w3c.dom.ls.LSOutput;
 
-public class Tax extends UnbuyableField{
+public class Tax extends Field{
     int money;
     public Tax (String fieldName,int BoardNumber,int money){
         super(fieldName,BoardNumber);
