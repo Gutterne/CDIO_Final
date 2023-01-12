@@ -39,17 +39,16 @@ public class Board {
   fieldlist[27]= new BuyableField("Kongens Nytorv","Hvid",28,5200);
   fieldlist[28]= new Brewery("Coca Cola","Rød",29,3000);
   fieldlist[29]= new BuyableField("Østergade","Hvid",30,5600);
-  fieldlist[30]= new Chance("Prøv Lykken",31);
+  fieldlist[30]= new Hardprison("FÆNGSEL!",31);
   fieldlist[31]= new BuyableField("Amagertorv","Gul",32,6000);
-  fieldlist[32]= new Hardprison("FÆNGSEL!",33);
-  fieldlist[33]= new BuyableField("Vimmelskaftet","Gul",34,6000);
-  fieldlist[34]= new Chance("Prøv Lykken",35);
-  fieldlist[35]= new BuyableField("Nygade","Gul",36,6400);
-  fieldlist[36]= new BuyableField("Rødby-Puttgarden","Mørkeblå",37,4000);
-  fieldlist[37]= new Chance("Prøv Lykken",38);
-  fieldlist[38]= new BuyableField("Frederiksberggade","Purple",39,7000);
-  fieldlist[39]= new Tax("Tax",40,2000);
-  fieldlist[40]= new BuyableField("Rådhuspladsen","Lilla",41,8000);
+  fieldlist[32]= new BuyableField("Vimmelskaftet","Gul",33,6000);
+  fieldlist[33]= new Chance("Prøv Lykken",34);
+  fieldlist[34]= new BuyableField("Nygade","Gul",35,6400);
+  fieldlist[35]= new BuyableField("Rødby-Puttgarden","Mørkeblå",36,4000);
+  fieldlist[36]= new Chance("Prøv Lykken",37);
+  fieldlist[37]= new BuyableField("Frederiksberggade","Purple",38,7000);
+  fieldlist[38]= new Tax("Tax",39,2000);
+  fieldlist[39]= new BuyableField("Rådhuspladsen","Lilla",40,8000);
 
 
 
