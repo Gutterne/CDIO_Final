@@ -33,6 +33,8 @@ public class HelperController {
 
     private JPanel centerPanel = new JPanel();
 
+    boolean extraturn=false;
+
 
 
 
@@ -64,6 +66,10 @@ public class HelperController {
 
                 passerStart(playerArray[i],posit);
                 updatePlayerMoney();
+                if(extraturn==true){
+                    RollTheDice();
+                    movePlayer(playerArray[i],playArray[i],RollTheDice());
+                }
             }
         }
     }
@@ -71,6 +77,10 @@ public class HelperController {
        holder.sum();
        int p1 = holder.getSum();
         gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
+        if(holder.die1.getFacevalue() == holder.die2.getFacevalue()){
+            extraturn=true;
+            gui.showMessage("Du slog to ens, du får derfor et ekstra tur");
+        }
         return p1;
     }
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
@@ -149,7 +159,7 @@ public class HelperController {
 
 
         }
-    }
+
 
 
     public void passerStart(Player player72,int amn){
