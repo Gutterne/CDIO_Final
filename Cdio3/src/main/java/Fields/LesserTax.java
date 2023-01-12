@@ -15,8 +15,8 @@ public class LesserTax extends Field{
         //subtracts 2000
         //added LesserTax class for low coupling high cohesion, incase we want to add the possibility
         //of choosing between paying 10% in home values, or 4000, at Skattevæsnet, the more expensive variant
-        player1.myWallet.setSquareMoney(-money);
+        player1.myWallet.setSquareMoney(-2000);
         player1.myWallet.UpdateMoney();
-        System.out.println();
+        System.out.println("Du har ramt statskassen, du skal betale 2000");
     }
 }
