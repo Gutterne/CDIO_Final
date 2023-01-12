@@ -68,7 +68,7 @@ public class Board {
   fieldlist[36]= new Chance("Prøv Lykken",37);
   fieldlist[37]= new BuyableField("Frederiksberggade","Purple",38,7000,
           700,3500,10000,22000,26000,30000);
-  fieldlist[38]= new Tax("Tax",39,2000);
+  fieldlist[38]= new LesserTax("Tax",39,2000);
   fieldlist[39]= new BuyableField("Rådhuspladsen","Lilla",40,8000,
           1000,4000,12000,28000,34000,40000);
 
