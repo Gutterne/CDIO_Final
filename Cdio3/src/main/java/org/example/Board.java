@@ -32,10 +32,10 @@ public class Board {
           200,1000,3000,9000,12500,15000);
   fieldlist[14]= new BuyableField("Gammel kongevej","Grøn",15,3200,
           250,1250,3750,10000,14000,18000);
-  fieldlist[15]= new Ferry("Mols-linjen","Mørkeblå",16,4000,500,1000,2000,4000);
+  fieldlist[15]= new Metro("Metro","black",16);
   fieldlist[16]= new BuyableField("Bernstorffsvej","Grå",17,3600,
           300,1400,4000,11000,15000,19000);
-  fieldlist[17]= new Metro("Metro","sort",18);
+  fieldlist[17]= new Chance("Prøv Lykken",18);
   fieldlist[18]= new BuyableField("Hellerupvej","Grå",19,3600,
           300,1400,4000,11000,15000,19000);
   fieldlist[19]= new BuyableField("Strandvejen","Grøn",20,4000,
@@ -48,8 +48,7 @@ public class Board {
           350,1800,5000,14000,17500,21000);
   fieldlist[24]= new BuyableField("Grønningen","Rød",25,4800,
           400,2000,6000,15000,18500,22000);
-  fieldlist[25]= new Ferry("Gedser - Rostock","Mørkeblå",26,
-          4000,500,1000,2000,4000);
+  fieldlist[25]= new Metro("Metro","black",26);
   fieldlist[26]= new BuyableField("Bredgade","Hvid",27,5200,
           450,2200,6600,16000,19500,23000);
   fieldlist[27]= new BuyableField("Kongens Nytorv","Hvid",28,5200,

@@ -44,11 +44,11 @@ public class  GameBoard {
         board[i++] = new GUI_Brewery("default", "Pris : 3000kr","Sodavandskæde, flere kan ejes", "Double pris hvis 2 ejet", "100kr",new Color(154,200,134), Color.BLACK);
         board[i++] = new GUI_Street("Bülowsvej", "Pris:  2800kr", "Startleje 200", "200", new Color(222,220,73), Color.BLACK);
         board[i++] = new GUI_Street("Gl. Kongevej", "Pris:  3200kr", "Startleje 250", "250", new Color(222,220,73), Color.BLACK);
-        board[i++] = new GUI_Shipping("default","Molslinjen","Pris 4000kr", "Lineart pr båd" , "500", new Color(255, 50, 5), Color.BLACK);
-        board[i++] = new GUI_Street("Bernstorffsvej", "Pris:  3600kr", "", "300", new Color(128, 128, 128), Color.BLACK);
 
         board[i++] = new GUI_Tax("| Metro |", "", "Du blir rykket til næste metro stop", new Color(0,0,50), Color.WHITE);
 
+        board[i++] = new GUI_Street("Bernstorffsvej", "Pris:  3600kr", "", "300", new Color(128, 128, 128), Color.BLACK);
+        board[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
         board[i++] = new GUI_Street("Hellerupvej", "Pris:  3600kr", "", "300", new Color(128, 128, 128), Color.BLACK);
         board[i++] = new GUI_Street("Strandvejen", "Pris:  4000kr", "", "350", new Color(128, 128, 128), Color.BLACK);
         board[i++] = new GUI_Refuge("default", "Parkering", "Tag en pause ", "intet sker", new Color(255, 255, 255), Color.BLACK);
@@ -56,7 +56,10 @@ public class  GameBoard {
         board[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
         board[i++] = new GUI_Street("Østerbrogade", "Pris:  4400kr", "", "350", new Color(237, 28, 36), Color.BLACK);
         board[i++] = new GUI_Street("Grønningen", "Pris : 4800kr", "", "400", new Color(237, 28, 36), Color.BLACK);
-        board[i++] = new GUI_Shipping("default","Gedser-båden","Pris 4000kr", "Lineart pr båd" , "500", new Color(105, 156, 250), Color.BLACK);
+
+        board[i++] = new GUI_Tax("| Metro |", "", "Du blir rykket til næste metro stop", new Color(0,0,50), Color.WHITE);
+
+
         board[i++] = new GUI_Street("Bredgade", "Pris : 5200kr", "", "450", new Color(255, 255, 255), Color.BLACK);
         board[i++] = new GUI_Street("Kgs. Nytorv", "Pris : 5200kr", "", "450", new Color(255, 255, 255), Color.BLACK);
         board[i++] = new GUI_Brewery("default", "Pris : 3000kr","Sodavandskæde, flere kan ejes", "Double pris hvis 2 ejet", "100kr", Color.RED, Color.ORANGE);
