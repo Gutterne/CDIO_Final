@@ -73,6 +73,10 @@ public class  BuyableField extends Field {
                 }
             }
         }
+        public void buyHouse(Player player10){
+
+        }
+        public void buy
     }
 
 
