@@ -119,6 +119,10 @@ public class HelperController {
             centerPanel.setBackground(GUI_Board.BASECOLOR);
 
         }
+        if(playerField1 instanceof Metro){
+            gui.showMessage("Du har landt ved Metro-Stoppet, du tar nu metroen til næste stop!");
+            //board2[player721.getPositition() % 40].setCar();
+        }
         else {
             playerField1.landOndField(player721);
         }
