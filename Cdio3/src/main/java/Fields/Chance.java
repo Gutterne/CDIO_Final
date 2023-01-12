@@ -8,16 +8,20 @@ import java.util.Random;
 public class Chance extends UnbuyableField {
     private Die die8;
     GUI gui;
-    private   int [] bunke1,bunke2,bunke3,bunke4,bunke5,bunke6;
+    private int[] bunke1, bunke2, bunke3, bunke4, bunke5, bunke6;
+
+    private int cardnumber;
 
 
     public String getChancecards() {
-        String cards = chancecards[(int) (Math.random() * 44 + 1)];
+        //cardnumber = (int) (Math.random() * 44 + 1);
+        cardnumber = 30;
+        String cards = chancecards[cardnumber];
         return cards;
-        }
+    }
 
 
-    public String[] chancecards = new String[] {"Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel\n",
+    public String[] chancecards = new String[]{"Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel\n",
             "Ejendomsskatten er steget. Ekstraudgifterne er: 800 kr pr hus, 2300 kr pr hotel.\n",
             "De har kørt frem for “fuldt stop”, Betal 1000 kroner i bøde\n",
             "Betal for vognvask og smøring kr 300\n",
@@ -63,16 +67,17 @@ public class Chance extends UnbuyableField {
             "Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. \n",
             "Gå i fængsel, De indkasserer ikke 4000 kr for at passere start.\n"};
 
-    private int randomBunke,nextCardUp;
+    private int randomBunke, nextCardUp;
+
     public Chance(String fieldName, int BoardNumber) {
         super(fieldName, BoardNumber);
         die8 = new Die();
-        bunke1 = new int[]{1,2,3,4,5,6,};
-        bunke2 = new int[]{3,6,2,4,1,5};
-        bunke3 = new int[]{5,6,2,3,1,4};
-        bunke4 = new int[]{3,1,6,2,5,4};
-        bunke5 = new int[]{6,4,2,5,3,1};
-        bunke6 = new int[]{6,2,3,4,1,5};
+        bunke1 = new int[]{1, 2, 3, 4, 5, 6,};
+        bunke2 = new int[]{3, 6, 2, 4, 1, 5};
+        bunke3 = new int[]{5, 6, 2, 3, 1, 4};
+        bunke4 = new int[]{3, 1, 6, 2, 5, 4};
+        bunke5 = new int[]{6, 4, 2, 5, 3, 1};
+        bunke6 = new int[]{6, 2, 3, 4, 1, 5};
 
     }
 
@@ -81,7 +86,50 @@ public class Chance extends UnbuyableField {
 
 
     }
-    /*public int pullChanceCards() {
+
+    public void ActionOnChance() {
+
+        switch (cardnumber) {
+
+
+            case 1:
+                player1.myWallet.UpdateMoney();
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 5:
+
+                break;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*public int pullChanceCards() {
 
          /*   Random random = new Random();
             return random.nextInt(40)+1;
@@ -112,30 +160,5 @@ public class Chance extends UnbuyableField {
         // Handle other possible actions in the same way
     }*/
 
-
     }
-   /* public void ActionOnChance(){
-
-        switch (chancecards){
-
-
-            case 1:
-                player1.myWallet.UpdateMoney();
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
-            case 4:
-
-                break;
-            case 5:
-
-                break;
-
-
-        }
-
-    }*/
+}
