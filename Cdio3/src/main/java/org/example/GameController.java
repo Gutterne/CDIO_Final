@@ -9,6 +9,8 @@ public class GameController {
     private  String inputText= "";
     private  String Textdata;
     private GUI gui;
+    private GUI gui2;
+
 
 
     private GameBoard[] board;
@@ -23,14 +25,15 @@ public class GameController {
         for(int i = 0; i < board2.length; ++i) {
             board2[i] = board1[i];
         }
-        gameBoard = new GameBoard(board4);
-        gui = new GUI(board2);
+
+
 
 
         for(int j = 0; j < reverseBoard2.length; ++j) {
             reverseBoard2[j] = reverseBoard1[j];
-        }
 
+        }
+        gui = new GUI(board2);
     }
 
     public void play() {
@@ -49,10 +52,10 @@ public class GameController {
         }
         if (chosenButton.equals("Omvendt Matadorplade")) {
             gui.close();
-            gui = new GUI(reverseBoard2);
+            gui2 = new GUI(reverseBoard2);
 
-            HelperController help2 = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, reverseBoard2,board2,true);
-            help2.GameRunner();
+            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui2, reverseBoard2,board2,true);
+            help.GameRunner();
         }
     }
 }
