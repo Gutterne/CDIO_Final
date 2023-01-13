@@ -87,10 +87,10 @@ public class HelperController {
         holder.sum();
         int p1 = holder.getSum();
         gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
-        if (holder.die1.getFacevalue() == holder.die2.getFacevalue()) {
-            extraturn = true;
-            gui.showMessage("Du slog to ens, du får derfor et ekstra tur");
-        }
+        //if (holder.die1.getFacevalue() == holder.die2.getFacevalue()) {
+          //  extraturn = true;
+            //gui.showMessage("Du slog to ens, du får derfor et ekstra tur");
+        //}
         return p1;
     }
 
