@@ -9,6 +9,8 @@ public class GameController {
     private  String inputText= "";
     private  String Textdata;
     private GUI gui;
+
+
     private GameBoard[] board;
     private GameBoard [] board4;
     private GUI_Field[] board1,board2,reverseBoard1,reverseBoard2;
@@ -42,13 +44,14 @@ public class GameController {
         );
         if (chosenButton.equals("Standard Matador")) {
 
-            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, board2);
+            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, board2,false);
             help.GameRunner();
         }
         if (chosenButton.equals("Omvendt Matadorplade")) {
+            gui.close();
             gui = new GUI(reverseBoard2);
-           
-            HelperController help2 = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, reverseBoard2);
+
+            HelperController help2 = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, reverseBoard2,true);
             help2.GameRunner();
         }
     }
