@@ -85,6 +85,7 @@ public class HelperController {
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
         player711.setPositition(player711.getPositition() + DiceSum);
         int m = player711.getPositition() % 40;
+
         board2[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
         board2[m].setCar(Play12, true);
         return m;
@@ -181,12 +182,7 @@ public class HelperController {
             } else {
                 playerField1.landOndField(player721);
             }
-
-
-
         }
-
-
     public void passerStart(Player player72,int amn){
         if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.fieldlist[amn] instanceof Hardprison) ) {
             if(!(board3.fieldlist[amn] instanceof Start))
@@ -195,9 +191,6 @@ public class HelperController {
         }
 
     }
-
-
-
     public void updatePlayerMoney(){
         for(int f = 0;f<playerArray.length;f++) {
             playArray[f].setBalance(playerArray[f].myWallet.getMoney());

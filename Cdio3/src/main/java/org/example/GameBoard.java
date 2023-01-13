@@ -19,18 +19,9 @@ import java.awt.Color;
      public GameBoard(GameBoard[] board2) {
          //Add new pictures if time here.
      }
-
-     public void visualOwnerShip(GUI_Field makeFields){
-         if(owned == false) {
-
-
-             }
-         }
-
-
     //This is the Frontend GUI. Here we display pictures & Make the colors of each field. This is most used for visuals, than the actual backend. Backend, is Board. This use GUI as userinterface.
     public static GUI_Field[] makeFields() {
-        GUI_Field[] board = new GUI_Field[45];
+        GUI_Field[] board = new GUI_Field[41];
 
         int i = 0;
 
@@ -88,7 +79,7 @@ import java.awt.Color;
 
          return board;
      }
-     public static GUI_Field[] makeSecondField() {
+     public static GUI_Field[] reverseField() {
          GUI_Field[] reverseboard = new GUI_Field[41];
          int i = 0;
          reverseboard[i++] = new GUI_Start("Start", "Modtag: 4000", "Modtag 4000kr,-Når man har passeret start", Color.RED, Color.BLACK);

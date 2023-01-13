@@ -6,7 +6,7 @@ public class ReverseBoard {
     Field[] fieldListReverse;
 
     public ReverseBoard() {
-        fieldListReverse = new Field[41];
+        fieldListReverse = new Field[40];
         fieldListReverse[0] = new Start("Start", 1, 4000);
         fieldListReverse[1] = new BuyableField("Rådhuspladsen", "Lilla", 41, 8000,1000,4000,12000,28000,34000,40000);
         fieldListReverse[2] = new Tax("Tax", 2, 2000);
