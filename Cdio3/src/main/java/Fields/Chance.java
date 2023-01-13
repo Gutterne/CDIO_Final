@@ -18,7 +18,7 @@ public class Chance extends Field {
 
 
     public String getChancecards() {
-        chanceNum = 12;
+        chanceNum = 43;
         //String cards = chancecards[(int) (Math.random() *  + 1)];
         String cards = chancecards[chanceNum];
         return cards;

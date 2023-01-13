@@ -28,7 +28,8 @@ public class ChanceActions {
                 break;
             case 43:
                 board30[player10.getPositition()  % 40].removeAllCars();
-                //player10.setPositition(player10.getPositition()+);
+                player10.setPositition(player10.getPositition());
+                player10.setPositition(player10.setPositition(10));
                 board30[player10.getPositition()%40].setCar(play14, true);
                 break;
             case 41:
@@ -37,23 +38,24 @@ public class ChanceActions {
 
                 break;
             case 6:
-                gui.showMessage("");
+
 
                 break;
             case 7:
-                gui.showMessage("");
 
                 break;
             case 8:
-                gui.showMessage("");
+
 
                 break;
             case 9:
-                gui.showMessage("");
+                board30[player10.getPositition()%40].removeAllCars();
+                player10.setPositition(player10.getPositition()-1000);
+                board30[player10.getPositition()%40].setCar(play14, true);
 
                 break;
             case 10:
-                gui.showMessage("");
+
 
                 break;
 

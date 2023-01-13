@@ -1,7 +1,4 @@
 package org.example;
-import gui_fields.GUI_Field;
-import gui_fields.GUI_Player;
-import gui_main.GUI;
 
 public class Player {
     public Wallet myWallet;
@@ -55,8 +52,9 @@ public class Player {
         return positition;
     }
 
-    public void setPositition(int positition) {
+    public int setPositition(int positition) {
         this.positition = positition;
+        return positition;
     }
     public boolean isInPrison() {
         return this.inPrison;
