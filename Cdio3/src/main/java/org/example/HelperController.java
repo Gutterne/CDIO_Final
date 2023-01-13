@@ -159,11 +159,14 @@ public class HelperController {
 
         }
 
-           else   if(playerField1 instanceof Metro){
+        else if(playerField1 instanceof Metro){
             gui.showMessage("Du har landt ved Metro-Stoppet, du tar nu metroen til næste stop!");
-
+            board2[player721.getPositition()  % 40].removeAllCars();
+            ((Metro)playerField1).landOndField(player721);
+            board2[player721.getPositition() %40].setCar(play20, true);;
         }
-              else if (playerField1 instanceof Hardprison){
+
+        else if (playerField1 instanceof Hardprison){
 
             gui.showMessage("Du skal gå til fængsel og modtage ikke 4000");
             gui.showMessage("Du har betalt 1000 kr. for at få love at kaster teninge næste gange ");
