@@ -22,7 +22,7 @@ public class HelperController {
     private GUI_Field []board2;
 
     private int[] chancecards = new int[0];
-
+private ChanceActions chanceAct;
 
     private int currentPlayerPosition;
 
@@ -42,7 +42,7 @@ public class HelperController {
         holder=new Holder();
         board3= new Board();
         this.board2=board2;
-
+chanceAct= new ChanceActions();
     }
 
     public void GameRunner(){
@@ -53,11 +53,7 @@ public class HelperController {
                 currentPlayerPosition=playerArray[i].getPositition();
                 gui.showMessage(playerArray[i].getName() + " tryk enter:");
                 int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
-
                 LandPlayer(playerArray[i],playArray[i],posit);
-
-
-
                 passerStart(playerArray[i],posit);
                 updatePlayerMoney();
 
@@ -152,6 +148,7 @@ public class HelperController {
                     "",
                     "Ok"
             );
+        chanceAct.chancePulls(player721,play20,board2,((Chance) playerField1).getChanceNum(), gui);
             gui.displayChanceCard("");
             String path = Attrs.getImagePath("GUI_Field.Image.Luck");
             GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
