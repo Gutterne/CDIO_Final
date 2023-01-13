@@ -44,14 +44,14 @@ public class GameController {
         );
         if (chosenButton.equals("Standard Matador")) {
 
-            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, board2,false);
+            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, board2,reverseBoard2,false);
             help.GameRunner();
         }
         if (chosenButton.equals("Omvendt Matadorplade")) {
             gui.close();
             gui = new GUI(reverseBoard2);
 
-            HelperController help2 = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, reverseBoard2,true);
+            HelperController help2 = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, reverseBoard2,board2,true);
             help2.GameRunner();
         }
     }

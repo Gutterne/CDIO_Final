@@ -42,21 +42,31 @@ public class HelperController {
 
 
     public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
-            ,GUI_Field[] board2, boolean reverseCondition) {
+            ,GUI_Field[] board2, GUI_Field [] reverseBoard, boolean reverseCondition) {
         this.gui = gui;
         this.playArray=playArray;
         this.playerArray=playerArray;
         holder=new Holder();
         board3= new Board();
         this.reverseBoard = reverseBoard;
-        this.board2=board2;
+
         this.boardCondition = reverseCondition;
 
         buyableFields = new int[] {1,3,5,6,8,9,11,12,13,14,15,16,18,19,21,23,24,25,
         26,27,28,29,31,32,34,35,37,39,40};
+        if(reverseCondition ==false) {
+            this.board2=board2;
+        }
+
+        if(reverseCondition == true){
+            this.reverseBoard = reverseBoard;
+        }
     }
 
     public void GameRunner(){
+        if(boardCondition == true) {
+            board2 = reverseBoard;
+        }
         for(int dm=0;dm<playerArray.length;dm++)
             gui.addPlayer(playArray[dm]);
         while (playing) {
@@ -93,14 +103,14 @@ public class HelperController {
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
         player711.setPositition(player711.getPositition() + DiceSum);
         int m = player711.getPositition() % 40;
-        //if(boardCondition== true){
-            //reverseBoard[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
-          //  reverseBoard[m].setCar(Play12, true);
-        //}
-        //if(boardCondition == false) {
+        if(boardCondition== true){
+            reverseBoard[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
+            reverseBoard[m].setCar(Play12, true);
+        }
+        if(boardCondition == false) {
             board2[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
             board2[m].setCar(Play12, true);
-       // }
+       }
         return m;
     }
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
