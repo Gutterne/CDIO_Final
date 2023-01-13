@@ -14,18 +14,16 @@ import static gui_tests.TestRunExampleGame.sleep;
 
 public class HelperController {
     private boolean playing = true;
-    private int p1;
     private Board board3;
     private Holder holder;
     private GUI gui;
     private Player[] playerArray;
     private GUI_Player[] playArray;
     private GUI_Field []board2;
-    private int[] buyableFields;
 
     private int[] chancecards = new int[0];
 
-    private Chance chance ;
+
     private int currentPlayerPosition;
 
     private JPanel centerPanel = new JPanel();
@@ -44,8 +42,7 @@ public class HelperController {
         holder=new Holder();
         board3= new Board();
         this.board2=board2;
-        buyableFields = new int[] {1,3,5,6,8,9,11,12,13,14,15,16,18,19,21,23,24,25,
-        26,27,28,29,31,32,34,35,37,39,40};
+
     }
 
     public void GameRunner(){
@@ -63,12 +60,7 @@ public class HelperController {
 
                 passerStart(playerArray[i],posit);
                 updatePlayerMoney();
-                if(extraturn==true){
-                    RollTheDice();//Used to make a new roll, so not the same is displayed twice, resulting in infinite loop.
-                    movePlayer(playerArray[i],playArray[i],RollTheDice());
-                    LandPlayer(playerArray[i],playArray[i],posit);
 
-                }
             }
         }
     }
@@ -76,10 +68,6 @@ public class HelperController {
        holder.sum();
        int p1 = holder.getSum();
         gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
-        if(holder.die1.getFacevalue() == holder.die2.getFacevalue()){
-            extraturn=true;
-            gui.showMessage("Du slog to ens, du får derfor et ekstra tur");
-        }
         return p1;
     }
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
@@ -105,16 +93,19 @@ public class HelperController {
                     if (board2[am] instanceof GUI_Street) {
                         ((GUI_Street) board2[am]).setBorder(play20.getPrimaryColor());
                     } else {
-                        ((BuyableField) playerField1).landOndField(player721, false);
+                        if(!player721.getOwnerlist(am+1)){
+                            gui.showMessage("Du ejer ikke feltet,Betal for leje.");
+                            ((BuyableField) playerField1).landOndField(player721, false);
+                        }
+                     else {
+                         gui.showMessage("Du har landet på et felt du ejer.");
+                            ((BuyableField) playerField1).landOndField(player721, false);
+                        }
                     }
-
-                } else {
-                    gui.showMessage("Du har landet på et felt du ejer.");
 
                 }
             }
-        }
-        if(playerField1 instanceof Brewery) {
+        } else if (playerField1 instanceof Brewery) {
             if (!playerField1.isOwned()) {
                 String chosenButtonBrewery = gui.getUserButtonPressed(
                         "Du har landet på " + playerField1.getFieldName() + "" +
@@ -131,54 +122,51 @@ public class HelperController {
                 gui.showMessage("Du ejer allerede bryggeriet");
 
             }
-        }
-            if (playerField1 instanceof Ferry) {
-                if (!playerField1.isOwned()) {
-                    String chosenButtonFerry = gui.getUserButtonPressed(
-                            "Du har landet på " + playerField1.getFieldName() + "" +
-                                    ". Vil du købe denne superFærge",
-                            "Ja", "Nej"
-                    );
-                    if (chosenButtonFerry.equals("Ja")) {
-                        ((Ferry) playerField1).landOndField(player721, true);
-                        ((GUI_Shipping) board2[am]).setBorder(play20.getPrimaryColor());
-                    } else {
-                        ((Ferry) playerField1).landOndField(player721, false);
-                    }
-                } else {
-                    gui.showMessage("Du ejer allerede denne færge");
-
-                }
-            }
-              if (playerField1 instanceof Chance) {
-
-                System.out.println("Chance Land");
-                gui.displayChanceCard(((Chance) playerField1).getChancecards());
-                String chosen = gui.getUserButtonPressed(
-                        "",
-                        "Ok"
+        } else if (playerField1 instanceof Ferry) {
+            if (!playerField1.isOwned()) {
+                String chosenButtonFerry = gui.getUserButtonPressed(
+                        "Du har landet på " + playerField1.getFieldName() + "" +
+                                ". Vil du købe denne superFærge",
+                        "Ja", "Nej"
                 );
-                gui.displayChanceCard("");
-                String path = Attrs.getImagePath("GUI_Field.Image.Luck");
-                GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
-                centerPanel.setBackground(GUI_Board.BASECOLOR);
+                if (chosenButtonFerry.equals("Ja")) {
+                    ((Ferry) playerField1).landOndField(player721, true);
+                    ((GUI_Shipping) board2[am]).setBorder(play20.getPrimaryColor());
+                } else {
+                    ((Ferry) playerField1).landOndField(player721, false);
+                }
+            } else {
+                gui.showMessage("Du ejer allerede denne færge");
+
+            }
+        } else if (playerField1 instanceof Chance) {
+
+            System.out.println("Chance Land");
+            gui.displayChanceCard(((Chance) playerField1).getChancecards());
+            String chosen = gui.getUserButtonPressed(
+                    "",
+                    "Ok"
+            );
+            gui.displayChanceCard("");
+            String path = Attrs.getImagePath("GUI_Field.Image.Luck");
+            GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
+            centerPanel.setBackground(GUI_Board.BASECOLOR);
 
         }
-        if(playerField1 instanceof Metro){
+
+           else   if(playerField1 instanceof Metro){
             gui.showMessage("Du har landt ved Metro-Stoppet, du tar nu metroen til næste stop!");
-            //board2[player721.getPositition() % 40].setCar();
+
         }
-       if (playerField1 instanceof Hardprison){
+              else if (playerField1 instanceof Hardprison){
 
             gui.showMessage("Du skal gå til fængsel og modtage ikke 4000");
             gui.showMessage("Du har betalt 1000 kr. for at få love at kaster teninge næste gange ");
             board2[player721.getPositition()  % 40].removeAllCars();
             ((Hardprison)playerField1).landOndField(player721);
             board2[player721.getPositition()%40].setCar(play20, true);
-
-
-
-            } else {
+              }
+              else {
                 playerField1.landOndField(player721);
             }
 
