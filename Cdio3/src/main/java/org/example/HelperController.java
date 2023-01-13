@@ -92,19 +92,24 @@ public class HelperController {
                     ((BuyableField) playerField1).landOndField(player721, true);
                     if (board2[am] instanceof GUI_Street) {
                         ((GUI_Street) board2[am]).setBorder(play20.getPrimaryColor());
-                    } else {
+                    }
+                }
+                else {
+                        ((BuyableField) playerField1).landOndField(player721, true);
+                    }
+                }
+                    else {
                         if(!player721.getOwnerlist(am+1)){
                             gui.showMessage("Du ejer ikke feltet,Betal for leje.");
                             ((BuyableField) playerField1).landOndField(player721, false);
                         }
                      else {
                          gui.showMessage("Du har landet på et felt du ejer.");
-                            ((BuyableField) playerField1).landOndField(player721, false);
                         }
-                    }
 
                 }
-            }
+
+
         } else if (playerField1 instanceof Brewery) {
             if (!playerField1.isOwned()) {
                 String chosenButtonBrewery = gui.getUserButtonPressed(
