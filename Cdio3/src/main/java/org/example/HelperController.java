@@ -22,7 +22,9 @@ public class HelperController {
     private GUI_Field []board2;
 
     private int[] chancecards = new int[0];
-private ChanceActions chanceAct;
+
+    private Board BOARD_SIZE;
+    private ChanceActions chanceAct;
 
     private int currentPlayerPosition;
 
@@ -30,8 +32,10 @@ private ChanceActions chanceAct;
 
     boolean extraturn=false;
 
+    private int fields;
 
 
+    
 
 
     public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
@@ -42,7 +46,7 @@ private ChanceActions chanceAct;
         holder=new Holder();
         board3= new Board();
         this.board2=board2;
-chanceAct= new ChanceActions();
+        chanceAct= new ChanceActions();
     }
 
     public void GameRunner(){
@@ -73,6 +77,22 @@ chanceAct= new ChanceActions();
         board2[m].setCar(Play12, true);
         return m;
     }
+
+    public int findNearestFerryField(int currentPosition) {
+        int nearestFerryField = -1;
+        int nearestFerryDistance = Integer.MAX_VALUE;
+        for (int i = 0; i < board3.fieldlist.length; i++) {
+            if (board3.fieldlist[i] instanceof Ferry) {
+                int distance = (i - currentPosition + board3.fieldlist.length) % board3.fieldlist.length;
+                if (distance < nearestFerryDistance) {
+                    nearestFerryDistance = distance;
+                    nearestFerryField = i;
+                }
+            }
+        }
+        return nearestFerryField;
+    }
+
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
 
 
@@ -140,6 +160,22 @@ chanceAct= new ChanceActions();
                 gui.showMessage("Du ejer allerede denne færge");
 
             }
+            for(int dm=0;dm <playerArray.length;dm++)
+                gui.addPlayer(playArray[dm]);
+            while (playing) {
+                for (int i = 0; i < playerArray.length; i++) {
+                    currentPlayerPosition=playerArray[i].getPositition();
+                    gui.showMessage(playerArray[i].getName() + " tryk enter:");
+                    int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
+                    LandPlayer(playerArray[i],playArray[i],posit);
+                    int nearestFerry = findNearestFerryField(posit);
+                    gui.showMessage("Nærmeste ferry felt er: " + board3.fieldlist[nearestFerry].getFieldName());
+                    passerStart(playerArray[i],posit);
+                    updatePlayerMoney();
+
+                }
+            }
+
         } else if (playerField1 instanceof Chance) {
 
             System.out.println("Chance Land");
@@ -148,51 +184,47 @@ chanceAct= new ChanceActions();
                     "",
                     "Ok"
             );
-        chanceAct.chancePulls(player721,play20,board2,((Chance) playerField1).getChanceNum(), gui);
+            chanceAct.chancePulls(player721,play20,board2,((Chance) playerField1).getChancecards(), gui);
             gui.displayChanceCard("");
             String path = Attrs.getImagePath("GUI_Field.Image.Luck");
             GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
             centerPanel.setBackground(GUI_Board.BASECOLOR);
 
-        }
-
-           else   if(playerField1 instanceof Metro){
+        } else   if(playerField1 instanceof Metro){
             gui.showMessage("Du har landt ved Metro-Stoppet, du tar nu metroen til næste stop!");
 
-        }
-              else if (playerField1 instanceof Hardprison){
+
+        } else if (playerField1 instanceof Hardprison){
 
             gui.showMessage("Du skal gå til fængsel og modtage ikke 4000");
             gui.showMessage("Du har betalt 1000 kr. for at få love at kaster teninge næste gange ");
             board2[player721.getPositition()  % 40].removeAllCars();
             ((Hardprison)playerField1).landOndField(player721);
             board2[player721.getPositition()%40].setCar(play20, true);
-              }
-              else {
+
+
+        } else {
                 playerField1.landOndField(player721);
             }
-
-
-
         }
 
 
     public void passerStart(Player player72,int amn){
-        if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.fieldlist[amn] instanceof Hardprison) ) {
+        if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.fieldlist[amn] instanceof Hardprison) && !(board3.fieldlist[amn] instanceof Chance) ) {
             if(!(board3.fieldlist[amn] instanceof Start))
                 gui.showMessage("Du har passeret start.");
             board3.fieldlist[0].landOndField(player72);
+
         }
 
     }
-
-
 
     public void updatePlayerMoney(){
         for(int f = 0;f<playerArray.length;f++) {
             playArray[f].setBalance(playerArray[f].myWallet.getMoney());
         }
     }
+
 
 
 }

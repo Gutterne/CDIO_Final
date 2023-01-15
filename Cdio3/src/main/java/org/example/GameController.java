@@ -31,4 +31,5 @@ public class GameController {
         HelperController help = new HelperController(set.getPlayerArray(),set.getPlayArray(),gui,board2);
         help.GameRunner();
     }
+
 }

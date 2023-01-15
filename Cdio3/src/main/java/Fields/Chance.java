@@ -4,6 +4,7 @@ import org.example.Player;
 import gui_main.GUI;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Chance extends Field {
     private Die die8;
@@ -16,13 +17,16 @@ public class Chance extends Field {
 
     private int chanceNum;
 
-
     public String getChancecards() {
-        chanceNum = 43;
-        //String cards = chancecards[(int) (Math.random() *  + 1)];
-        String cards = chancecards[chanceNum];
-        return cards;
+        int randomIndex = (int) (Math.random() * chancecards.length);
+        return chancecards[randomIndex];
     }
+    /*public String getChancecards() {
+        //chanceNum = 34;
+        String cards = chancecards[(int) (Math.random() *  + 1)];
+        //String cards = chancecards[chanceNum];
+        return cards;
+    }*/
 
 
     public String[] chancecards = new String[]{
@@ -69,7 +73,7 @@ public class Chance extends Field {
             "Ryk frem til Strandvejen. Hvis De passere START, indkasser da 4000 kr.\n",                //40
             "Tag til Rådhuspladsen\n",                                                                 //41
             "I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (antal kort: 2)\n",  //42
-            "Gå i fængsel, De indkasserer ikke 4000 kr for at passere start.\n",                      //43
+            "Gå i fængsel, De indkasserer ikke 4000 kr for at passere start.\n",                       //43
             "Gå i fængsel, De indkasserer ikke 4000 kr for at passere start.\n"};                      //44
 
     private int randomBunke, nextCardUp;

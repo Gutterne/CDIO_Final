@@ -1,5 +1,11 @@
 package org.example;
 
+
+import Fields.Ferry;
+import gui_fields.GUI_Field;
+import gui_fields.GUI_Ownable;
+import gui_fields.GUI_Shipping;
+
 public class Player {
     public Wallet myWallet;
     private int money2,positition;
@@ -9,7 +15,11 @@ public class Player {
     private boolean inPrison;
     private int balance;
 
+    public Board board3;
+
     String name;
+    private int currentPositition;
+
     public Player(String name, int money) {
         this.name=name;
         money2=money;
@@ -66,6 +76,58 @@ public class Player {
     public int getBalance() {
         return balance;
     }
+
+
+
+    public int findNearestFerryField(int currentPositition) {
+        this.currentPositition = currentPositition;
+        int nearestFerryField = -1;
+        int nearestFerryDistance = Integer.MAX_VALUE;
+        for (int i = 0; i < board3.fieldlist.length; i++) {
+            if (board3.fieldlist[i] instanceof Ferry) {
+                int distance = (i - currentPositition + board3.fieldlist.length) % board3.fieldlist.length;
+                if (distance < nearestFerryDistance) {
+                    nearestFerryDistance = distance;
+                    nearestFerryField = i;
+                }
+            }if (nearestFerryField != -1) {
+                setPositition(nearestFerryField);
+                GUI_Ownable ferry = null;
+                String owner = ferry.getOwnerName();
+                if ((owner != null) && (owner != null )) {
+                    int rent = Integer.parseInt(ferry.getRent());
+                    myWallet.setSquareMoney(-rent*2);
+                    myWallet.UpdateMoney();
+                }
+            }
+        }
+        return nearestFerryField;
+    }
+
+    /*public void rykTilNærmesteRederi(Player[] board30) {
+        int closestFerry = -1;
+        int closestDistance = Integer.MAX_VALUE;
+
+        for (int i = 0; i < board30.length; i++) {
+            if (board30[i] instanceof GUI_Shipping) {
+                int distance = Math.abs(getPositition() - i);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestFerry = i;
+                }
+            }
+        }
+        if (closestFerry != -1) {
+            setPositition(closestFerry);
+            GUI_Shipping ferry = (GUI_Shipping) board30[closestFerry];
+            String owner = ferry.getOwnerName();
+            if (owner != null && owner != this) {
+                int rent = Integer.parseInt(ferry.getRent());
+                myWallet.setSquareMoney(-rent*2);
+                myWallet.UpdateMoney();
+            }
+        }
+    }*/
 
 }
 
