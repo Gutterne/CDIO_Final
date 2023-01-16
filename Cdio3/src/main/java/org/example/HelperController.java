@@ -22,12 +22,14 @@ public class HelperController {
     private GUI_Player[] playArray;
     private GUI_Field []board2;
     private GUI_Field [] reversalBoard;
+
     private int[] buyableFields;
 
     private int[] chancecards = new int[0];
 
     private Chance chance ;
     boolean boardCondition;
+
     private Board BOARD_SIZE;
     private ChanceActions chanceAct;
 
@@ -177,6 +179,8 @@ if(boardCondition == true) {
                     "",
                     "Ok"
             );
+
+            chanceAct.chancePulls(player721,play20,board2,((Chance) playerField1).getCardsNumber());
             gui.displayChanceCard("");
             String path = Attrs.getImagePath("GUI_Field.Image.Luck");
             GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
