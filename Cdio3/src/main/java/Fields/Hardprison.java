@@ -18,7 +18,7 @@ public class Hardprison extends Field{
 
             System.out.println(player1.getPositition()+"du skal gå til fænglse og modtage ikke 4000 og betale 1000");
             player1.setPositition(player1.getPositition()+20);
-            System.out.println(player1.getPositition());
+            System.out.println(player1.getPositition()+"Du er i fængsel nu.");
 
             player1.myWallet.setSquareMoney(-1000);
             player1.myWallet.UpdateMoney();

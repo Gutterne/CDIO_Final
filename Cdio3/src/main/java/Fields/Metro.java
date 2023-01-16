@@ -1,41 +1,29 @@
 package Fields;
 import org.example.Player;
 
-
 public class Metro extends Field {
     private int cost;
 
-    Player player;
+    Player travelplayer;
     private String color;
-
 
     public Metro(String metroName, String color, int BoardNumber) {
         super(metroName, BoardNumber);
         this.color = color;
-
     }
 
-    public void landOndField(Player TravelPlayer) {
-        //TravelPlayer.setPositition(TravelPlayer.getPositition() + 8);
-
-        //first metro stop to second
-        /*
-        if(player1.getPositition()==8){
-            TravelPlayer.setPositition(16);
+    public void landOndField(Player travelPlayer) {
+        if(travelPlayer.getPositition()==7){
+            travelPlayer.setPositition(15);
         } //second metro stop to third
-        else if (player1.getPositition()==16){
-            TravelPlayer.setPositition(26);
+        else if (travelPlayer.getPositition()==15){
+            travelPlayer.setPositition(25);
         } //third metro stop to fourth
-        else if(player1.getPositition()==26){
-            TravelPlayer.setPositition(37);
+        else if(travelPlayer.getPositition()==25){
+            travelPlayer.setPositition(36);
         } //fourth metro stop to first
-        else if(player1.getPositition()==37){
-            TravelPlayer.setPositition(8);
+        else if(travelPlayer.getPositition()==36){
+            travelPlayer.setPositition(7);
         }
-        */
     }
-
-
-
-
 }
