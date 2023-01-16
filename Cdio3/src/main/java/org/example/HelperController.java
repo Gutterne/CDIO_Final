@@ -22,15 +22,27 @@ public class HelperController {
     private GUI_Player[] playArray;
     private GUI_Field []board2;
     private GUI_Field [] reversalBoard;
+
     private int[] buyableFields;
 
     private int[] chancecards = new int[0];
 
     private Chance chance ;
     boolean boardCondition;
+
+    private Board BOARD_SIZE;
+    private ChanceActions chanceAct;
+
     private int currentPlayerPosition;
 
     private JPanel centerPanel = new JPanel();
+
+    boolean extraturn=false;
+
+    private int fields;
+
+
+
 
 
     public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
@@ -44,7 +56,7 @@ public class HelperController {
         reverseCondition = boardCondition;
         this.reversalBoard =reversalBoard;
         this.board2=board2;
-
+        chanceAct= new ChanceActions();
     }
 
     public void GameRunner(){
@@ -63,8 +75,6 @@ public class HelperController {
                 passerStart(playerArray[i],posit);
                 updatePlayerMoney();
 
-
-
             }
         }
     }
@@ -72,8 +82,6 @@ public class HelperController {
        holder.sum();
        int p1 = holder.getSum();
         gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
-
-
         return p1;
     }
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
@@ -91,7 +99,7 @@ if(boardCondition == true) {
         return m;
     }
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
-        Field playerField1 = board3.fieldListReverse[am];
+        Field playerField1 = board3.fieldlist[am];
         Field playerFieldReverse = board3.fieldListReverse[am];
 
         if(boardCondition == true) {
@@ -146,22 +154,21 @@ if(boardCondition == true) {
                 gui.showMessage("Du ejer allerede bryggeriet");
 
             }
-        }
-            if (playerField1 instanceof Ferry) {
-                if (!playerField1.isOwned()) {
-                    String chosenButtonFerry = gui.getUserButtonPressed(
-                            "Du har landet på " + playerField1.getFieldName() + "" +
-                                    ". Vil du købe denne superFærge",
-                            "Ja", "Nej"
-                    );
-                    if (chosenButtonFerry.equals("Ja")) {
-                        ((Ferry) playerField1).landOndField(player721, true);
-                        ((GUI_Shipping) board2[am]).setBorder(play20.getPrimaryColor());
-                    } else {
-                        ((Ferry) playerField1).landOndField(player721, false);
-                    }
+        } else if (playerField1 instanceof Ferry) {
+            if (!playerField1.isOwned()) {
+                String chosenButtonFerry = gui.getUserButtonPressed(
+                        "Du har landet på " + playerField1.getFieldName() + "" +
+                                ". Vil du købe denne superFærge",
+                        "Ja", "Nej"
+                );
+                if (chosenButtonFerry.equals("Ja")) {
+                    ((Ferry) playerField1).landOndField(player721, true);
+                    ((GUI_Shipping) board2[am]).setBorder(play20.getPrimaryColor());
                 } else {
-                    gui.showMessage("Du ejer allerede denne færge");
+                    ((Ferry) playerField1).landOndField(player721, false);
+                }
+            } else {
+                gui.showMessage("Du ejer allerede denne færge");
 
             }
         } else if (playerField1 instanceof Chance) {
@@ -172,6 +179,8 @@ if(boardCondition == true) {
                     "",
                     "Ok"
             );
+
+            chanceAct.chancePulls(player721,play20,board2,((Chance) playerField1).getCardsNumber());
             gui.displayChanceCard("");
             String path = Attrs.getImagePath("GUI_Field.Image.Luck");
             GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
@@ -204,13 +213,16 @@ if(boardCondition == true) {
 
 
     public void passerStart(Player player72,int amn){
-        if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.fieldlist[amn] instanceof Hardprison) ) {
+        if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.fieldlist[amn] instanceof Hardprison) && !(board3.fieldlist[amn] instanceof Chance) ) {
             if(!(board3.fieldlist[amn] instanceof Start))
                 gui.showMessage("Du har passeret start.");
             board3.fieldlist[0].landOndField(player72);
         }
 
     }
+
+
+
     public void updatePlayerMoney(){
         for(int f = 0;f<playerArray.length;f++) {
             playArray[f].setBalance(playerArray[f].myWallet.getMoney());

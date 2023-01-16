@@ -42,7 +42,7 @@ public class  BuyableField extends Field {
  }
 
         } else {
-// hvis man lander på en andens felt.
+                // hvis man lander på en andens felt.
             if (!player10.getOwnerlist(getBoardNumber())) {
                 // scenario where player can afford the rent.
                 // den normale scenario, som sker mere ofte.
