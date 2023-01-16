@@ -99,10 +99,9 @@ import java.awt.Color;
          reverseboard[i++] = new GUI_Street("Bredgade", "Pris : 5200kr", "", "450", new Color(255, 255, 255), Color.BLACK);
          reverseboard[i++] = new GUI_Tax("| Metro |", "", "Du blir rykket til næste metro stop", new Color(0,0,50), Color.WHITE);
          reverseboard[i++] = new GUI_Street("Grønningen", "Pris : 4800kr", "", "400", new Color(237, 28, 36), Color.BLACK);
-         reverseboard[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
          reverseboard[i++] = new GUI_Street("Østerbrogade", "Pris:  4400kr", "", "350", new Color(237, 28, 36), Color.BLACK);
+         reverseboard[i++] = new GUI_Chance("?", "Prøv lykken", "Ta' et chancekort.", new Color(204, 204, 204), Color.BLACK);
          reverseboard[i++] = new GUI_Street("Trianglen", "Pris:  4400kr", "", "350", new Color(237, 28, 36), Color.BLACK);
-
          reverseboard[i++] = new GUI_Refuge("default", "Parkering", "Tag en pause ", "intet sker", new Color(255, 255, 255), Color.BLACK);
          reverseboard[i++] = new GUI_Street("Strandvejen", "Pris:  4000kr", "", "350", new Color(128, 128, 128), Color.BLACK);
          reverseboard[i++] = new GUI_Street("Hellerup", "Pris:  3600kr", "", "300", new Color(128, 128, 128), Color.BLACK);
