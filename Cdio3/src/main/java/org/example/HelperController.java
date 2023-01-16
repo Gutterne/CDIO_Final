@@ -78,20 +78,7 @@ public class HelperController {
         return m;
     }
 
-    public int findNearestFerryField(int currentPosition) {
-        int nearestFerryField = -1;
-        int nearestFerryDistance = Integer.MAX_VALUE;
-        for (int i = 0; i < board3.fieldlist.length; i++) {
-            if (board3.fieldlist[i] instanceof Ferry) {
-                int distance = (i - currentPosition + board3.fieldlist.length) % board3.fieldlist.length;
-                if (distance < nearestFerryDistance) {
-                    nearestFerryDistance = distance;
-                    nearestFerryField = i;
-                }
-            }
-        }
-        return nearestFerryField;
-    }
+
 
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
 
@@ -160,21 +147,7 @@ public class HelperController {
                 gui.showMessage("Du ejer allerede denne færge");
 
             }
-            for(int dm=0;dm <playerArray.length;dm++)
-                gui.addPlayer(playArray[dm]);
-            while (playing) {
-                for (int i = 0; i < playerArray.length; i++) {
-                    currentPlayerPosition=playerArray[i].getPositition();
-                    gui.showMessage(playerArray[i].getName() + " tryk enter:");
-                    int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
-                    LandPlayer(playerArray[i],playArray[i],posit);
-                    int nearestFerry = findNearestFerryField(posit);
-                    gui.showMessage("Nærmeste ferry felt er: " + board3.fieldlist[nearestFerry].getFieldName());
-                    passerStart(playerArray[i],posit);
-                    updatePlayerMoney();
 
-                }
-            }
 
         } else if (playerField1 instanceof Chance) {
 
@@ -184,11 +157,13 @@ public class HelperController {
                     "",
                     "Ok"
             );
-            chanceAct.chancePulls(player721,play20,board2,((Chance) playerField1).getChancecards(), gui);
+            chanceAct.chancePulls(player721,play20,board2,((Chance) playerField1).getCardsNumber());
             gui.displayChanceCard("");
             String path = Attrs.getImagePath("GUI_Field.Image.Luck");
             GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
             centerPanel.setBackground(GUI_Board.BASECOLOR);
+
+
 
         } else   if(playerField1 instanceof Metro){
             gui.showMessage("Du har landt ved Metro-Stoppet, du tar nu metroen til næste stop!");

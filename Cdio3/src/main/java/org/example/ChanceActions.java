@@ -11,121 +11,100 @@ import org.example.HelperController;
 
 public class ChanceActions {
 
-    public void chancePulls(Player player10, GUI_Player player14, GUI_Field[] board30, int chanceNum2, GUI gui, int cards) {
-        switch (cards) {
-            case 0, 1:
-                //Er ikke implementeret
-                break;
 
-            case 2, 7, 9:
+    public void chancePulls(Player player10, GUI_Player player14, GUI_Field[] board30, int cardsNumber) {
+
+        switch (cardsNumber) {
+
+            case 0, 5, 7:
                 board30[player10.getPositition()%40].removeAllCars();
                 player10.myWallet.setSquareMoney(-1000);
                 player10.myWallet.UpdateMoney();
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 3:
-                board30[player10.getPositition()%40].removeAllCars();
-                player10.myWallet.setSquareMoney(-300);
-                player10.myWallet.UpdateMoney();
-                board30[player10.getPositition()%40].setCar(player14, true);
-                break;
-            case 4, 8, 10:
+            case 2, 6, 8:
                 board30[player10.getPositition()%40].removeAllCars();
                 player10.myWallet.setSquareMoney(-200);
                 player10.myWallet.UpdateMoney();
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 5:
+            case 1, 3, 4:
                 board30[player10.getPositition()%40].removeAllCars();
                 player10.myWallet.setSquareMoney(-3000);
                 player10.myWallet.UpdateMoney();
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 12, 13:
+            case 9:
+                board30[player10.getPositition()%40].removeAllCars();
+                player10.myWallet.setSquareMoney(-2000);
+                player10.myWallet.UpdateMoney();
+                board30[player10.getPositition()%40].setCar(player14, true);
+                break;
+            case 10, 11:
                 board30[player10.getPositition()%40].removeAllCars();
                 player10.myWallet.setSquareMoney(500);
                 player10.myWallet.UpdateMoney();
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 17:
-                board30[player10.getPositition()%40].removeAllCars();
-                player10.myWallet.setSquareMoney(3000);
-                player10.myWallet.UpdateMoney();
-                board30[player10.getPositition()%40].setCar(player14, true);
-                break;
-            case 18, 19 ,20, 21, 22, 14, 15, 16:
+            case 12, 13 ,14, 15, 16, 17, 18, 19:
                 board30[player10.getPositition()%40].removeAllCars();
                 player10.myWallet.setSquareMoney(1000);
                 player10.myWallet.UpdateMoney();
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 23:
+            case 20:
                 board30[player10.getPositition()%40].removeAllCars();
                 player10.myWallet.setSquareMoney(200);
                 player10.myWallet.UpdateMoney();
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 28,29:
+            case 21,22:
                 board30[player10.getPositition()  % 40].removeAllCars();
                 player10.setPositition(player10.getPositition());
-                player10.setPositition(player10.setPositition(40));
+                player10.setPositition(player10.setPositition(0));
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 30:
+            case 23:
                 board30[player10.getPositition()%40].removeAllCars();
                 player10.setPositition(player10.getPositition()+3);
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 31,32:
+            case 24, 25:
                 board30[player10.getPositition()%40].removeAllCars();
                 player10.setPositition(player10.getPositition()-3);
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 33:
+            case 26:
                 board30[player10.getPositition()  % 40].removeAllCars();
                 player10.setPositition(player10.getPositition());
                 player10.setPositition(player10.setPositition(11));
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 34: // Virker ikke helt endnu
-                board30[player10.getPositition()  % 40].removeAllCars();
-                player10.setPositition(player10.getPositition());
-                int nearestFerry = player10.findNearestFerryField(player10.getPositition());
-                player10.setPositition(nearestFerry);
-                board30[player10.getPositition() % 40].setCar(player14, true);
-                break;
-            case 37:
+            case 27:
                 board30[player10.getPositition()  % 40].removeAllCars();
                 player10.setPositition(player10.getPositition());
                 player10.setPositition(player10.setPositition(24));
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 38:
+            case 28:
                 board30[player10.getPositition()  % 40].removeAllCars();
                 player10.setPositition(player10.getPositition());
                 player10.setPositition(player10.setPositition(32));
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 39:
-                //Ikke implementeret
-                break;
-
-            case 40:
+            case 29:
                 board30[player10.getPositition()  % 40].removeAllCars();
                 player10.setPositition(player10.getPositition());
                 player10.setPositition(player10.setPositition(19));
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 41:
+            case 30:
                 board30[player10.getPositition()  % 40].removeAllCars();
                 player10.setPositition(player10.getPositition());
                 player10.setPositition(player10.setPositition(39));
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-            case 42:
-                //Ikke implementeret endnu
-                break;
-            case 43, 44:
+            case 31, 32:
                 board30[player10.getPositition()  % 40].removeAllCars();
                 player10.setPositition(player10.getPositition());
                 player10.setPositition(player10.setPositition(10));
@@ -133,11 +112,9 @@ public class ChanceActions {
                 player10.myWallet.UpdateMoney();
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
-
-
         }
     }
 
-    public void chancePulls(Player player721, GUI_Player play20, GUI_Field[] board2, String chancecards, GUI gui) {
-    }
+   //public void chancePulls(Player player721, GUI_Player play20, GUI_Field[] board2, String chancecards, GUI gui) {
+    //}
 }
