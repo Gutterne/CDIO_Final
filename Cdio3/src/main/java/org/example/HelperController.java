@@ -14,33 +14,35 @@ import static gui_tests.TestRunExampleGame.sleep;
 
 public class HelperController {
     private boolean playing = true;
+    private int p1;
     private Board board3;
     private Holder holder;
     private GUI gui;
     private Player[] playerArray;
     private GUI_Player[] playArray;
     private GUI_Field []board2;
+    private GUI_Field [] reversalBoard;
+    private int[] buyableFields;
 
     private int[] chancecards = new int[0];
 
-
+    private Chance chance ;
+    boolean boardCondition;
     private int currentPlayerPosition;
 
     private JPanel centerPanel = new JPanel();
 
-    boolean extraturn=false;
-
-
-
-
 
     public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
-            ,GUI_Field[] board2) {
+            ,GUI_Field[] board2,GUI_Field[] reversalBoard, boolean reverseCondition) {
         this.gui = gui;
         this.playArray=playArray;
         this.playerArray=playerArray;
         holder=new Holder();
         board3= new Board();
+
+        reverseCondition = boardCondition;
+        this.reversalBoard =reversalBoard;
         this.board2=board2;
 
     }
@@ -61,6 +63,8 @@ public class HelperController {
                 passerStart(playerArray[i],posit);
                 updatePlayerMoney();
 
+
+
             }
         }
     }
@@ -68,19 +72,34 @@ public class HelperController {
        holder.sum();
        int p1 = holder.getSum();
         gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
+
+
         return p1;
     }
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
         player711.setPositition(player711.getPositition() + DiceSum);
         int m = player711.getPositition() % 40;
-        board2[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
-        board2[m].setCar(Play12, true);
+if(boardCondition == false) {
+    board2[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
+    board2[m].setCar(Play12, true);
+}
+if(boardCondition == true) {
+    reversalBoard[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
+    reversalBoard[m].setCar(Play12, true);
+}
+
         return m;
     }
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
+        Field playerField1 = board3.fieldListReverse[am];
+        Field playerFieldReverse = board3.fieldListReverse[am];
+
+        if(boardCondition == true) {
+             playerField1 = playerFieldReverse;
+            board2 = reversalBoard;
+    }
 
 
-        Field playerField1 = board3.fieldlist[am];
         if (playerField1 instanceof BuyableField) {
             if (!playerField1.isOwned()) {
                 String chosenButton = gui.getUserButtonPressed(
@@ -127,21 +146,22 @@ public class HelperController {
                 gui.showMessage("Du ejer allerede bryggeriet");
 
             }
-        } else if (playerField1 instanceof Ferry) {
-            if (!playerField1.isOwned()) {
-                String chosenButtonFerry = gui.getUserButtonPressed(
-                        "Du har landet på " + playerField1.getFieldName() + "" +
-                                ". Vil du købe denne superFærge",
-                        "Ja", "Nej"
-                );
-                if (chosenButtonFerry.equals("Ja")) {
-                    ((Ferry) playerField1).landOndField(player721, true);
-                    ((GUI_Shipping) board2[am]).setBorder(play20.getPrimaryColor());
+        }
+            if (playerField1 instanceof Ferry) {
+                if (!playerField1.isOwned()) {
+                    String chosenButtonFerry = gui.getUserButtonPressed(
+                            "Du har landet på " + playerField1.getFieldName() + "" +
+                                    ". Vil du købe denne superFærge",
+                            "Ja", "Nej"
+                    );
+                    if (chosenButtonFerry.equals("Ja")) {
+                        ((Ferry) playerField1).landOndField(player721, true);
+                        ((GUI_Shipping) board2[am]).setBorder(play20.getPrimaryColor());
+                    } else {
+                        ((Ferry) playerField1).landOndField(player721, false);
+                    }
                 } else {
-                    ((Ferry) playerField1).landOndField(player721, false);
-                }
-            } else {
-                gui.showMessage("Du ejer allerede denne færge");
+                    gui.showMessage("Du ejer allerede denne færge");
 
             }
         } else if (playerField1 instanceof Chance) {
@@ -191,9 +211,6 @@ public class HelperController {
         }
 
     }
-
-
-
     public void updatePlayerMoney(){
         for(int f = 0;f<playerArray.length;f++) {
             playArray[f].setBalance(playerArray[f].myWallet.getMoney());
