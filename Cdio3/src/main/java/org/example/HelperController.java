@@ -70,15 +70,15 @@ int plade;
             for (int i = 0; i < playerArray.length; i++) {
                 currentPlayerPosition=playerArray[i].getPositition();
                 gui.showMessage(playerArray[i].getName() + " tryk enter:");
-                int pos = movePlayer(playerArray[i], playArray[i], RollTheDice());
-                checkExtraTurn(playerArray[i], playArray[i]);
-                LandPlayer(playerArray[i], playArray[i], pos);
+                int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
 
-                LandPlayer(playerArray[i],playArray[i],pos);
+                LandPlayer(playerArray[i],playArray[i],posit);
+
+                LandPlayer(playerArray[i],playArray[i],posit);
 
 
 
-                passerStart(playerArray[i],pos);
+                passerStart(playerArray[i],posit);
                 updatePlayerMoney();
 
             }
@@ -252,14 +252,6 @@ if(plade ==2) {
         }
     }
 
-    public void checkExtraTurn(Player player, GUI_Player play) {
-        if (holder.getExtraTurn()) {
-            gui.showMessage(player.getName() + " fik ekstra tur! Kast igen:");
-            System.out.println(player.getName() + "ekstra Tur");
-            int pos = movePlayer(player, play, RollTheDice());
-            LandPlayer(player, play, pos);
-            updatePlayerMoney();
-        }
-    }
+
 
 }

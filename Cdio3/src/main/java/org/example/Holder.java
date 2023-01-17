@@ -23,14 +23,11 @@ public class Holder {
      * @return
      */
     // method that returns the current value of the "sum" variable.
-    public int sum() {
-        int roll1 = die1.roll();
-        int roll2 = die2.roll();
-        if (roll1 == roll2) {
-            extraTurn = true;
-        }
-        sum = roll1 + roll2;
+    public int  sum(){
+        sum = die1.roll()+die2.roll();
+
         return sum;
+
     }
     // method that returns the current value of the "sum" variable.
     public int getSum() {
@@ -46,16 +43,4 @@ public class Holder {
         String result = Integer.toString(sum);
         return result;
     }
-
-    public boolean getExtraTurn() {
-        return extraTurn;
-    }
-    public boolean extraTurn() {
-        if (getExtraTurn()) {
-            extraTurn = false;
-            return true;
-        }
-        return false;
-    }
-
 }
