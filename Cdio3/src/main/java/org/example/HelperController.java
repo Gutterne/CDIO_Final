@@ -18,6 +18,8 @@ public class HelperController {
     private Board board3;
     private Holder holder;
     private GUI gui;
+
+    public Audio audio = new Audio();
     private Player[] playerArray;
     private GUI_Player[] playArray;
     private GUI_Field []board2;
@@ -82,6 +84,7 @@ public class HelperController {
        holder.sum();
        int p1 = holder.getSum();
         gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
+        audio.DiceSound();
         return p1;
     }
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){

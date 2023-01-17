@@ -11,6 +11,8 @@ public class GameController {
     private GUI gui;
     private GUI gui2;
 
+    static Audio audio = new Audio();
+
 
 
     private GameBoard[] board;
@@ -45,7 +47,7 @@ public class GameController {
                 "Standard Matador", "Omvendt Matadorplade"
         );
         if (chosenButton.equals("Standard Matador")) {
-
+            audio.run();
             HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, board2,reverseBoard2,false);
             help.GameRunner();
         }
@@ -54,7 +56,7 @@ public class GameController {
             gui = new GUI(reverseBoard2);
             //gui2 = new GUI(reverseBoard2);
             //HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui2, reverseBoard2,board2,true);
-
+            audio.run();
             HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, reverseBoard2,board2,true);
             help.GameRunner();
         }
