@@ -17,16 +17,12 @@ public class ChanceActions {
         switch (cardsNumber) {
 
             case 0, 5, 7:
-                board30[player10.getPositition()%40].removeAllCars();
                 player10.myWallet.setSquareMoney(-1000);
                 player10.myWallet.UpdateMoney();
-                board30[player10.getPositition()%40].setCar(player14, true);
                 break;
             case 2, 6, 8:
-                board30[player10.getPositition()%40].removeAllCars();
                 player10.myWallet.setSquareMoney(-200);
                 player10.myWallet.UpdateMoney();
-                board30[player10.getPositition()%40].setCar(player14, true);
                 break;
             case 1, 3, 4:
                 board30[player10.getPositition()%40].removeAllCars();

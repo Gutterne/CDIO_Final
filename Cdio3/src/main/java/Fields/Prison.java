@@ -11,7 +11,7 @@ public class Prison extends Field {
         //Boolean value redirected into true.
     }
 
-    private boolean onVisit;
+    boolean onVisit;
 
     public void transport() {
         this.onVisit = true;
