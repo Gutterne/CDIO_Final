@@ -72,13 +72,15 @@ public class HelperController {
             for (int i = 0; i < playerArray.length; i++) {
                 currentPlayerPosition=playerArray[i].getPositition();
                 gui.showMessage(playerArray[i].getName() + " tryk enter:");
-                int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
+                int pos = movePlayer(playerArray[i], playArray[i], RollTheDice());
+                checkExtraTurn(playerArray[i], playArray[i]);
+                LandPlayer(playerArray[i], playArray[i], pos);
 
-                LandPlayer(playerArray[i],playArray[i],posit);
+                LandPlayer(playerArray[i],playArray[i],pos);
 
 
 
-                passerStart(playerArray[i],posit);
+                passerStart(playerArray[i],pos);
                 updatePlayerMoney();
 
             }
@@ -245,5 +247,14 @@ if(boardCondition == true) {
         }
     }
 
+    public void checkExtraTurn(Player player, GUI_Player play) {
+        if (holder.getExtraTurn()) {
+            gui.showMessage(player.getName() + " fik ekstra tur! Kast igen:");
+            System.out.println(player.getName() + "ekstra Tur");
+            int pos = movePlayer(player, play, RollTheDice());
+            LandPlayer(player, play, pos);
+            updatePlayerMoney();
+        }
+    }
 
 }

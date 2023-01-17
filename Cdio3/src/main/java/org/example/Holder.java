@@ -5,6 +5,8 @@ public class Holder {
 
 
     private int sum;
+    public boolean extraTurn;
+
 
 
 
@@ -19,11 +21,14 @@ public class Holder {
      *
      * @return
      */
-    public int  sum(){
-        sum = die1.roll()+die2.roll();
-
+    public int sum() {
+        int roll1 = die1.roll();
+        int roll2 = die2.roll();
+        if (roll1 == roll2) {
+            extraTurn = true;
+        }
+        sum = roll1 + roll2;
         return sum;
-
     }
     public int getSum() {
         return sum;
@@ -37,4 +42,15 @@ public class Holder {
         String result = Integer.toString(sum);
         return result;
     }
+    public boolean getExtraTurn() {
+        return extraTurn;
+    }
+    public boolean extraTurn() {
+        if (getExtraTurn()) {
+            extraTurn = false;
+            return true;
+        }
+        return false;
+    }
+
 }
