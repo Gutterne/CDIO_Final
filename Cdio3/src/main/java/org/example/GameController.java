@@ -10,8 +10,12 @@ public class GameController {
     private  String Textdata;
     private GUI gui;
     private GUI gui2;
-
+    public int boardInteger;
     static Audio audio = new Audio();
+
+    public Board boardP = new Board();
+
+
 
 
 
@@ -21,16 +25,11 @@ public class GameController {
     private GameBoard gameBoard;
 
     public GameController(){
-        board1 = new GUI_Field[40]; board2 = new GUI_Field[40];reverseBoard1 = new GUI_Field[40];reverseBoard2 = new GUI_Field[40];
-        board1 = GameBoard.makeFields();
-        reverseBoard1 = GameBoard.reverseField();
+        board1 = new GUI_Field[40]; board2 = new GUI_Field[40];
+        board1 = GameBoard.makeFields(1);
+        //reverseBoard1 = GameBoard.reverseField();
         for(int i = 0; i < board2.length; ++i) {
             board2[i] = board1[i];
-        }
-
-        for(int j = 0; j < reverseBoard2.length; ++j) {
-            reverseBoard2[j] = reverseBoard1[j];
-
         }
         gui = new GUI(board2);
 
@@ -47,17 +46,31 @@ public class GameController {
                 "Standard Matador", "Omvendt Matadorplade"
         );
         if (chosenButton.equals("Standard Matador")) {
+            boardInteger =1;
+            board1 = GameBoard.makeFields(1);
+
             audio.run();
-            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, board2,reverseBoard2,false);
+            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, board2,false,1);
             help.GameRunner();
         }
         if (chosenButton.equals("Omvendt Matadorplade")) {
+            board1 = GameBoard.makeFields(2);
+            for(int i = 0; i < board2.length; ++i) {
+                board2[i] = board1[i];
+            }
+            boardInteger = 2;
+            boardP.fieldGiver(boardInteger);
+
             gui.close();
-            gui = new GUI(reverseBoard2);
+
+            //gui = new GUI(reverseBoard2);
+            gui = new GUI(board2);
+
+
             //gui2 = new GUI(reverseBoard2);
             //HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui2, reverseBoard2,board2,true);
             audio.run();
-            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, reverseBoard2,board2,true);
+            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui,board2,true,2);
             help.GameRunner();
         }
     }

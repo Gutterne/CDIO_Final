@@ -18,6 +18,8 @@ public class HelperController {
     private Board board3;
     private Holder holder;
 
+
+
     private GUI gui;
     public Audio audio = new Audio();
     private Player[] playerArray;
@@ -35,6 +37,8 @@ public class HelperController {
     private Board BOARD_SIZE;
     private ChanceActions chanceAct;
 
+    public int pladenummer;
+
     private int currentPlayerPosition;
 
     private JPanel centerPanel = new JPanel();
@@ -44,19 +48,16 @@ public class HelperController {
     private int fields;
 
 
-
-
-
     public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
-            ,GUI_Field[] board2,GUI_Field[] reversalBoard, boolean reverseCondition) {
+            ,GUI_Field[] board2, boolean reverseCondition, int plade) {
         this.gui = gui;
         this.playArray=playArray;
         this.playerArray=playerArray;
         holder=new Holder();
         board3= new Board();
-
-        reverseCondition = boardCondition;
-        this.reversalBoard =reversalBoard;
+        this.pladenummer = plade;
+        this.boardCondition = reverseCondition;
+        //reverseCondition = boardCondition;
         this.board2=board2;
         chanceAct= new ChanceActions();
     }
@@ -93,30 +94,16 @@ public class HelperController {
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
         player711.setPositition(player711.getPositition() + DiceSum);
         int m = player711.getPositition() % 40;
-if(boardCondition == false) {
+
     board2[(player711.getPositition() - holder.getSum()) % 40].setCar(Play12,false);
     board2[m].setCar(Play12, true);
-}
-if(boardCondition == true) {
-    reversalBoard[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
-    reversalBoard[m].setCar(Play12, true);
-}
-
         return m;
     }
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
+        board3.fieldGiver(pladenummer);
 
+       Field playerField1 = board3.fieldlist[am];
 
-        Field playerFieldReverse = board3.fieldlist[am];
-        Field playerField1 = board3.fieldListReverse[am];
-
-        if(boardCondition == false) {
-            playerField1 = playerField1;
-        }
-        else  {
-            playerField1 = playerFieldReverse;
-            board2 = reversalBoard;
-    }
         if (playerField1 instanceof BuyableField) {
             if (!playerField1.isOwned()) {
                 String chosenButton = gui.getUserButtonPressed(
@@ -215,12 +202,7 @@ if(boardCondition == true) {
               else {
                 playerField1.landOndField(player721);
             }
-
-
-
         }
-
-
     public void passerStart(Player player72,int amn){
         if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.fieldlist[amn] instanceof Hardprison) && !(board3.fieldlist[amn] instanceof Chance) ) {
             if(!(board3.fieldlist[amn] instanceof Start))
