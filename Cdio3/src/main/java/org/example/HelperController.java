@@ -214,7 +214,7 @@ if(boardCondition ==true) {
         } else if (playerField1 instanceof Chance) {
 
             System.out.println("Chance Land");
-            //audio.ChanceSound(); // audio clip for "prøv lykken" - clip of a lucky ring bell noise.
+            audio.ChanceSound(); // audio clip for "prøv lykken" - clip of a lucky ring bell noise.
             gui.displayChanceCard(((Chance) playerField1).getChancecards());
             String chosen = gui.getUserButtonPressed(
                     "",
@@ -241,7 +241,7 @@ if(boardCondition ==true) {
         else if (playerField1 instanceof Hardprison){
 
             gui.showMessage("Du skal gå til fængsel og modtage ikke 4000");
-            //audio.JailSound(); // Audio sound for jail
+            audio.JailSound(); // Audio sound for jail
             gui.showMessage("Du har betalt 1000 kr. for at få love at kaster teninge næste gange ");
             board2t[player721.getPositition()  % 40].removeAllCars();
             ((Hardprison)playerField1).landOndField(player721);
