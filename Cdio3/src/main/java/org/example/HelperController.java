@@ -25,7 +25,7 @@ public class HelperController {
     public Audio audio = new Audio();
     private Player[] playerArray;
     private GUI_Player[] playArray;
-    private GUI_Field []board2;
+    private GUI_Field [] board2t;
     private GUI_Field [] reversalBoard;
     private int[] buyableFields;
 
@@ -56,10 +56,18 @@ int plade;
         this.playerArray=playerArray; // playerArray - an array of Player objects
         holder=new Holder(); // holder - an instance of the Holder class
         board3= new Board(); // board3 - an instance of the Board class
-        this.plade = plate;
-        reverseCondition = boardCondition;
-        this.reversalBoard =reversalBoard; // reversalBoard - an array of GUI_Field objects representing the reversed game board
-        this.board2=board2; // board2 - an array of GUI_Field objects representing the game board
+        boardCondition = reverseCondition;
+        this.reversalBoard =reversalBoard;
+        this.board2t = board2;
+
+        if(reverseCondition ==true){
+            this.reversalBoard =board2t;
+        }
+        if(reverseCondition == false){
+            this.board2t =board2;
+        }
+   // reversalBoard - an array of GUI_Field objects representing the reversed game board
+       // board2 - an array of GUI_Field objects representing the game board
         chanceAct= new ChanceActions();  // chanceAct - an instance of the ChanceActions class
     }
 
@@ -71,7 +79,7 @@ int plade;
 
         for(int dm=0;dm<playerArray.length;dm++) {
             gui.addPlayer(playArray[dm]);
-            board2[0].setCar(playArray[dm],true);
+            board2t[0].setCar(playArray[dm],true);
         }
 // playing - a boolean that keeps track of whether the game is still in progress or not
         while (playing) {
@@ -104,37 +112,42 @@ int plade;
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
         player711.setPositition(player711.getPositition() + DiceSum);
         int m = player711.getPositition() % 40;
-        board2[(player711.getPositition() - holder.getSum()) % 40].setCar(Play12,false);
-        board2[m].setCar(Play12, true);
+        board2t[(player711.getPositition() - holder.getSum()) % 40].setCar(Play12,false);
+        board2t[m].setCar(Play12, true);
 if(boardCondition == false) {
-    board2[(player711.getPositition() - holder.getSum()) % 40].setCar(Play12,false);
-    board2[m].setCar(Play12, true);
+    board2t[(player711.getPositition() - holder.getSum()) % 40].setCar(Play12,false);
+    board2t[m].setCar(Play12, true);
 }
-if(plade ==2) {
-    board2 = reversalBoard;
+if(boardCondition ==true) {
+    board2t = reversalBoard;
     reversalBoard[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
     reversalBoard[m].setCar(Play12, true);
 }
-
         return m;
     }
     // This method takes in a Player object, a GUI_Player object, and an integer as parameters.
     // It checks the field the player has landed on and performs the appropriate action.
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
 
-
+/*
+        Field playerFieldReverse = board3.fieldListReverse[am];
+        Field playerField1 = board3.fieldlist[am];
+        if (plade == 2) {
+            playerField1 = board3.fieldListReverse[am];
+            board2t = reversalBoard;
+        }else{
+          playerField1 = board3.fieldlist[am];
+*/
         Field playerFieldReverse = board3.fieldListReverse[am];
         Field playerField1 = board3.fieldlist[am];
 
+        if(boardCondition == false) {
+            playerField1 = playerField1;
+        }
+        else {
+            playerField1 = playerFieldReverse;
+        }
 
-        if (plade == 2) {
-            playerField1 = board3.fieldListReverse[am];
-            board2 = reversalBoard;
-        }else{
-          playerField1 = board3.fieldlist[am];
-
-
-    }
         if (playerField1 instanceof BuyableField) {
             if (!playerField1.isOwned()) {
                 String chosenButton = gui.getUserButtonPressed(
@@ -144,8 +157,8 @@ if(plade ==2) {
                 );
                 if (chosenButton.equals("Ja")) {
                     ((BuyableField) playerField1).landOndField(player721, true);
-                    if (board2[am] instanceof GUI_Street) {
-                        ((GUI_Street) board2[am]).setBorder(play20.getPrimaryColor());
+                    if (board2t[am] instanceof GUI_Street) {
+                        ((GUI_Street) board2t[am]).setBorder(play20.getPrimaryColor());
                     }
                 }
                 else {
@@ -173,7 +186,7 @@ if(plade ==2) {
                 );
                 if (chosenButtonBrewery.equals("Ja")) {
                     ((Brewery) playerField1).landOndField(player721, true);
-                    ((GUI_Brewery) board2[am]).setBorder(play20.getPrimaryColor());
+                    ((GUI_Brewery) board2t[am]).setBorder(play20.getPrimaryColor());
                 } else {
                     ((Brewery) playerField1).landOndField(player721, false);
                 }
@@ -190,7 +203,7 @@ if(plade ==2) {
                 );
                 if (chosenButtonFerry.equals("Ja")) {
                     ((Ferry) playerField1).landOndField(player721, true);
-                    ((GUI_Shipping) board2[am]).setBorder(play20.getPrimaryColor());
+                    ((GUI_Shipping) board2t[am]).setBorder(play20.getPrimaryColor());
                 } else {
                     ((Ferry) playerField1).landOndField(player721, false);
                 }
@@ -201,14 +214,14 @@ if(plade ==2) {
         } else if (playerField1 instanceof Chance) {
 
             System.out.println("Chance Land");
-            //audio.ChanceSound(); // audio clip for "prøv lykken" - clip of a lucky ring bell noise.
+            audio.ChanceSound(); // audio clip for "prøv lykken" - clip of a lucky ring bell noise.
             gui.displayChanceCard(((Chance) playerField1).getChancecards());
             String chosen = gui.getUserButtonPressed(
                     "",
                     "Ok"
             );
 
-            chanceAct.chancePulls(player721,play20,board2,((Chance) playerField1).getCardsNumber());
+            chanceAct.chancePulls(player721,play20, board2t,((Chance) playerField1).getCardsNumber());
             gui.displayChanceCard("");
             String path = Attrs.getImagePath("GUI_Field.Image.Luck");
             GUI_Center.label[0].setIcon(new ImageIcon(this.getClass().getResource(path)));
@@ -220,19 +233,19 @@ if(plade ==2) {
 
                 audio.MetroSound(); // Audio sound - metro audio file says DSB clip "Næste Stop"
                 gui.showMessage("Du har landt ved Metro-Stoppet, du tar nu metroen til næste stop!");
-                board2[player721.getPositition()  % 40].removeAllCars();
+                board2t[player721.getPositition()  % 40].removeAllCars();
                 ((Metro)playerField1).landOndField(player721);
-                board2[player721.getPositition() %40].setCar(play20, true);
+                board2t[player721.getPositition() %40].setCar(play20, true);
         }
 
         else if (playerField1 instanceof Hardprison){
 
             gui.showMessage("Du skal gå til fængsel og modtage ikke 4000");
-            //audio.JailSound(); // Audio sound for jail
+            audio.JailSound(); // Audio sound for jail
             gui.showMessage("Du har betalt 1000 kr. for at få love at kaster teninge næste gange ");
-            board2[player721.getPositition()  % 40].removeAllCars();
+            board2t[player721.getPositition()  % 40].removeAllCars();
             ((Hardprison)playerField1).landOndField(player721);
-            board2[player721.getPositition()%40].setCar(play20, true);
+            board2t[player721.getPositition()%40].setCar(play20, true);
               }
               else {
                 playerField1.landOndField(player721);
@@ -262,12 +275,12 @@ public void showOptions(Player play12) {
 
         int feltNumber = gui.getUserInteger("Skrive det feltnumere på det du ænsker at sælge.(Please, ik bruge bogstaver!)");
         if (play12.getOwnerlist(feltNumber) && board3.fieldlist[feltNumber - 1] instanceof BuyableField
-                && board2[feltNumber - 1] instanceof GUI_Street) {
+                && board2t[feltNumber - 1] instanceof GUI_Street) {
             play12.myWallet.setSquareMoney(((BuyableField) board3.fieldlist[feltNumber - 1]).getCost() / 2);
             play12.myWallet.UpdateMoney();
             play12.setOwnerlist(feltNumber, false);
             ((BuyableField) board3.fieldlist[feltNumber - 1]).sellHouse(null);
-            ((GUI_Street) board2[feltNumber - 1]).setBorder(Color.BLACK);
+            ((GUI_Street) board2t[feltNumber - 1]).setBorder(Color.BLACK);
 
         }
 
@@ -276,7 +289,7 @@ public void showOptions(Player play12) {
 
         int playerNumber = gui.getUserInteger("Skriv hvem du ønsker at sælge til .(Et tal fra 3-6)");
         if (play12.getOwnerlist(feltNumber) && board3.fieldlist[feltNumber - 1] instanceof BuyableField
-                && board2[feltNumber - 1] instanceof GUI_Street) {
+                && board2t[feltNumber - 1] instanceof GUI_Street) {
             String chosenButtomkober = gui.getUserButtonPressed(
                     "Player" + playerNumber + "vil du købe feltet",
                     "Ja", "Nej");
@@ -289,7 +302,7 @@ public void showOptions(Player play12) {
                 play12.setOwnerlist(feltNumber, false);
                 playerArray[playerNumber - 1].setOwnerlist(feltNumber);
                 ((BuyableField) board3.fieldlist[feltNumber - 1]).sellHouse(playerArray[playerNumber - 1]);
-                ((GUI_Street) board2[feltNumber - 1]).setBorder(playArray[playerNumber - 1].getPrimaryColor());
+                ((GUI_Street) board2t[feltNumber - 1]).setBorder(playArray[playerNumber - 1].getPrimaryColor());
 
 
             }
@@ -300,10 +313,10 @@ public void showOptions(Player play12) {
 
     else if (textdata.equals("Køb et hus")){
         int feltNumber = gui.getUserInteger("Skriv det feltnummer, du ønsker at bygge hus på .(Please, ik bruge bogstaver!");
-if( board3.fieldlist[feltNumber-1] instanceof BuyableField && board2[feltNumber-1] instanceof GUI_Street && ((BuyableField) board3.fieldlist[feltNumber-1]).getHouse()<5){
+if( board3.fieldlist[feltNumber-1] instanceof BuyableField && board2t[feltNumber-1] instanceof GUI_Street && ((BuyableField) board3.fieldlist[feltNumber-1]).getHouse()<5){
 
     ((BuyableField) board3.fieldlist[feltNumber-1]).addHouse();
-    ((GUI_Street) board2[feltNumber-1]).setHouses(((BuyableField) board3.fieldlist[feltNumber-1]).getHouse());
+    ((GUI_Street) board2t[feltNumber-1]).setHouses(((BuyableField) board3.fieldlist[feltNumber-1]).getHouse());
 
 
 }
@@ -312,9 +325,9 @@ if( board3.fieldlist[feltNumber-1] instanceof BuyableField && board2[feltNumber-
     else if (textdata.equals("Køb et hotel")){
         int feltNumber = gui.getUserInteger("Skriv det feltnummer, du ønsker at bygge et hotel på .(Please, ik bruge bogstaver!");
 
-        if( board3.fieldlist[feltNumber-1] instanceof BuyableField && board2[feltNumber-1] instanceof GUI_Street && ((BuyableField) board3.fieldlist[feltNumber-1]).getHouse()==4){
+        if( board3.fieldlist[feltNumber-1] instanceof BuyableField && board2t[feltNumber-1] instanceof GUI_Street && ((BuyableField) board3.fieldlist[feltNumber-1]).getHouse()==4){
             ((BuyableField) board3.fieldlist[feltNumber-1]).addHouse();
-            ((GUI_Street) board2[feltNumber-1]).setHotel(true);
+            ((GUI_Street) board2t[feltNumber-1]).setHotel(true);
 
         }
     }
