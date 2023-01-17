@@ -18,7 +18,6 @@ public class HelperController {
     private boolean playing = true;
     private Board board3;
     private Holder holder;
-    private ColourSet colourSet;
     private GUI gui;
     private Player[] playerArray;
     private GUI_Player[] playArray;
@@ -46,7 +45,6 @@ public class HelperController {
         holder=new Holder();
         board3= new Board();
         this.board2=board2;
-        colourSet= new ColourSet();
 
     }
 
@@ -215,7 +213,7 @@ public void showOptions(Player play12) {
         int feltNumber = gui.getUserInteger("Skrive det feltnumere på det du ænsker at sælge.(Please, ik bruge bogstaver!)");
         if (play12.getOwnerlist(feltNumber) && board3.fieldlist[feltNumber - 1] instanceof BuyableField
                 && board2[feltNumber - 1] instanceof GUI_Street) {
-            play12.myWallet.setSquareMoney(((BuyableField) board3.fieldlist[feltNumber - 1]).getPrice2() / 2);
+            play12.myWallet.setSquareMoney(((BuyableField) board3.fieldlist[feltNumber - 1]).getCost() / 2);
             play12.myWallet.UpdateMoney();
             play12.setOwnerlist(feltNumber, false);
             ((BuyableField) board3.fieldlist[feltNumber - 1]).sellHouse(null);
@@ -234,9 +232,9 @@ public void showOptions(Player play12) {
                     "Ja", "Nej");
             if (chosenButtomkober.equals("Ja")) {
 
-                play12.myWallet.setSquareMoney(((BuyableField) board3.fieldlist[feltNumber - 1]).getPrice2());
+                play12.myWallet.setSquareMoney(((BuyableField) board3.fieldlist[feltNumber - 1]).getCost());
                 play12.myWallet.UpdateMoney();
-                playerArray[playerNumber - 1].myWallet.setSquareMoney(-((BuyableField) board3.fieldlist[feltNumber - 1]).getPrice2());
+                playerArray[playerNumber - 1].myWallet.setSquareMoney(-((BuyableField) board3.fieldlist[feltNumber - 1]).getCost());
                 playerArray[playerNumber - 1].myWallet.UpdateMoney();
                 play12.setOwnerlist(feltNumber, false);
                 playerArray[playerNumber - 1].setOwnerlist(feltNumber);
@@ -252,14 +250,25 @@ public void showOptions(Player play12) {
 
     else if (textdata.equals("Køb et hus")){
         int feltNumber = gui.getUserInteger("Skriv det feltnummer, du ønsker at bygge hus på .(Please, ik bruge bogstaver!");
-if(colourSet.checkFullColor(play12,board3.fieldlist,feltNumber) && board3.fieldlist[feltNumber-1] instanceof BuyableField && board2[feltNumber-1] instanceof GUI_Street){
-    ((BuyableField) board3.fieldlist[feltNumber-1]).addHouse(1);
-    ((GUI_Street) board2[feltNumber-1]).setHouses(1);
+if( board3.fieldlist[feltNumber-1] instanceof BuyableField && board2[feltNumber-1] instanceof GUI_Street && ((BuyableField) board3.fieldlist[feltNumber-1]).getHouse()<5){
+
+    ((BuyableField) board3.fieldlist[feltNumber-1]).addHouse();
+    ((GUI_Street) board2[feltNumber-1]).setHouses(((BuyableField) board3.fieldlist[feltNumber-1]).getHouse());
 
 
 }
 
-    }}
+    }
+    else if (textdata.equals("Køb et hotel")){
+        int feltNumber = gui.getUserInteger("Skriv det feltnummer, du ønsker at bygge et hotel på .(Please, ik bruge bogstaver!");
+
+        if( board3.fieldlist[feltNumber-1] instanceof BuyableField && board2[feltNumber-1] instanceof GUI_Street && ((BuyableField) board3.fieldlist[feltNumber-1]).getHouse()==4){
+            ((BuyableField) board3.fieldlist[feltNumber-1]).addHouse();
+            ((GUI_Street) board2[feltNumber-1]).setHotel(true);
+
+        }
+    }
+}
     public void updatePlayerMoney(){
         for(int f = 0;f<playerArray.length;f++) {
             playArray[f].setBalance(playerArray[f].myWallet.getMoney());

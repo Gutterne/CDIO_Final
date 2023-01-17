@@ -14,6 +14,7 @@ public class Start extends Field{
     public void landOndField(Player player10) {
         player10.myWallet.setSquareMoney(money);
         player10.myWallet.UpdateMoney();
+        System.out.println(player10.getPositition()+"akæsjfklajdfoilkjakldfjalk");
     }
 
 }

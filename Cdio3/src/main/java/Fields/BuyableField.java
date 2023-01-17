@@ -4,14 +4,15 @@ import org.example.Player;
 
 
 public class  BuyableField extends Field {
-    private  int rent0,rent1,rent2,rent3,rent4,rent5;
+    private  int rent0,rent1,rent2,rent3,rent4,rent5,cost;
     private Player owner;
     private String color, valg;
-    private int House,hotel,price2;
+    private int House=0,hotel,price2;
 
     public BuyableField(String fieldName,String color, int BoardNumber,int cost, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5){
         super(fieldName,BoardNumber);
         this.color=color;
+        this.cost=cost;
         this.rent0=rent0; this.rent1=rent1; this.rent2=rent2;this.rent3=rent3;this.rent4=rent4;this.rent5=rent5;
   price2=rent0;
 
@@ -28,8 +29,8 @@ public class  BuyableField extends Field {
             System.out.println("Vil du købe skøden for "+ price2 +"?");
   // hvis ja, bliver man ejeren, så længe man har råd til det.
  if (choice){
-            if (player10.myWallet.getMoney() > price2) {
-                player10.myWallet.setSquareMoney(-price2);
+            if (player10.myWallet.getMoney() > cost) {
+                player10.myWallet.setSquareMoney(-cost);
                 player10.myWallet.UpdateMoney();
                 player10.setOwnerlist(getBoardNumber());
                 owned = true;
@@ -73,25 +74,30 @@ public class  BuyableField extends Field {
                 }
             }
         }
-        public void addHouse(int antalHuse){
-          if(antalHuse==1) {
+        public void addHouse(){
+            if(House<=3){
+                House++;
+            }
+
+
+          if(House==1) {
            price2 = rent1;
-           House = 1;
+
 }
 
-else if(antalHuse==2){
+else if(House==2){
     price2 =rent2;
-    House=2;}
-else if (antalHuse==3){
+    }
+else if (House==3){
     price2 =rent3;
-    House=3;}
-    else if (antalHuse==4){
+   }
+    else if (House==4){
         price2 =rent4;
-        House=4;}
+        }
 
     else{
         price2 =rent5;
-        hotel=1;}
+        House=5;}
 
 
 
@@ -127,7 +133,9 @@ else if (antalHuse==3){
         return price2;
     }
 
-
+    public int getCost() {
+        return cost;
+    }
 }
 
 
