@@ -27,7 +27,13 @@ public class ChanceActions {
                 player10.myWallet.setSquareMoney(-200);
                 player10.myWallet.UpdateMoney();
                 break;
-            case 1, 3, 4:
+            case 1:
+                board30[player10.getPositition()%40].removeAllCars();
+                player10.myWallet.setSquareMoney(-300);
+                player10.myWallet.UpdateMoney();
+                board30[player10.getPositition()%40].setCar(player14, true);
+                break;
+            case 3, 4:
                 board30[player10.getPositition()%40].removeAllCars();
                 player10.myWallet.setSquareMoney(-3000);
                 player10.myWallet.UpdateMoney();
@@ -58,7 +64,7 @@ public class ChanceActions {
                 board30[player10.getPositition()%40].setCar(player14, true);
                 break;
             case 21,22:
-                board30[player10.getPositition()  % 40].removeAllCars();
+                board30[player10.getPositition()%40].removeAllCars();
                 player10.setPositition(player10.getPositition());
                 player10.setPositition(player10.setPositition(0));
                 board30[player10.getPositition()%40].setCar(player14, true);
@@ -114,6 +120,5 @@ public class ChanceActions {
         }
     }
 
-   //public void chancePulls(Player player721, GUI_Player play20, GUI_Field[] board2, String chancecards, GUI gui) {
-    //}
+
 }
