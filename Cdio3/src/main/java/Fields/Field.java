@@ -6,6 +6,7 @@ public abstract class  Field {
     protected final int BoardNumber;
     Player player1, player2, player3, player4;
     protected boolean owned = false;
+    private String color;
 
     public Field(String fieldName, int BoardNumber) {
         this.fieldName = fieldName;
@@ -24,11 +25,12 @@ public abstract class  Field {
         return owned;
     }
 
-    public int getCashOut() {
-        return cashOut;
-    }
 
     public String getFieldName() {
         return fieldName;
+    }
+
+    public String getColor() {
+        return color;
     }
 }

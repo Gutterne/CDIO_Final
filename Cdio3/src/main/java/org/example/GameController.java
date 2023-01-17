@@ -6,8 +6,7 @@ import gui_main.GUI;
 public class GameController {
     private SettingsController set;
     private HelperController helper;
-    private  String inputText= "";
-    private  String Textdata;
+
     private GUI gui;
     private GameBoard[] board;
     private GameBoard [] board4;

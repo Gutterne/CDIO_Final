@@ -6,11 +6,12 @@ import gui_main.GUI;
 public class Player {
     public Wallet myWallet;
     private int money2,positition;
-    private boolean[] ownerlist;
+    public boolean[] ownerlist;
     private int[] ints;
     public boolean isInJail;
     private boolean inPrison;
     private int balance;
+    private String []colourset;
 
     String name;
     public Player(String name, int money) {
@@ -38,7 +39,9 @@ public class Player {
     public void setOwnerlist(int bool) {
         ownerlist[bool]= true;
     }
-
+    public void setOwnerlist(int bool,boolean bole) {
+        ownerlist[bool]= bole;
+    }
     public boolean isInJail() {
         return isInJail;
     }
@@ -68,6 +71,10 @@ public class Player {
     public int getBalance() {
         return balance;
     }
+
+
+
+
 
 }
 
