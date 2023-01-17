@@ -5,7 +5,7 @@ import org.example.Player;
 
 public class Metro extends Field {
     private int cost;
-
+    private boolean taken=false;
     Player travelplayer;
     private String color;
 
@@ -16,17 +16,21 @@ public class Metro extends Field {
     }
 
     public void landOndField(Player travelPlayer) {
-        if (travelPlayer.getPositition() % 40 == 7) {
-            travelPlayer.setPositition(15);
-        } //second metro stop to third
-        else if (travelPlayer.getPositition() % 40 == 15) {
-            travelPlayer.setPositition(25);
-        } //third metro stop to fourth
-        else if (travelPlayer.getPositition() % 40 == 25) {
-            travelPlayer.setPositition(36);
-        } //fourth metro stop to first
-        else if (travelPlayer.getPositition() % 40 == 36) {
-            travelPlayer.setPositition(7);
+        if(!taken){
+            if (travelPlayer.getPositition() % 40 == 7) {
+                travelPlayer.setPositition(15);
+            } //second metro stop to third
+            else if (travelPlayer.getPositition() % 40 == 15) {
+                travelPlayer.setPositition(25);
+            } //third metro stop to fourth
+            else if (travelPlayer.getPositition() % 40 == 25) {
+                travelPlayer.setPositition(36);
+            } //fourth metro stop to first
+            else if (travelPlayer.getPositition() % 40 == 36) {
+                travelPlayer.setPositition(7);
+            }
         }
+        taken=true;
+
     }
 }
