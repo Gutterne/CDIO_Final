@@ -184,6 +184,7 @@ if(boardCondition == true) {
         } else if (playerField1 instanceof Chance) {
 
             System.out.println("Chance Land");
+            audio.ChanceSound(); // audio clip for "prøv lykken" - clip of a lucky ring bell noise.
             gui.displayChanceCard(((Chance) playerField1).getChancecards());
             String chosen = gui.getUserButtonPressed(
                     "",
@@ -200,17 +201,18 @@ if(boardCondition == true) {
 
         else if(playerField1 instanceof Metro){
 
+                audio.MetroSound(); // Audio sound - metro audio file says DSB clip "Næste Stop"
                 gui.showMessage("Du har landt ved Metro-Stoppet, du tar nu metroen til næste stop!");
                 board2[player721.getPositition()  % 40].removeAllCars();
                 ((Metro)playerField1).landOndField(player721);
                 board2[player721.getPositition() %40].setCar(play20, true);
-
         }
 
 
         else if (playerField1 instanceof Hardprison){
 
             gui.showMessage("Du skal gå til fængsel og modtage ikke 4000");
+            audio.JailSound(); // Audio sound for jail
             gui.showMessage("Du har betalt 1000 kr. for at få love at kaster teninge næste gange ");
             board2[player721.getPositition()  % 40].removeAllCars();
             ((Hardprison)playerField1).landOndField(player721);
@@ -228,6 +230,7 @@ if(boardCondition == true) {
     public void passerStart(Player player72,int amn){
         if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.fieldlist[amn] instanceof Hardprison) && !(board3.fieldlist[amn] instanceof Chance) ) {
             if(!(board3.fieldlist[amn] instanceof Start))
+                audio.StartSound(); // audio file for passing start - voice clip of a short lucky bell
                 gui.showMessage("Du har passeret start.");
             board3.fieldlist[0].landOndField(player72);
         }
