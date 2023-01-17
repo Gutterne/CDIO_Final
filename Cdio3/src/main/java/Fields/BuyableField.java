@@ -7,7 +7,7 @@ import org.example.Player;
 public class  BuyableField extends Field {
     //directory of variables
     private  int cost;
-    private  int rent0,rent1,rent2,rent3,rent4,rent5,cost;
+    private  int rent0,rent1,rent2,rent3,rent4,rent5;
     private Player owner;
     private String color, valg;
     private int House=0,hotel,price2;
