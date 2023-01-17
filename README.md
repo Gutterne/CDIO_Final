@@ -15,4 +15,4 @@ For at bygge programmet, gør man følgende:
 
 For at teste programmet, skal man have udført ovenstående tutorial, fra 1-3, Hvor man går videre fra punkt 3:
 1. Gå ind i CDIO3>src>test>java>Fields>HardprisonTest.java & CDIO3>src>test>java>Fields>Prisontest.java
-2. taste på alt+shift+F10 
+2. tryk på alt+shift+F10 
