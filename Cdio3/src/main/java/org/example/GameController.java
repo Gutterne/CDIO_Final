@@ -39,7 +39,7 @@ public class GameController {
     }
 
     public void play() {
-        int x = Integer.parseInt(gui.getUserSelection("Hvor mange spillere skal spille?", "2", "3", "4", "5", "6"));
+        int x = Integer.parseInt(gui.getUserSelection("Hvor mange spillere skal spille?",  "3", "4", "5", "6"));
         set = new SettingsController(x);
         set.provideSettings();
         String chosenButton = gui.getUserButtonPressed(
