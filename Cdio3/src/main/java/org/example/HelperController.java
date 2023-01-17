@@ -17,7 +17,9 @@ public class HelperController {
     private int p1;
     private Board board3;
     private Holder holder;
+
     private GUI gui;
+    public Audio audio = new Audio();
     private Player[] playerArray;
     private GUI_Player[] playArray;
     private GUI_Field []board2;
@@ -60,8 +62,11 @@ public class HelperController {
     }
 
     public void GameRunner(){
-        for(int dm=0;dm<playerArray.length;dm++)
+        for(int dm=0;dm<playerArray.length;dm++) {
             gui.addPlayer(playArray[dm]);
+            board2[0].setCar(playArray[dm],true);
+        }
+
         while (playing) {
             for (int i = 0; i < playerArray.length; i++) {
                 currentPlayerPosition=playerArray[i].getPositition();
@@ -82,13 +87,14 @@ public class HelperController {
        holder.sum();
        int p1 = holder.getSum();
         gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
+        audio.DiceSound();
         return p1;
     }
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
         player711.setPositition(player711.getPositition() + DiceSum);
         int m = player711.getPositition() % 40;
 if(boardCondition == false) {
-    board2[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
+    board2[(player711.getPositition() - holder.getSum()) % 40].setCar(Play12,false);
     board2[m].setCar(Play12, true);
 }
 if(boardCondition == true) {
@@ -99,15 +105,18 @@ if(boardCondition == true) {
         return m;
     }
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
-        Field playerField1 = board3.fieldlist[am];
-        Field playerFieldReverse = board3.fieldListReverse[am];
 
-        if(boardCondition == true) {
-             playerField1 = playerFieldReverse;
+
+        Field playerFieldReverse = board3.fieldlist[am];
+        Field playerField1 = board3.fieldListReverse[am];
+
+        if(boardCondition == false) {
+            playerField1 = playerField1;
+        }
+        else  {
+            playerField1 = playerFieldReverse;
             board2 = reversalBoard;
     }
-
-
         if (playerField1 instanceof BuyableField) {
             if (!playerField1.isOwned()) {
                 String chosenButton = gui.getUserButtonPressed(
