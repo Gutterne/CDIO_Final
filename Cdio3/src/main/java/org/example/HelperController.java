@@ -74,7 +74,7 @@ public class HelperController {
         ((BuyableField)board3.fieldlist[11]).setOwner(playerArray[0]);
         ((BuyableField)board3.fieldlist[13]).setOwner(playerArray[0]);
         ((BuyableField)board3.fieldlist[14]).setOwner(playerArray[0]);
-        for(int dm=0;dm<playerArray.length;dm++)
+
         for(int dm=0;dm<playerArray.length;dm++) {
             gui.addPlayer(playArray[dm]);
             board2[0].setCar(playArray[dm],true);
@@ -124,8 +124,8 @@ if(boardCondition == true) {
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
 
 
-        Field playerFieldReverse = board3.fieldlist[am];
-        Field playerField1 = board3.fieldListReverse[am];
+        Field playerFieldReverse = board3.fieldListReverse[am];
+        Field playerField1 = board3.fieldlist[am];
 
         if(boardCondition == false) {
             playerField1 = playerField1;
