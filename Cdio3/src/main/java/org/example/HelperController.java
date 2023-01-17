@@ -67,15 +67,7 @@ int plade;
 // performs various actions for each player,
 // such as moving the player, checking for extra turns, landing the player on a field, and updating player money.
     public void GameRunner(){
-        playerArray[0].setOwnerlist(12);
-        playerArray[0].setOwnerlist(14);
-        playerArray[0].setOwnerlist(15);
-        ((GUI_Street)board2[11]).setBorder(playArray[0].getPrimaryColor());
-        ((GUI_Street)board2[13]).setBorder(playArray[0].getPrimaryColor());
-        ((GUI_Street)board2[14]).setBorder(playArray[0].getPrimaryColor());
-        ((BuyableField)board3.fieldlist[11]).setOwner(playerArray[0]);
-        ((BuyableField)board3.fieldlist[13]).setOwner(playerArray[0]);
-        ((BuyableField)board3.fieldlist[14]).setOwner(playerArray[0]);
+
 
         for(int dm=0;dm<playerArray.length;dm++) {
             gui.addPlayer(playArray[dm]);
@@ -213,7 +205,7 @@ if(plade ==2) {
         } else if (playerField1 instanceof Chance) {
 
             System.out.println("Chance Land");
-            audio.ChanceSound(); // audio clip for "prøv lykken" - clip of a lucky ring bell noise.
+            //audio.ChanceSound(); // audio clip for "prøv lykken" - clip of a lucky ring bell noise.
             gui.displayChanceCard(((Chance) playerField1).getChancecards());
             String chosen = gui.getUserButtonPressed(
                     "",
@@ -240,7 +232,7 @@ if(plade ==2) {
         else if (playerField1 instanceof Hardprison){
 
             gui.showMessage("Du skal gå til fængsel og modtage ikke 4000");
-            audio.JailSound(); // Audio sound for jail
+            //audio.JailSound(); // Audio sound for jail
             gui.showMessage("Du har betalt 1000 kr. for at få love at kaster teninge næste gange ");
             board2[player721.getPositition()  % 40].removeAllCars();
             ((Hardprison)playerField1).landOndField(player721);
@@ -258,7 +250,7 @@ if(plade ==2) {
     public void passerStart(Player player72,int amn){
         if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.fieldlist[amn] instanceof Hardprison) ) {
             if(!(board3.fieldlist[amn] instanceof Start))
-                audio.StartSound(); // audio file for passing start - voice clip of a short lucky bell
+                //audio.StartSound(); // audio file for passing start - voice clip of a short lucky bell
                 gui.showMessage("Du har passeret start.");
             board3.fieldlist[0].landOndField(player72);
         }
