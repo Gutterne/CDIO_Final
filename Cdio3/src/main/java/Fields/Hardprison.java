@@ -2,6 +2,7 @@ package Fields;
 
 import org.example.Player;
 import org.w3c.dom.ls.LSOutput;
+//this class is responsible for field actions when the individual player lands on the following field, all of this is used in the backend board.
 
 //Hardprison.java is a part of the prison field which has rougher rules on the player.
 //Prison.java contains the less rougher rules, and is esenntially the same as parking.
@@ -13,6 +14,7 @@ public class Hardprison extends Field{
 
     }
 
+    //scenario when you "land on the field"
     @Override
     public void landOndField(Player player1) {
 

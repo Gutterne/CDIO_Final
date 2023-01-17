@@ -1,14 +1,20 @@
 package Fields;
 
 import org.example.Player;
+//this class is responsible for field actions when the individual player lands on the following field, all of this is used in the backend board.
 
 
 public class  BuyableField extends Field {
+    //directory of variables
+    private  int cost;
     private  int rent0,rent1,rent2,rent3,rent4,rent5,cost;
     private Player owner;
     private String color, valg;
     private int House=0,hotel,price2;
 
+    //this method is referenced in board.java and inherits much of it's properties from fields.
+    //the buyable field, contains all of the following requirements for each field, from the matador task requirements
+    //field requirements given by the teacher, in the excel document, in Materials>Fields
     public BuyableField(String fieldName,String color, int BoardNumber,int cost, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5){
         super(fieldName,BoardNumber);
         this.color=color;
@@ -24,9 +30,8 @@ public class  BuyableField extends Field {
     public void landOndField(Player player10,Boolean choice) {
 // Her checker vi om det er første gang der nogen der lander på feltet.
 // Normale scenario, da folk sikker kommer til at købe alle skøder de kan.
-
         if (owned == false) {
-            System.out.println("Vil du købe skøden for "+ price2 +"?");
+            System.out.println("Vil du købe skøden for "+ cost +"?");
   // hvis ja, bliver man ejeren, så længe man har råd til det.
  if (choice){
             if (player10.myWallet.getMoney() > cost) {

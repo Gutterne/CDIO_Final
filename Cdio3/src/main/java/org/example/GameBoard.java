@@ -10,7 +10,9 @@ import gui_fields.GUI_Start;
 import gui_fields.GUI_Street;
 import gui_fields.GUI_Tax;
 import java.awt.Color;
+//FRONTEND BOARD
 
+//This class is creating a class called "GameBoard" which creates an array of GUI_Field objects
  public class  GameBoard {
      SettingsController CarInfo;
      boolean owned =  false;
@@ -23,6 +25,7 @@ import java.awt.Color;
     public static GUI_Field[] makeFields() {
         GUI_Field[] board = new GUI_Field[41];
 
+        //Each field is given a name, a description, and various other properties such as price, starting rent and color.
         int i = 0;
 
         board[i++] = new GUI_Start("Start", "Modtag: 4000", "Modtag 4000kr,-Når man har passeret start", Color.RED, Color.BLACK);

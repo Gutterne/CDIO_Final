@@ -1,15 +1,17 @@
 package Fields;
 
 import org.example.Player;
+//this class is responsible for field actions when the individual player lands on the following field, all of this is used in the backend board.
 
 public class Brewery extends Field {
+    //directory of variables
     private  int cost;
     private Player owner;
     private String color, valg;
     private int House,hotel;
 
 
-
+    //this method is referenced in board.java and inherits much of it's properties from fields.
     public Brewery(String ferryName,String color, int BoardNumber,int cost,int rent1, int rent2){
         super(ferryName,BoardNumber);
         this.cost=cost;
