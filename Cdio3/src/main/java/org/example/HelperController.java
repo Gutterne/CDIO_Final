@@ -17,8 +17,8 @@ public class HelperController {
     private int p1;
     private Board board3;
     private Holder holder;
-    private GUI gui;
 
+    private GUI gui;
     public Audio audio = new Audio();
     private Player[] playerArray;
     private GUI_Player[] playArray;
@@ -105,15 +105,18 @@ if(boardCondition == true) {
         return m;
     }
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
-        Field playerField1 = board3.fieldlist[am];
-        Field playerFieldReverse = board3.fieldListReverse[am];
 
-        if(boardCondition == true) {
-             playerField1 = playerFieldReverse;
+
+        Field playerFieldReverse = board3.fieldlist[am];
+        Field playerField1 = board3.fieldListReverse[am];
+
+        if(boardCondition == false) {
+            playerField1 = playerField1;
+        }
+        else  {
+            playerField1 = playerFieldReverse;
             board2 = reversalBoard;
     }
-
-
         if (playerField1 instanceof BuyableField) {
             if (!playerField1.isOwned()) {
                 String chosenButton = gui.getUserButtonPressed(
