@@ -323,6 +323,10 @@ if( board3.fieldlist[feltNumber-1] instanceof BuyableField && board2[feltNumber-
     public void updatePlayerMoney(){
         for(int f = 0;f<playerArray.length;f++) {
             playArray[f].setBalance(playerArray[f].myWallet.getMoney());
+            if(playerArray[f].myWallet.getMoney()==0){
+                System.out.println("Tillyke,i har gennemført spillet");
+                System.exit(0);
+            }
         }
     }
 
