@@ -51,6 +51,15 @@ public class HelperController {
     }
 
     public void GameRunner(){
+        playerArray[0].setOwnerlist(12);
+        playerArray[0].setOwnerlist(14);
+        playerArray[0].setOwnerlist(15);
+        ((GUI_Street)board2[11]).setBorder(playArray[0].getPrimaryColor());
+        ((GUI_Street)board2[13]).setBorder(playArray[0].getPrimaryColor());
+        ((GUI_Street)board2[14]).setBorder(playArray[0].getPrimaryColor());
+        ((BuyableField)board3.fieldlist[11]).setOwner(playerArray[0]);
+        ((BuyableField)board3.fieldlist[13]).setOwner(playerArray[0]);
+        ((BuyableField)board3.fieldlist[14]).setOwner(playerArray[0]);
         for(int dm=0;dm<playerArray.length;dm++)
             gui.addPlayer(playArray[dm]);
         while (playing) {

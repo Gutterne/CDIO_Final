@@ -10,10 +10,10 @@ Board board= new Board();
         int count=0;
         String str2;
         for(int i=0;i<play11.ownerlist.length;i++){
-            if(bord[fieldnumber]instanceof BuyableField && bord[i] instanceof BuyableField ){
+            if(bord[fieldnumber-1]instanceof BuyableField && bord[i] instanceof BuyableField ){
                 str2=((BuyableField)bord[fieldnumber-1]).getColor();
                 String str1 = ((BuyableField)bord[i]).getColor();
-                if(str1.equals(str2)){
+                if(str1.equals(str2) && play11.getOwnerlist(i)==true){
                     count++;
                 }
 
@@ -24,8 +24,9 @@ Board board= new Board();
         if(count==3){
             return true;
         }
-        else
+        else{
             return false;
+        }
     }
 
 }
