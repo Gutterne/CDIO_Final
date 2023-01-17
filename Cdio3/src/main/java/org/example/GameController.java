@@ -5,12 +5,13 @@ import gui_main.GUI;
 
 public class GameController {
     private SettingsController set;
+    public Audio sound  = new Audio();
     private HelperController helper;
     private  String inputText= "";
     private  String Textdata;
     private GUI gui;
     private GUI gui2;
-
+    static Audio audio = new Audio();
 
 
     private GameBoard[] board;
@@ -45,11 +46,12 @@ public class GameController {
                 "Standard Matador", "Omvendt Matadorplade"
         );
         if (chosenButton.equals("Standard Matador")) {
-
+            audio.run();
             HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, board2,reverseBoard2,false);
             help.GameRunner();
         }
         if (chosenButton.equals("Omvendt Matadorplade")) {
+            audio.run();
             gui.close();
             gui = new GUI(reverseBoard2);
             //gui2 = new GUI(reverseBoard2);

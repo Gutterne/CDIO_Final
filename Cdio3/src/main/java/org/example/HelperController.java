@@ -16,6 +16,8 @@ public class HelperController {
     private boolean playing = true;
     private int p1;
     private Board board3;
+
+    public Audio audio = new Audio();
     private Holder holder;
     private GUI gui;
     private Player[] playerArray;
@@ -52,19 +54,25 @@ public class HelperController {
             gui.addPlayer(playArray[dm]);
         while (playing) {
             for (int i = 0; i < playerArray.length; i++) {
-                currentPlayerPosition=playerArray[i].getPositition();
+                currentPlayerPosition = playerArray[i].getPositition();
                 gui.showMessage(playerArray[i].getName() + " tryk enter:");
-                int posit = movePlayer(playerArray[i],playArray[i],RollTheDice());
+                int posit = movePlayer(playerArray[i], playArray[i], RollTheDice());
 
-                LandPlayer(playerArray[i],playArray[i],posit);
+                LandPlayer(playerArray[i], playArray[i], posit);
 
 
-
-                passerStart(playerArray[i],posit);
+                passerStart(playerArray[i], posit);
                 updatePlayerMoney();
 
 
+            }
 
+            String AudioButton = gui.getUserButtonPressed(
+                    "MUTE",
+                    "🔉"
+            );
+            if (AudioButton.equals("🔉")) {
+                audio.DiceSFX.isStopped();
             }
         }
     }
@@ -72,7 +80,7 @@ public class HelperController {
        holder.sum();
        int p1 = holder.getSum();
         gui.setDice(holder.die1.getFacevalue(), holder.die2.getFacevalue());
-
+        audio.DiceSound();
 
         return p1;
     }
@@ -91,7 +99,7 @@ if(boardCondition == true) {
         return m;
     }
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
-        Field playerField1 = board3.fieldListReverse[am];
+        Field playerField1 = board3.fieldlist[am];
         Field playerFieldReverse = board3.fieldListReverse[am];
 
         if(boardCondition == true) {
