@@ -64,18 +64,17 @@ public class HelperController {
                 passerStart(playerArray[i], posit);
                 updatePlayerMoney();
 
+                //boolean AudioButton = gui.getUserLeftButtonPressed("MUTE", "🔉", "🔉2");
+                //if(AudioButton == false) {
+                  //  audio.DiceSFX.isStopped();
+                    //audio.DiceSFX.equals(null);
+                //}
+
 
             }
-
-            String AudioButton = gui.getUserButtonPressed(
-                    "MUTE",
-                    "🔉"
-            );
-            if (AudioButton.equals("🔉")) {
-                audio.DiceSFX.isStopped();
             }
         }
-    }
+
     public int RollTheDice(){
        holder.sum();
        int p1 = holder.getSum();

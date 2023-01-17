@@ -10,7 +10,7 @@ public class Audio extends Thread{
     File fileMusic;
 
     public Audio() {
-        this.fileMusic = new File("Cdio3/src/main/resources/Darkrai's Theme Medley.mp3");
+        this.fileMusic = new File("Cdio3/src/main/resources/matador.mp3");
         this.fileDice = new File("Cdio3/src/main/resources/Terning.mp3");
     }
     public void run() {
