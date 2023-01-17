@@ -62,8 +62,11 @@ public class HelperController {
     }
 
     public void GameRunner(){
-        for(int dm=0;dm<playerArray.length;dm++)
+        for(int dm=0;dm<playerArray.length;dm++) {
             gui.addPlayer(playArray[dm]);
+            board2[0].setCar(playArray[dm],true);
+        }
+
         while (playing) {
             for (int i = 0; i < playerArray.length; i++) {
                 currentPlayerPosition=playerArray[i].getPositition();
@@ -91,7 +94,7 @@ public class HelperController {
         player711.setPositition(player711.getPositition() + DiceSum);
         int m = player711.getPositition() % 40;
 if(boardCondition == false) {
-    board2[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
+    board2[(player711.getPositition() - holder.getSum()) % 40].setCar(Play12,false);
     board2[m].setCar(Play12, true);
 }
 if(boardCondition == true) {
