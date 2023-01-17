@@ -82,10 +82,6 @@ int plade;
 
                 LandPlayer(playerArray[i],playArray[i],posit);
 
-                LandPlayer(playerArray[i],playArray[i],posit);
-
-
-
                 passerStart(playerArray[i],posit);
                 updatePlayerMoney();
                 showOptions(playerArray[i]);
