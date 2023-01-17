@@ -6,16 +6,26 @@ import Fields.BuyableField;
 public class ColourSet {
 Board board= new Board();
 
-    public void checkFullColor(Player play11, Field[] bord, int fieldnumber){
+    public Boolean checkFullColor(Player play11, Field[] bord, int fieldnumber){
         int count=0;
+        String str2;
         for(int i=0;i<play11.ownerlist.length;i++){
-            if(bord[fieldnumber]instanceof BuyableField ){
-                String str2=((BuyableField)bord[fieldnumber-1]).getColor();
-                String str1 = bord[i].getColor();
+            if(bord[fieldnumber]instanceof BuyableField && bord[i] instanceof BuyableField ){
+                str2=((BuyableField)bord[fieldnumber-1]).getColor();
+                String str1 = ((BuyableField)bord[i]).getColor();
+                if(str1.equals(str2)){
+                    count++;
+                }
 
             }
 
 
         }
+        if(count==3){
+            return true;
+        }
+        else
+            return false;
     }
+
 }

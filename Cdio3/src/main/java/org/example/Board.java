@@ -66,7 +66,7 @@ public class Board {
           600,3000,9000,20000,24000,28000);
   fieldlist[35]= new Ferry("Rødby - Puttgarden","Mørkeblå",36,4000,500,1000);
   fieldlist[36]= new Metro("Metro","Sort",37);
-  fieldlist[37]= new BuyableField("Frederiksberggade","Purple",38,7000,
+  fieldlist[37]= new BuyableField("Frederiksberggade","Lilla",38,7000,
           700,3500,10000,22000,26000,30000);
   fieldlist[38]= new LesserTax("Tax",39,2000);
   fieldlist[39]= new BuyableField("Rådhuspladsen","Lilla",40,8000,

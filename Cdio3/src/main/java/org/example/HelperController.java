@@ -18,6 +18,7 @@ public class HelperController {
     private boolean playing = true;
     private Board board3;
     private Holder holder;
+    private ColourSet colourSet;
     private GUI gui;
     private Player[] playerArray;
     private GUI_Player[] playArray;
@@ -45,6 +46,7 @@ public class HelperController {
         holder=new Holder();
         board3= new Board();
         this.board2=board2;
+        colourSet= new ColourSet();
 
     }
 
@@ -241,6 +243,12 @@ public void showOptions(Player play12) {
 
     else if (textdata.equals("Køb et hus")){
         int feltNumber = gui.getUserInteger("Skriv det feltnummer, du ønsker at bygge hus på .(Please, ik bruge bogstaver!");
+if(colourSet.checkFullColor(play12,board3.fieldlist,feltNumber) && board3.fieldlist[feltNumber-1] instanceof BuyableField && board2[feltNumber-1] instanceof GUI_Street){
+    ((BuyableField) board3.fieldlist[feltNumber-1]).addHouse(1);
+    ((GUI_Street) board2[feltNumber-1]).setHouses(1);
+
+
+}
 
     }}
     public void updatePlayerMoney(){
@@ -248,7 +256,24 @@ public void showOptions(Player play12) {
             playArray[f].setBalance(playerArray[f].myWallet.getMoney());
         }
     }
- public void dropDown(Player play12){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void dropDown(Player play12){
      // kode for en slags dropliste.
      String [] str= new String[play12.ownerlist.length];
      for(int i=0;i<play12.ownerlist.length;i++){
@@ -258,7 +283,7 @@ public void showOptions(Player play12) {
      }
 
      String textdata2 = gui.getUserSelection("Her er din muligheder som felt ejer.", "Spil videre"
-             , "Sælg et felt en spiller", "Sælg et felt til banken");
+             , "Sælg et felt til en anden spiller", "Sælg et felt til banken");
  }
 
 }
