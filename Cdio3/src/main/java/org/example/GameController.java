@@ -13,12 +13,6 @@ public class GameController {
     public int boardInteger;
     static Audio audio = new Audio();
 
-    public Board boardP = new Board();
-
-
-
-
-
     private GameBoard[] board;
     private GameBoard [] board4;
     private GUI_Field[] board1,board2,reverseBoard1,reverseBoard2;
@@ -46,6 +40,7 @@ public class GameController {
                 "Standard Matador", "Omvendt Matadorplade"
         );
         if (chosenButton.equals("Standard Matador")) {
+
             boardInteger =1;
             board1 = GameBoard.makeFields(1);
 
@@ -59,7 +54,8 @@ public class GameController {
                 board2[i] = board1[i];
             }
             boardInteger = 2;
-            boardP.fieldGiver(boardInteger);
+
+            //boardP.fieldGiver(boardInteger);
 
             gui.close();
 

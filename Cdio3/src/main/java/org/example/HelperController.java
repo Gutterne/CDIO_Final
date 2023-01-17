@@ -47,7 +47,6 @@ public class HelperController {
 
     private int fields;
 
-
     public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
             ,GUI_Field[] board2, boolean reverseCondition, int plade) {
         this.gui = gui;
@@ -97,12 +96,15 @@ public class HelperController {
 
     board2[(player711.getPositition() - holder.getSum()) % 40].setCar(Play12,false);
     board2[m].setCar(Play12, true);
-        return m;
+        board3.fieldGiver(pladenummer);
+    return m;
     }
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
-        board3.fieldGiver(pladenummer);
 
-       Field playerField1 = board3.fieldlist[am];
+
+        //board3.getFieldlist();
+
+        Field playerField1 = board3.getFieldlist()[am];
 
         if (playerField1 instanceof BuyableField) {
             if (!playerField1.isOwned()) {
@@ -204,10 +206,11 @@ public class HelperController {
             }
         }
     public void passerStart(Player player72,int amn){
-        if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.fieldlist[amn] instanceof Hardprison) && !(board3.fieldlist[amn] instanceof Chance) ) {
-            if(!(board3.fieldlist[amn] instanceof Start))
+
+        if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.getFieldlist()[amn] instanceof Hardprison) && !(board3.getFieldlist()[amn] instanceof Chance) ) {
+            if(!(board3.getFieldlist()[amn] instanceof Start))
                 gui.showMessage("Du har passeret start.");
-            board3.fieldlist[0].landOndField(player72);
+            board3.getFieldlist()[0].landOndField(player72);
         }
 
     }

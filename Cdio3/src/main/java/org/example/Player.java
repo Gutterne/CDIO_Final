@@ -83,9 +83,9 @@ public class Player {
         this.currentPositition = currentPositition;
         int nearestFerryField = -1;
         int nearestFerryDistance = Integer.MAX_VALUE;
-        for (int i = 0; i < board3.fieldlist.length; i++) {
-            if (board3.fieldlist[i] instanceof Ferry) {
-                int distance = (i - currentPositition + board3.fieldlist.length) % board3.fieldlist.length;
+        for (int i = 0; i < board3.getFieldlist().length; i++) {
+            if (board3.getFieldlist()[i] instanceof Ferry) {
+                int distance = (i - currentPositition + board3.getFieldlist().length) % board3.getFieldlist().length;
                 if (distance < nearestFerryDistance) {
                     nearestFerryDistance = distance;
                     nearestFerryField = i;
