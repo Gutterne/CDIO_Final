@@ -3,7 +3,6 @@ package org.example;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import gui_fields.*;
-import org.
 import org.junit.jupiter.api.Test;
 
 public class ChanceActionsTest {
