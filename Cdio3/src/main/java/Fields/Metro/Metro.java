@@ -1,4 +1,5 @@
-package Fields;
+package Fields.Metro;
+import Fields.Field;
 import org.example.Player;
 
 public class Metro extends Field {
@@ -13,16 +14,16 @@ public class Metro extends Field {
     }
 
     public void landOndField(Player travelPlayer) {
-        if(travelPlayer.getPositition()==7){
+        if(travelPlayer.getPositition()%40==7){
             travelPlayer.setPositition(15);
         } //second metro stop to third
-        else if (travelPlayer.getPositition()==15){
+        else if (travelPlayer.getPositition()%40==15){
             travelPlayer.setPositition(25);
         } //third metro stop to fourth
-        else if(travelPlayer.getPositition()==25){
+        else if(travelPlayer.getPositition()%40==25){
             travelPlayer.setPositition(36);
         } //fourth metro stop to first
-        else if(travelPlayer.getPositition()==36){
+        else if(travelPlayer.getPositition()%40==36){
             travelPlayer.setPositition(7);
         }
     }

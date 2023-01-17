@@ -1,6 +1,7 @@
 package org.example;
 
 import Fields.*;
+import Fields.Metro.Metro;
 import gui_codebehind.GUI_Center;
 import gui_fields.*;
 import gui_main.GUI;
@@ -198,11 +199,14 @@ if(boardCondition == true) {
         }
 
         else if(playerField1 instanceof Metro){
-            gui.showMessage("Du har landt ved Metro-Stoppet, du tar nu metroen til næste stop!");
-            board2[player721.getPositition()  % 40].removeAllCars();
-            ((Metro)playerField1).landOndField(player721);
-            board2[player721.getPositition() %40].setCar(play20, true);;
+
+                gui.showMessage("Du har landt ved Metro-Stoppet, du tar nu metroen til næste stop!");
+                board2[player721.getPositition()  % 40].removeAllCars();
+                ((Metro)playerField1).landOndField(player721);
+                board2[player721.getPositition() %40].setCar(play20, true);
+
         }
+
 
         else if (playerField1 instanceof Hardprison){
 
