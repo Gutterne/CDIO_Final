@@ -1,22 +1,25 @@
 package Fields;
 import org.example.Die;
 import gui_main.GUI;
+//this class is responsible for field actions when the individual player lands on the following field, all of this is used in the backend board.
+
 
 public class Chance extends Field {
+    //directory of variables
     private Die die8;
     GUI gui;
     private int[] bunke1, bunke2, bunke3, bunke4, bunke5, bunke6;
-
     private int cardsNumber;
     int Random;
 
-
+    //is referenced in method getChanceCards, and is used to implement the return the action that getChancecards gives.
     public int getCardsNumber() {
         System.out.println(cardsNumber + "test n.2");
         return cardsNumber;
     }
 
 
+    //this method randomly chooses an array element from the chancecard array list.
     public String getChancecards() {
 
         cardsNumber = (int) (Math.random() * 32 + 1);
@@ -26,6 +29,7 @@ public class Chance extends Field {
     }
 
 
+    //this is the chancecard arraylist, those are given by the matador task requirements given in Materials>chancecards.txt
     public String[] chancecards = new String[]{
             "De har kørt frem for “fuldt stop”, Betal 1000 kroner i bøde\n",                           //1
             "Betal for vognvask og smøring kr 300\n",                                                  //2
@@ -61,8 +65,10 @@ public class Chance extends Field {
             "Gå i fængsel, De indkasserer ikke 4000 kr for at passere start.\n",                       //32
             "Gå i fængsel, De indkasserer ikke 4000 kr for at passere start.\n"};                      //33
 
-    private int randomBunke, nextCardUp;
 
+    //This method, does the absolutely amazing work, that it replicates a bundle of cards,
+    //by putting the card you pick up, when landing on the "prøv lykken" field, on the bottom of the bundle.
+    //this is a clear example of "pure fabrication" in GRASP
     public Chance(String fieldName, int BoardNumber) {
         super(fieldName, BoardNumber);
         die8 = new Die();

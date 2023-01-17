@@ -1,4 +1,4 @@
-package org.example;
+package org.example; // This line declares the package that the class "HelperController" belongs to.
 
 import Fields.*;
 import Fields.Metro.Metro;
@@ -7,15 +7,14 @@ import gui_fields.*;
 import gui_main.GUI;
 import gui_resources.Attrs;
 import javax.swing.JPanel;
-
-
 import javax.swing.*;
-
 import static gui_tests.TestRunExampleGame.sleep;
 
+
 public class HelperController {
+    //directory of variables
     private boolean playing = true;
-    private int p1;
+    private int p1; // p1 - an integer used to store the sum of the dice roll
     private Board board3;
     private Holder holder;
 
@@ -25,49 +24,48 @@ public class HelperController {
     private GUI_Player[] playArray;
     private GUI_Field []board2;
     private GUI_Field [] reversalBoard;
-
     private int[] buyableFields;
 
     private int[] chancecards = new int[0];
-
     private Chance chance ;
     boolean boardCondition;
-
     private Board BOARD_SIZE;
     private ChanceActions chanceAct;
+    private int currentPlayerPosition; // currentPlayerPosition - an integer representing the current position of the player on the game board
 
-    private int currentPlayerPosition;
-
-    private JPanel centerPanel = new JPanel();
-
-    boolean extraturn=false;
-
+    private JPanel centerPanel = new JPanel(); // centerPanel - a JPanel object
+    boolean extraturn=false; // extraturn - a boolean representing if a player has an extra turn or not
     private int fields;
+    Field playerField1;
 
 
-
-
-
+int plade;
+    // HelperController class
+// This class is responsible for controlling the flow of the game. It contains methods for moving players,
+// checking for extra turns, updating player money, and running the game.
     public HelperController(Player[] playerArray, GUI_Player[] playArray,GUI gui
-            ,GUI_Field[] board2,GUI_Field[] reversalBoard, boolean reverseCondition) {
-        this.gui = gui;
-        this.playArray=playArray;
-        this.playerArray=playerArray;
-        holder=new Holder();
-        board3= new Board();
-
+            ,GUI_Field[] board2,GUI_Field[] reversalBoard, boolean reverseCondition,int plate) {
+        this.gui = gui; // gui - an instance of the GUI class
+        this.playArray=playArray; // playArray - an array of GUI_Player objects
+        this.playerArray=playerArray; // playerArray - an array of Player objects
+        holder=new Holder(); // holder - an instance of the Holder class
+        board3= new Board(); // board3 - an instance of the Board class
+        this.plade = plate;
         reverseCondition = boardCondition;
-        this.reversalBoard =reversalBoard;
-        this.board2=board2;
-        chanceAct= new ChanceActions();
+        this.reversalBoard =reversalBoard; // reversalBoard - an array of GUI_Field objects representing the reversed game board
+        this.board2=board2; // board2 - an array of GUI_Field objects representing the game board
+        chanceAct= new ChanceActions();  // chanceAct - an instance of the ChanceActions class
     }
 
+// This method is responsible for running the game. It contains a loop that iterates through the playerArray and
+// performs various actions for each player,
+// such as moving the player, checking for extra turns, landing the player on a field, and updating player money.
     public void GameRunner(){
         for(int dm=0;dm<playerArray.length;dm++) {
             gui.addPlayer(playArray[dm]);
             board2[0].setCar(playArray[dm],true);
         }
-
+// playing - a boolean that keeps track of whether the game is still in progress or not
         while (playing) {
             for (int i = 0; i < playerArray.length; i++) {
                 currentPlayerPosition=playerArray[i].getPositition();
@@ -86,6 +84,8 @@ public class HelperController {
             }
         }
     }
+    // This method rolls the dice and returns the sum of the roll. It also updates
+    // the GUI with the rolled values and plays a sound effect.
     public int RollTheDice(){
        holder.sum();
        int p1 = holder.getSum();
@@ -93,6 +93,8 @@ public class HelperController {
         audio.DiceSound();
         return p1;
     }
+    // This method takes in a Player object, a GUI_Player object, and the sum of a dice roll as parameters.
+    // It updates the player's position on the game board and updates the GUI to reflect the player's new position.
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
         player711.setPositition(player711.getPositition() + DiceSum);
         int m = player711.getPositition() % 40;
@@ -100,25 +102,28 @@ if(boardCondition == false) {
     board2[(player711.getPositition() - holder.getSum()) % 40].setCar(Play12,false);
     board2[m].setCar(Play12, true);
 }
-if(boardCondition == true) {
+if(plade ==2) {
+    board2 = reversalBoard;
     reversalBoard[(player711.getPositition() - holder.getSum()) % 40].removeAllCars();
     reversalBoard[m].setCar(Play12, true);
 }
 
         return m;
     }
+    // This method takes in a Player object, a GUI_Player object, and an integer as parameters.
+    // It checks the field the player has landed on and performs the appropriate action.
     public void LandPlayer(Player player721,GUI_Player play20,int am) {
 
 
-        Field playerFieldReverse = board3.fieldlist[am];
-        Field playerField1 = board3.fieldListReverse[am];
 
-        if(boardCondition == false) {
-            playerField1 = playerField1;
-        }
-        else  {
-            playerField1 = playerFieldReverse;
+
+        if (plade == 2) {
+            playerField1 = board3.fieldListReverse[am];
             board2 = reversalBoard;
+        }else{
+          playerField1 = board3.fieldlist[am];
+
+
     }
         if (playerField1 instanceof BuyableField) {
             if (!playerField1.isOwned()) {
@@ -228,7 +233,7 @@ if(boardCondition == true) {
 
         }
 
-
+    // This method checks if the player landed on the start field, or passed it. and grants him the start money if it is the case.
     public void passerStart(Player player72,int amn){
         if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.fieldlist[amn] instanceof Hardprison) && !(board3.fieldlist[amn] instanceof Chance) ) {
             if(!(board3.fieldlist[amn] instanceof Start))
@@ -240,7 +245,7 @@ if(boardCondition == true) {
     }
 
 
-
+    // This method updates the money of the player on the GUI
     public void updatePlayerMoney(){
         for(int f = 0;f<playerArray.length;f++) {
             playArray[f].setBalance(playerArray[f].myWallet.getMoney());

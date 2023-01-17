@@ -2,13 +2,14 @@ package Fields.Metro;
 import Fields.*;
 
 import org.example.Player;
-
+//this class is responsible for field actions when the individual player lands on the following field, all of this is used in the backend board.
+//this class is the reverse algorithm of metro, so it can be used on the reverseboard feature.
 public class ReverseMetro extends Field {
     private int cost;
 
     Player travelplayer;
     private String color;
-
+    //this method is referenced in board.java and inherits much of it's properties from fields, it's parallel combared to Metro.
     public ReverseMetro(String metroName, String color, int BoardNumber) {
         super(metroName, BoardNumber);
         this.color = color;

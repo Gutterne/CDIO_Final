@@ -8,10 +8,13 @@ import gui_main.GUI;
 import org.example.Board;
 import org.example.HelperController;
 
-
+//this class has the responsibility of chance cards actions.
 public class ChanceActions {
 
-
+//The method uses a switch statement to check the card number and performs different actions based on the card number.
+// Some of the actions include moving the player to a different field, adding or subtracting money from the player's wallet,
+// and moving the player's game piece on the GUI board. Overall, this class is responsible for handling all
+// actions that occur when a player lands on a chance field.
     public void chancePulls(Player player10, GUI_Player player14, GUI_Field[] board30, int cardsNumber) {
 
         switch (cardsNumber) {

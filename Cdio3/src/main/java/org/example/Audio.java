@@ -4,6 +4,7 @@ import jaco.mp3.player.MP3Player;
 import java.io.File;
 
 public class Audio extends Thread{
+    //directory of variables
     MP3Player mp3PlayerMusic;
     MP3Player DiceSFX;
 

@@ -1,14 +1,19 @@
 package Fields;
 
 import org.example.Player;
+//this class is responsible for field actions when the individual player lands on the following field, all of this is used in the backend board.
 
 
 public class  BuyableField extends Field {
+    //directory of variables
     private  int cost;
     private Player owner;
     private String color, valg;
     private int House,hotel;
 
+    //this method is referenced in board.java and inherits much of it's properties from fields.
+    //the buyable field, contains all of the following requirements for each field, from the matador task requirements
+    //field requirements given by the teacher, in the excel document, in Materials>Fields
     public BuyableField(String fieldName,String color, int BoardNumber,int cost, int rent0, int rent1, int rent2, int rent3, int rent4, int rent5){
         super(fieldName,BoardNumber);
         this.cost=cost;
