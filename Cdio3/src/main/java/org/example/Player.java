@@ -9,11 +9,12 @@ import gui_fields.GUI_Shipping;
 public class Player {
     public Wallet myWallet;
     private int money2,positition;
-    private boolean[] ownerlist;
+    public boolean[] ownerlist;
     private int[] ints;
     public boolean isInJail;
     private boolean inPrison;
     private int balance;
+    private String []colourset;
 
     public Board board3;
 
@@ -45,7 +46,9 @@ public class Player {
     public void setOwnerlist(int bool) {
         ownerlist[bool]= true;
     }
-
+    public void setOwnerlist(int bool,boolean bole) {
+        ownerlist[bool]= bole;
+    }
     public boolean isInJail() {
         return isInJail;
     }

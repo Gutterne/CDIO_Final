@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 
 import javax.swing.*;
 
+import java.awt.*;
+
 import static gui_tests.TestRunExampleGame.sleep;
 
 public class HelperController {
@@ -35,6 +37,7 @@ public class HelperController {
     private Board BOARD_SIZE;
     private ChanceActions chanceAct;
 
+    private String textdata;
     private int currentPlayerPosition;
 
     private JPanel centerPanel = new JPanel();
@@ -62,6 +65,16 @@ public class HelperController {
     }
 
     public void GameRunner(){
+        playerArray[0].setOwnerlist(12);
+        playerArray[0].setOwnerlist(14);
+        playerArray[0].setOwnerlist(15);
+        ((GUI_Street)board2[11]).setBorder(playArray[0].getPrimaryColor());
+        ((GUI_Street)board2[13]).setBorder(playArray[0].getPrimaryColor());
+        ((GUI_Street)board2[14]).setBorder(playArray[0].getPrimaryColor());
+        ((BuyableField)board3.fieldlist[11]).setOwner(playerArray[0]);
+        ((BuyableField)board3.fieldlist[13]).setOwner(playerArray[0]);
+        ((BuyableField)board3.fieldlist[14]).setOwner(playerArray[0]);
+        for(int dm=0;dm<playerArray.length;dm++)
         for(int dm=0;dm<playerArray.length;dm++) {
             gui.addPlayer(playArray[dm]);
             board2[0].setCar(playArray[dm],true);
@@ -79,6 +92,8 @@ public class HelperController {
 
                 passerStart(playerArray[i],posit);
                 updatePlayerMoney();
+                showOptions(playerArray[i]);
+                updatePlayerMoney();
 
             }
         }
@@ -93,6 +108,8 @@ public class HelperController {
     public int movePlayer(Player player711,GUI_Player Play12, int DiceSum){
         player711.setPositition(player711.getPositition() + DiceSum);
         int m = player711.getPositition() % 40;
+        board2[(player711.getPositition() - holder.getSum()) % 40].setCar(Play12,false);
+        board2[m].setCar(Play12, true);
 if(boardCondition == false) {
     board2[(player711.getPositition() - holder.getSum()) % 40].setCar(Play12,false);
     board2[m].setCar(Play12, true);
@@ -222,21 +239,113 @@ if(boardCondition == true) {
 
 
     public void passerStart(Player player72,int amn){
-        if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.fieldlist[amn] instanceof Hardprison) && !(board3.fieldlist[amn] instanceof Chance) ) {
+        if(currentPlayerPosition % 40>player72.getPositition() % 40 && !(board3.fieldlist[amn] instanceof Hardprison) ) {
             if(!(board3.fieldlist[amn] instanceof Start))
                 gui.showMessage("Du har passeret start.");
             board3.fieldlist[0].landOndField(player72);
         }
 
     }
+public void showOptions(Player play12) {
+    textdata = gui.getUserSelection("Her er din muligheder som felt ejer.", "Spil videre"
+            , "Sælg et felt en spiller", "Sælg et felt til banken","Køb et hus","Køb et hotel");
+    //kode for sælge til bank
+    if (textdata.equals("Sælg et felt til banken")) {
 
 
 
+        int feltNumber = gui.getUserInteger("Skrive det feltnumere på det du ænsker at sælge.(Please, ik bruge bogstaver!)");
+        if (play12.getOwnerlist(feltNumber) && board3.fieldlist[feltNumber - 1] instanceof BuyableField
+                && board2[feltNumber - 1] instanceof GUI_Street) {
+            play12.myWallet.setSquareMoney(((BuyableField) board3.fieldlist[feltNumber - 1]).getCost() / 2);
+            play12.myWallet.UpdateMoney();
+            play12.setOwnerlist(feltNumber, false);
+            ((BuyableField) board3.fieldlist[feltNumber - 1]).sellHouse(null);
+            ((GUI_Street) board2[feltNumber - 1]).setBorder(Color.BLACK);
+
+        }
+
+    } else if (textdata.equals("Sælg et felt en spiller")) {
+        int feltNumber = gui.getUserInteger("Skriv det feltnumere på det du ænsker at sælge .(Please, ik bruge bogstaver!)");
+
+        int playerNumber = gui.getUserInteger("Skriv hvem du ønsker at sælge til .(Et tal fra 3-6)");
+        if (play12.getOwnerlist(feltNumber) && board3.fieldlist[feltNumber - 1] instanceof BuyableField
+                && board2[feltNumber - 1] instanceof GUI_Street) {
+            String chosenButtomkober = gui.getUserButtonPressed(
+                    "Player" + playerNumber + "vil du købe feltet",
+                    "Ja", "Nej");
+            if (chosenButtomkober.equals("Ja")) {
+
+                play12.myWallet.setSquareMoney(((BuyableField) board3.fieldlist[feltNumber - 1]).getCost());
+                play12.myWallet.UpdateMoney();
+                playerArray[playerNumber - 1].myWallet.setSquareMoney(-((BuyableField) board3.fieldlist[feltNumber - 1]).getCost());
+                playerArray[playerNumber - 1].myWallet.UpdateMoney();
+                play12.setOwnerlist(feltNumber, false);
+                playerArray[playerNumber - 1].setOwnerlist(feltNumber);
+                ((BuyableField) board3.fieldlist[feltNumber - 1]).sellHouse(playerArray[playerNumber - 1]);
+                ((GUI_Street) board2[feltNumber - 1]).setBorder(playArray[playerNumber - 1].getPrimaryColor());
+
+
+            }
+
+
+        }
+    }
+
+    else if (textdata.equals("Køb et hus")){
+        int feltNumber = gui.getUserInteger("Skriv det feltnummer, du ønsker at bygge hus på .(Please, ik bruge bogstaver!");
+if( board3.fieldlist[feltNumber-1] instanceof BuyableField && board2[feltNumber-1] instanceof GUI_Street && ((BuyableField) board3.fieldlist[feltNumber-1]).getHouse()<5){
+
+    ((BuyableField) board3.fieldlist[feltNumber-1]).addHouse();
+    ((GUI_Street) board2[feltNumber-1]).setHouses(((BuyableField) board3.fieldlist[feltNumber-1]).getHouse());
+
+
+}
+
+    }
+    else if (textdata.equals("Køb et hotel")){
+        int feltNumber = gui.getUserInteger("Skriv det feltnummer, du ønsker at bygge et hotel på .(Please, ik bruge bogstaver!");
+
+        if( board3.fieldlist[feltNumber-1] instanceof BuyableField && board2[feltNumber-1] instanceof GUI_Street && ((BuyableField) board3.fieldlist[feltNumber-1]).getHouse()==4){
+            ((BuyableField) board3.fieldlist[feltNumber-1]).addHouse();
+            ((GUI_Street) board2[feltNumber-1]).setHotel(true);
+
+        }
+    }
+}
     public void updatePlayerMoney(){
         for(int f = 0;f<playerArray.length;f++) {
             playArray[f].setBalance(playerArray[f].myWallet.getMoney());
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void dropDown(Player play12){
+     // kode for en slags dropliste.
+     String [] str= new String[play12.ownerlist.length];
+     for(int i=0;i<play12.ownerlist.length;i++){
+         if(play12.ownerlist[i]){
+             str[i]=Integer.toString(i);
+         }
+     }
+
+     String textdata2 = gui.getUserSelection("Her er din muligheder som felt ejer.", "Spil videre"
+             , "Sælg et felt til en anden spiller", "Sælg et felt til banken");
+ }
 
 }
