@@ -25,6 +25,8 @@ public class Audio extends Thread{
         this.fileStart = new File("Cdio3/src/main/resources/Start.mp3");
 
     }
+
+    //running method
     public void run() {
 
         try{
@@ -34,7 +36,7 @@ public class Audio extends Thread{
             System.out.print(e);
         }
     }
-
+    // all sound-methods used for referencing
     public void DiceSound(){
         try{
             DiceSFX = new MP3Player(fileDice);
