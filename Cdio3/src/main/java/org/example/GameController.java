@@ -19,6 +19,7 @@ public class GameController {
     private GameBoard [] board4;
     private GUI_Field[] board1,board2,reverseBoard1,reverseBoard2;
     private GameBoard gameBoard;
+    int plate;
 
     public GameController(){
         board1 = new GUI_Field[40]; board2 = new GUI_Field[40];reverseBoard1 = new GUI_Field[40];reverseBoard2 = new GUI_Field[40];
@@ -38,7 +39,7 @@ public class GameController {
     }
 
     public void play() {
-        int x = Integer.parseInt(gui.getUserSelection("Hvor mange spillere skal spille?", "2", "3", "4", "5", "6"));
+        int x = Integer.parseInt(gui.getUserSelection("Hvor mange spillere skal spille?",  "3", "4", "5", "6"));
         set = new SettingsController(x);
         set.provideSettings();
         String chosenButton = gui.getUserButtonPressed(
@@ -48,16 +49,17 @@ public class GameController {
         );
         if (chosenButton.equals("Standard Matador")) {
             audio.run();
-            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, board2,reverseBoard2,false);
+            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, board2,reverseBoard2,false,1);
             help.GameRunner();
         }
         if (chosenButton.equals("Omvendt Matadorplade")) {
+            plate = 2;
             gui.close();
             gui = new GUI(reverseBoard2);
             //gui2 = new GUI(reverseBoard2);
             //HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui2, reverseBoard2,board2,true);
             audio.run();
-            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, reverseBoard2,board2,true);
+            HelperController help = new HelperController(set.getPlayerArray(), set.getPlayArray(), gui, reverseBoard2,board2,true,plate);
             help.GameRunner();
         }
     }

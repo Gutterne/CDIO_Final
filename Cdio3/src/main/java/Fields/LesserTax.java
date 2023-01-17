@@ -3,8 +3,10 @@ package Fields;
 import org.example.Player;
 import org.example.Wallet;
 import org.w3c.dom.ls.LSOutput;
+//this class is responsible for field actions when the individual player lands on the following field, all of this is used in the backend board.
 
 public class LesserTax extends Field{
+    //directory of variables
     int money;
     public LesserTax(String fieldName,int BoardNumber,int money){
         super(fieldName,BoardNumber);

@@ -6,10 +6,15 @@ import Fields.Metro.ReverseMetro;
 
 
 //BACKEND BOARD
+
+//this class, defines all the properties and actions the matador board has.
 public class Board {
+ // Arrays of fields in reverse and normal order
  Field[] fieldListReverse;
   Field[] fieldlist;
+ // Constructor
  public Board(){
+  // Initializing fields on the board in a specific order
   fieldlist = new Field[40];
   fieldlist[0]= new Start("Start",1,4000);
   fieldlist[1]= new BuyableField("Rødovrevej","Lyseblå",2,

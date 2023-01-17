@@ -6,7 +6,11 @@ import gui_fields.GUI_Field;
 import gui_fields.GUI_Ownable;
 import gui_fields.GUI_Shipping;
 
+//This is the Player class that represents a player in the game.
+//The class has a number of fields, including a Wallet object, an array of booleans to keep track of ownership of properties,
+// and variables to track the player's jail status, position, and balance.
 public class Player {
+    //directory of variables
     public Wallet myWallet;
     private int money2,positition;
     private boolean[] ownerlist;
@@ -37,7 +41,9 @@ public class Player {
         isInJail=false;
 
     }
-
+    //The class also has a number of methods that can be used to check and update the player's status and properties,
+    // such as the getOwnerlist() and setOwnerlist() methods to check and update ownership of properties,
+    // and the isInJail() and setInJail() methods to check and update the player's jail status.
     public boolean getOwnerlist(int bool) {
         boolean m =ownerlist[bool];
         return m;
@@ -78,7 +84,8 @@ public class Player {
     }
 
 
-
+    //This method finds the nearest ferry field to the player's current position,
+    // updates the player's position to that field and pay the owner of the field if there is any.
     public int findNearestFerryField(int currentPositition) {
         this.currentPositition = currentPositition;
         int nearestFerryField = -1;
